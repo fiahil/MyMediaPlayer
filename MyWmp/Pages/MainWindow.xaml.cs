@@ -8,6 +8,7 @@
         public MainWindow()
         {
             InitializeComponent();
+            new Services.LoaderService() {FileExtension = null, Root = "."}.Load();
         }
     }
 }
