@@ -1,4 +1,4 @@
-﻿namespace MyWmp.Pages
+﻿namespace MyWmp.UC
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -8,7 +8,7 @@
         public MainWindow()
         {
             InitializeComponent();
-            new Services.LoaderService() {FileExtension = null, Root = "."}.Load();
+            new Services.LoaderService {FileExtension = null, Root = "."}.Load();
         }
     }
 }
