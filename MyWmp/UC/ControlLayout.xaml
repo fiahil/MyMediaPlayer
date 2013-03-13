@@ -8,6 +8,6 @@
 	x:Name="UserControl">
     
 	<Grid x:Name="Root" Height="50" VerticalAlignment="Bottom" Margin="0" Style="{DynamicResource Root}">
-		<Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,10,0,0"/>
-	</Grid>
+        <Button Style="{DynamicResource Controls}" Content="/Resources/Play.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
+    </Grid>
 </UserControl>

@@ -80,6 +80,10 @@
     <Compile Include="Items\Playlist.cs" />
     <Compile Include="Items\Song.cs" />
     <Compile Include="Services\LoaderService.cs" />
+    <Page Include="Templates\Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Default.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

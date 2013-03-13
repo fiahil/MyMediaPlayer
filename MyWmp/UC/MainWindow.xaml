@@ -5,6 +5,11 @@
     
 	<Grid x:Name="MainLayout"/>
     <Window.Resources>
-        <ResourceDictionary Source="/MyWmp;component/Themes/Default.xaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/MyWmp;component/Themes/Default.xaml" />
+                <ResourceDictionary Source="/MyWmp;component/Templates/Default.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
 </Window>

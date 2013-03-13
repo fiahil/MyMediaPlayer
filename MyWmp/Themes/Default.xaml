@@ -1,7 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
+    <SolidColorBrush x:Key="BgBrush">DodgerBlue</SolidColorBrush>
+    <SolidColorBrush x:Key="FgBrush">DeepSkyBlue</SolidColorBrush>
+    <SolidColorBrush x:Key="PressBrush">LightSkyBlue</SolidColorBrush>
+    <SolidColorBrush x:Key="OverBrush">LightBlue</SolidColorBrush>
+
     <Style x:Key="Root" TargetType="{x:Type Grid}">
-        <Setter Property="Background" Value="Orange" />
+        <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+    </Style>
+    
+    <Style x:Key="Controls" TargetType="{x:Type Button}">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template" Value="{DynamicResource ButtonTemplate}" />
     </Style>
 </ResourceDictionary>
