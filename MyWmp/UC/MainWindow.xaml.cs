@@ -3,12 +3,12 @@
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public sealed partial class MainWindow
     {
         public MainWindow()
         {
             InitializeComponent();
-            new Services.LoaderService {FileExtension = null, Root = "."}.Load();
+            this.MainLayout.Children.Add(new ControlLayout());
         }
     }
 }
