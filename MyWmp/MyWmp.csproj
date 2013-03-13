@@ -75,6 +75,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Items\AMedia.cs" />
+    <Compile Include="Items\MediaPlaylistElement.cs" />
     <Compile Include="Items\Playlist.cs" />
     <Compile Include="Items\Song.cs" />
     <Compile Include="Services\LoaderService.cs" />
