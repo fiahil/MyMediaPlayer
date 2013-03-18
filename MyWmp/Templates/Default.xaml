@@ -4,17 +4,17 @@
     <ControlTemplate x:Key="ButtonTemplate" TargetType="{x:Type Button}">
         <Grid>
             <Rectangle Name="Background" Fill="{DynamicResource FgBrush}" />
-            <Image Source="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"
-                               Stretch="Uniform" />
+            <Image Name="Front" Source="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" Stretch="Uniform" />
+            <Image Name="Back" Source="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" Stretch="Uniform" />
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsPressed" Value="True">
                 <Setter TargetName="Background" Property="Fill" Value="{DynamicResource PressBrush}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter TargetName="Background" Property="Effect">
+                <Setter TargetName="Back" Property="Effect">
                     <Setter.Value>
-                        <BlurEffect Radius="50" />
+                        <BlurEffect Radius="3" KernelType="Box" />
                     </Setter.Value>
                 </Setter>
             </Trigger>

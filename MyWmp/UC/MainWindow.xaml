@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:uc="clr-namespace:MyWmp.UC"
         Title="MyWMP" Height="350" Width="525" WindowStartupLocation="CenterScreen" Icon="/MyWmp;component/Resources/Icon.png">
 
-    <Grid x:Name="MainLayout">
+    <Grid x:Name="MainLayout" Style="{DynamicResource MainRoot}">
         <uc:ControlLayout />
     </Grid>
     <Window.Resources>
