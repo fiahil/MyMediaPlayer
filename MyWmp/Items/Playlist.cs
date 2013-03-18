@@ -1,24 +1,67 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 
 namespace MyWmp.Items
 {
     class Playlist
     {
-        private readonly ArrayList _songs;
-        private int _currentIndex;
-        public AMedia Current { private set; get; }
-        public bool Shuffle;
+        private readonly Random random_ = new Random();
+        private readonly ArrayList songs_;
+        private readonly ArrayList shuffleList_;
+        public AMedia Current
+        {
+            set { if (songs_.Contains(value)) current_ = value; }
+            get { return current_; }
+        }
+
+        public bool Shuffle
+        {
+            set
+            {
+                if (value)
+                {
+                    RandomList(shuffleList_);
+                    if (Current != null)
+                    {
+                        shuffleList_.Remove(Current);
+                        shuffleList_.Insert(0, Current);
+                    }
+                }
+                shuffle_ = value;
+            }
+            get { return shuffle_; }
+        }
+
         public bool Repeat;
+        private bool shuffle_;
+        private AMedia current_;
+
+        private void RandomList(IList list, uint b = 0, uint n = 0)
+        {
+            if (n == 0)
+                n = (uint) list.Count - b;
+            for (var i = b; i < n; ++i)
+            {
+                var a = random_.Next((int)b, (int)n);
+                var c = random_.Next((int)b, (int)n);
+                if (a != c)
+                {
+                    var tmp = list[a];
+                    list[a] = list[c];
+                    list[c] = tmp;
+                }
+            }
+        }
 
         private void ResetIndex()
         {
             Current = null;
-            _currentIndex = - 1;
         }
 
         public Playlist()
         {
-            _songs = new ArrayList();
+            songs_ = new ArrayList();
+            shuffleList_ = new ArrayList();
             ResetIndex();
             Shuffle = false;
             Repeat = false;
@@ -26,70 +69,98 @@ namespace MyWmp.Items
 
         public void Add(AMedia s)
         {
-            _songs.Add(s);
-            if (_songs.Count == 1)
+            songs_.Add(s);
+            shuffleList_.Add(s);
+            RandomList(shuffleList_);
+            if (songs_.Count == 1)
             {
                 Current = s;
-                _currentIndex = 0;
             }
         }
 
         public void Remove(AMedia index)
         {
-            _songs.Remove(index);
-            if (!_songs.Contains(index))
+            songs_.Remove(index);
+            shuffleList_.Remove(index);
+            if (songs_.Count == 0)
+                ResetIndex();
+            else if (Current == index)
                 Next();
         }
 
         public void RemoveAll()
         {
-            _songs.Clear();
+            songs_.Clear();
+            shuffleList_.Clear();
             ResetIndex();
         }
 
         public void Next()
         {
-            if (_songs.Count == 0) return;
+            if (songs_.Count == 0) return;
+            int index;
             if (Shuffle)
             {
-                
-            }
-            else
-            {
-                ++_currentIndex;
-                if (_currentIndex >= _songs.Count)
+                index = shuffleList_.IndexOf(Current) + 1;
+                if (index >= shuffleList_.Count)
                 {
                     if (!Repeat)
                     {
                         ResetIndex();
                         return;
                     }
-                    _currentIndex = 0;
+                    index = 0;
+                }
+                index = songs_.IndexOf(shuffleList_[index]);
+            }
+            else
+            {
+                index = songs_.IndexOf(Current) + 1;
+                if (index >= songs_.Count)
+                {
+                    if (!Repeat)
+                    {
+                        ResetIndex();
+                        return;
+                    }
+                    index = 0;
                 }
             }
-            Current = _songs[_currentIndex] as AMedia;
+            Current = songs_[index] as AMedia;
         }
 
         public void Prev()
         {
-            if (_songs.Count == 0) return;
+            if (songs_.Count == 0) return;
+            int index;
             if (Shuffle)
             {
-            }
-            else
-            {
-                --_currentIndex;
-                if (_currentIndex < 0)
+                index = shuffleList_.IndexOf(Current) - 1;
+                if (index < 0)
                 {
                     if (!Repeat)
                     {
                         ResetIndex();
                         return;
                     }
-                    _currentIndex = _songs.Count - 1;
+                    index = shuffleList_.Count - 1;
+                }
+                index = songs_.IndexOf(shuffleList_[index]);
+            }
+            else
+            {
+                index = songs_.IndexOf(Current) - 1;
+                if (index < 0)
+                {
+                    if (!Repeat)
+                    {
+                        ResetIndex();
+                        return;
+                    }
+                    index = songs_.Count - 1;
                 }
             }
-            Current = _songs[_currentIndex] as AMedia;
+            Current = songs_[index] as AMedia;
         }
     }
 }
