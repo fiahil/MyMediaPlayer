@@ -8,7 +8,6 @@
         public MainWindow()
         {
             InitializeComponent();
-            this.MainLayout.Children.Add(new ControlLayout());
         }
     }
 }

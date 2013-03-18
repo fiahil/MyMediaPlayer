@@ -6,7 +6,7 @@
     <SolidColorBrush x:Key="PressBrush">LightSkyBlue</SolidColorBrush>
     <SolidColorBrush x:Key="OverBrush">LightBlue</SolidColorBrush>
 
-    <Style x:Key="Root" TargetType="{x:Type Grid}">
+    <Style x:Key="ControlRoot" TargetType="{x:Type StackPanel}">
         <Setter Property="Background" Value="{DynamicResource BgBrush}" />
     </Style>
     

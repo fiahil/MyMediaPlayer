@@ -12,7 +12,11 @@
                 <Setter TargetName="Background" Property="Fill" Value="{DynamicResource PressBrush}" />
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter TargetName="Background" Property="Stroke" Value="{DynamicResource OverBrush}"></Setter>
+                <Setter TargetName="Background" Property="Effect">
+                    <Setter.Value>
+                        <BlurEffect Radius="50" />
+                    </Setter.Value>
+                </Setter>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
