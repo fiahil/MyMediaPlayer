@@ -4,6 +4,7 @@
         Title="MyWMP" Height="350" Width="525" WindowStartupLocation="CenterScreen" Icon="/MyWmp;component/Resources/Icon.png">
 
     <Grid x:Name="MainLayout" Style="{DynamicResource MainRoot}">
+        <uc:MediaLayout Margin="0,0,0,50" />
         <uc:ControlLayout />
     </Grid>
     <Window.Resources>

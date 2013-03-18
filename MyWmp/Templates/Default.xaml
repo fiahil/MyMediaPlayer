@@ -5,7 +5,7 @@
         <Grid>
             <Rectangle Name="Background" Fill="{DynamicResource FgBrush}" />
             <Image Name="Front" Source="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" Stretch="Uniform" />
-            <Image Name="Back" Source="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" Stretch="Uniform" />
+            <Image Name="Back" Source="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" Stretch="Uniform" Opacity="0.75" />
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsPressed" Value="True">
@@ -19,5 +19,9 @@
                 </Setter>
             </Trigger>
         </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="MediaScreenTemplate" TargetType="{x:Type Label}">
+        <Rectangle Name="Background" Fill="{DynamicResource MediaScreenBgBrush}" />
     </ControlTemplate>
 </ResourceDictionary>

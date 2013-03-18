@@ -5,7 +5,7 @@ namespace MyWmp.Items
 {
     class Song : AMedia
     {
-        public static readonly String UNKNOWN = "Unknown";
+        public static readonly String Unknown = "Unknown";
         public String Title { private set; get; }
         public String Artist { private set; get; }
         public String Album { private set; get; }
@@ -16,10 +16,10 @@ namespace MyWmp.Items
 
         public Song(String src) : base(src, Type.Song)
         {
-            Title = UNKNOWN;
-            Artist = UNKNOWN;
-            Album = UNKNOWN;
-            Genre = UNKNOWN;
+            Title = Unknown;
+            Artist = Unknown;
+            Album = Unknown;
+            Genre = Unknown;
             Load();
         }
 
@@ -34,10 +34,10 @@ namespace MyWmp.Items
                 Genre = String.Join(";", file.Tag.Genres);
                 Year = file.Tag.Year;
                 Track = file.Tag.Track;
-                if (file.Properties.MediaTypes != TagLib.MediaTypes.None)
+                if (file.Properties.MediaTypes != MediaTypes.None)
                     Duration = file.Properties.Duration;
             }
-            catch (TagLib.UnsupportedFormatException)
+            catch (UnsupportedFormatException)
             {
             }
         }

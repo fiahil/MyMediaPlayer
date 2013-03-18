@@ -4,8 +4,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	x:Class="MyWmp.UC.ControlLayout"
-	x:Name="UserControl">
+	x:Class="MyWmp.UC.ControlLayout">
     
 	<StackPanel x:Name="ControlRoot" Height="50" VerticalAlignment="Bottom" Margin="0" Style="{DynamicResource ControlRoot}" Orientation="Horizontal" MinHeight="50" HorizontalAlignment="Center">
         <Button x:Name="PrevButton" Style="{DynamicResource Controls}" Content="/Resources/Prev.png" />

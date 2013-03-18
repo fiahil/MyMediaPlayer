@@ -21,14 +21,14 @@ namespace MyWmp.Services
         {
             try
             {
-                String[] files = (string[]) Directory.GetFiles(dir, "*.*").Where(s => FileExtension.Contains(new FileInfo(s).Extension.ToLower())).ToArray();
-                String[] subDir = Directory.GetDirectories(dir);
+                var files = Directory.GetFiles(dir, "*.*").Where(s => FileExtension.Contains(new FileInfo(s).Extension.ToLower())).ToArray();
+                var subDir = Directory.GetDirectories(dir);
 
-                foreach (string sound in files)
+                foreach (var sound in files)
                 {
                     SoundPath.Add(sound);
                 }
-                foreach (string s in subDir)
+                foreach (var s in subDir)
                 {
                     LoadRec(s);
                 }
