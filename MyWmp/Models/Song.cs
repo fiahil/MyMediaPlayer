@@ -1,7 +1,7 @@
 ﻿using System;
 using TagLib;
 
-namespace MyWmp.Items
+namespace MyWmp.Models
 {
     class Song : AMedia
     {

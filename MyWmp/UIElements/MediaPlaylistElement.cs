@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Controls;
+using MyWmp.Models;
 
-namespace MyWmp.Items
+namespace MyWmp.UIElements
 {
     class MediaPlaylistElement : MediaElement
     {

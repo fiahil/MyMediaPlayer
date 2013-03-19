@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace MyWmp.Items
+namespace MyWmp.Models
 {
     class Playlist
     {

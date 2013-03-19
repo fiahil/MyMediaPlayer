@@ -80,12 +80,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Items\AMedia.cs" />
-    <Compile Include="Items\MediaPlaylistElement.cs" />
-    <Compile Include="Items\Playlist.cs" />
-    <Compile Include="Items\Song.cs" />
-    <Compile Include="Services\LoaderService.cs" />
-    <Compile Include="UC\MediaLayout.xaml.cs">
+    <Compile Include="Models\AMedia.cs" />
+    <Compile Include="UIElements\MediaPlaylistElement.cs" />
+    <Compile Include="Models\Playlist.cs" />
+    <Compile Include="Models\Song.cs" />
+    <Compile Include="Models\Loader.cs" />
+    <Compile Include="View\MediaLayout.xaml.cs">
       <DependentUpon>MediaLayout.xaml</DependentUpon>
     </Compile>
     <Page Include="Templates\Default.xaml">
@@ -96,11 +96,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UC\ControlLayout.xaml">
+    <Page Include="View\ControlLayout.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UC\MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -108,14 +108,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UC\ControlLayout.xaml.cs">
+    <Compile Include="View\ControlLayout.xaml.cs">
       <DependentUpon>ControlLayout.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UC\MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UC\MediaLayout.xaml">
+    <Page Include="View\MediaLayout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,6 +177,9 @@
     <Resource Include="Resources\Shuffle.png" />
     <SplashScreen Include="Resources\Splash.png" />
     <Resource Include="Resources\Stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

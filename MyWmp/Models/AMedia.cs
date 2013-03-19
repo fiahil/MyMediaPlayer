@@ -1,5 +1,5 @@
 ﻿
-namespace MyWmp.Items
+namespace MyWmp.Models
 {
     abstract class AMedia
     {

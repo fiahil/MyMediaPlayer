@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace MyWmp.Services
+namespace MyWmp.Models
 {
-    class LoaderService
+    class Loader
     {
         public String Root;
         public String[] FileExtension;
         public List<String> SoundPath { private set; get; }
 
-        public LoaderService()
+        public Loader()
         {
             SoundPath = new List<string>();
             FileExtension = new string[] {};

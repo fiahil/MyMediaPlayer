@@ -1,11 +1,12 @@
-﻿<Window x:Class="MyWmp.UC.MainWindow"
+﻿<Window x:Class="MyWmp.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:uc="clr-namespace:MyWmp.UC"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:view="clr-namespace:MyWmp.View"
         Title="MyWMP" Height="350" Width="525" WindowStartupLocation="CenterScreen" Icon="/MyWmp;component/Resources/Icon.png">
 
     <Grid x:Name="MainLayout" Style="{DynamicResource MainRoot}">
-        <uc:MediaLayout Margin="0,0,0,50" />
-        <uc:ControlLayout />
+        <view:MediaLayout Margin="0,0,0,50" />
+        <view:ControlLayout />
     </Grid>
     <Window.Resources>
         <ResourceDictionary>

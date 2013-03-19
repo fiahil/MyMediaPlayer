@@ -1,4 +1,4 @@
-﻿namespace MyWmp.UC
+﻿namespace MyWmp.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
