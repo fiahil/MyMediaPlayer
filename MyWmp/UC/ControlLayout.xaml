@@ -4,10 +4,16 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	x:Class="MyWmp.UC.ControlLayout"
-	x:Name="UserControl">
+	x:Class="MyWmp.UC.ControlLayout">
     
-	<Grid x:Name="Root" Height="50" VerticalAlignment="Bottom" Margin="0" Style="{DynamicResource Root}">
-        <Button Style="{DynamicResource Controls}" Content="/Resources/Play.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-    </Grid>
+	<StackPanel x:Name="ControlRoot" Height="50" VerticalAlignment="Bottom" Margin="0" Style="{DynamicResource ControlRoot}" Orientation="Horizontal" MinHeight="50" HorizontalAlignment="Center">
+        <Button x:Name="PrevButton" Style="{DynamicResource Controls}" Content="/Resources/Prev.png" />
+        <Button x:Name="PlayButton" Style="{DynamicResource Controls}" Content="/Resources/Play.png" />
+        <Button x:Name="PauseButton" Style="{DynamicResource Controls}" Content="/Resources/Pause.png" Visibility="Collapsed"/>
+        <Button x:Name="StopButton" Style="{DynamicResource Controls}" Content="/Resources/Stop.png" />
+        <Button x:Name="NextButton" Style="{DynamicResource Controls}" Content="/Resources/Next.png" />
+        <Button x:Name="ShuffleButton" Style="{DynamicResource Controls}" Content="/Resources/Shuffle.png" />
+        <Button x:Name="RepeatAllButton" Style="{DynamicResource Controls}" Content="/Resources/RepeatAll.png" />
+        <Button x:Name="RepeatOneButton" Style="{DynamicResource Controls}" Content="/Resources/RepeatOne.png" />
+    </StackPanel>
 </UserControl>

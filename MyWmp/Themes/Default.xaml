@@ -1,13 +1,21 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:items="clr-namespace:MyWmp.Items">
     
-    <SolidColorBrush x:Key="BgBrush">DodgerBlue</SolidColorBrush>
-    <SolidColorBrush x:Key="FgBrush">DeepSkyBlue</SolidColorBrush>
-    <SolidColorBrush x:Key="PressBrush">LightSkyBlue</SolidColorBrush>
-    <SolidColorBrush x:Key="OverBrush">LightBlue</SolidColorBrush>
+    <SolidColorBrush x:Key="BgBrush">#730000</SolidColorBrush>
+    <SolidColorBrush x:Key="FgBrush">#730000</SolidColorBrush>
+    <SolidColorBrush x:Key="PressBrush">#BD0000</SolidColorBrush>
+    <SolidColorBrush x:Key="MediaScreenBgBrush">Black</SolidColorBrush>
 
-    <Style x:Key="Root" TargetType="{x:Type Grid}">
+    <Style x:Key="MainRoot" TargetType="{x:Type Grid}">
         <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+    </Style>
+    
+    <Style x:Key="ControlRoot" TargetType="{x:Type StackPanel}">
+        <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+    </Style>
+    
+    <Style x:Key="MediaScreen" TargetType="Label">
+        <Setter Property="Template" Value="{DynamicResource MediaScreenTemplate}" />
     </Style>
     
     <Style x:Key="Controls" TargetType="{x:Type Button}">

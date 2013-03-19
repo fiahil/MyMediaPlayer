@@ -1,11 +1,11 @@
 ﻿namespace MyWmp.UC
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MediaLayout.xaml
     /// </summary>
-    public sealed partial class MainWindow
+    public partial class MediaLayout
     {
-        public MainWindow()
+        public MediaLayout()
         {
             InitializeComponent();
         }
