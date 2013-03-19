@@ -85,6 +85,7 @@
     <Compile Include="Models\Playlist.cs" />
     <Compile Include="Models\Song.cs" />
     <Compile Include="Models\Loader.cs" />
+    <Compile Include="ViewModel\ControlViewModel.cs" />
     <Compile Include="View\MediaLayout.xaml.cs">
       <DependentUpon>MediaLayout.xaml</DependentUpon>
     </Compile>
@@ -178,9 +179,7 @@
     <SplashScreen Include="Resources\Splash.png" />
     <Resource Include="Resources\Stop.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
