@@ -12,12 +12,12 @@
     </UserControl.DataContext>
 
     <StackPanel x:Name="ControlRoot" Height="50" VerticalAlignment="Bottom" Margin="0" Style="{DynamicResource ControlRoot}" Orientation="Horizontal" MinHeight="50" HorizontalAlignment="Center">
-        <Button x:Name="PrevButton" Style="{DynamicResource Controls}" Content="/Resources/Prev.png" />
-        <Button x:Name="PlayButton" Style="{DynamicResource Controls}" Content="{Binding Text}" Command="{Binding Play}" />
-        <Button x:Name="StopButton" Style="{DynamicResource Controls}" Content="/Resources/Stop.png" />
-        <Button x:Name="NextButton" Style="{DynamicResource Controls}" Content="/Resources/Next.png" />
-        <Button x:Name="ShuffleButton" Style="{DynamicResource Controls}" Content="/Resources/Shuffle.png" />
-        <Button x:Name="RepeatAllButton" Style="{DynamicResource Controls}" Content="/Resources/RepeatAll.png" />
-        <Button x:Name="RepeatOneButton" Style="{DynamicResource Controls}" Content="/Resources/RepeatOne.png" />
+        <Button x:Name="PrevButton" Style="{DynamicResource Controls}" Content="{Binding PrevNotifier}" Command="{Binding PrevCommand}" />
+        <Button x:Name="PlayButton" Style="{DynamicResource Controls}" Content="{Binding PlayPauseNotifier}" Command="{Binding PlayPauseCommand}" />
+        <Button x:Name="StopButton" Style="{DynamicResource Controls}" Content="{Binding StopNotifier}" Command="{Binding StopCommand}" />
+        <Button x:Name="NextButton" Style="{DynamicResource Controls}" Content="{Binding NextNotifier}" Command="{Binding NextCommand}" />
+        <Button x:Name="ShuffleButton" Style="{DynamicResource Controls}" Content="{Binding ShuffleNotifier}" Command="{Binding ShuffleCommand}" />
+        <Button x:Name="RepeatAllButton" Style="{DynamicResource Controls}" Content="{Binding RepeatAllNotifier}" Command="{Binding RepeatAllCommand}" />
+        <Button x:Name="RepeatOneButton" Style="{DynamicResource Controls}" Content="{Binding RepeatOneNotifier}" Command="{Binding RepeatOneCommand}" />
     </StackPanel>
 </UserControl>

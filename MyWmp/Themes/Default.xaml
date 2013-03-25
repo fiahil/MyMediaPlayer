@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
-    <SolidColorBrush x:Key="BgBrush">#730000</SolidColorBrush>
-    <SolidColorBrush x:Key="FgBrush">#730000</SolidColorBrush>
-    <SolidColorBrush x:Key="PressBrush">#BD0000</SolidColorBrush>
+    <SolidColorBrush x:Key="BgBrush">Black</SolidColorBrush>
+    <SolidColorBrush x:Key="FgBrush">Black</SolidColorBrush>
+    <SolidColorBrush x:Key="PressBrush">Black</SolidColorBrush>
     <SolidColorBrush x:Key="MediaScreenBgBrush">Black</SolidColorBrush>
 
     <Style x:Key="MainRoot" TargetType="{x:Type Grid}">

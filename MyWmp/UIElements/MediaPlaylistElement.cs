@@ -6,15 +6,15 @@ namespace MyWmp.UIElements
 {
     class MediaPlaylistElement : MediaElement
     {
-        public Playlist Playlist;
+        public Playlist Playlist { get; set; }
 
         public new void Play()
         {
             if (Playlist != null)
             {
                 Source = new Uri(Playlist.Current.Src);
+                base.Play();
             }
-            base.Play();
         }
     }
 }
