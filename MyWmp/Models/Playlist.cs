@@ -1,19 +1,26 @@
 ﻿using System;
 using System.Collections;
+using System.Xml.Serialization;
 
 namespace MyWmp.Models
 {
     class Playlist
     {
+        [XmlIgnore]
         private readonly Random random_ = new Random();
-        private readonly ArrayList songs_;
+        [XmlArray("Medias")]
+        private readonly ArrayList medias_;
+        [XmlIgnore]
         private readonly ArrayList shuffleList_;
+
+        public string Name { set; get; }
+        [XmlIgnore]
         public AMedia Current
         {
-            set { if (songs_.Contains(value)) current_ = value; }
+            set { if (medias_.Contains(value)) current_ = value; }
             get { return current_; }
         }
-
+        [XmlIgnore]
         public bool Shuffle
         {
             set
@@ -31,9 +38,11 @@ namespace MyWmp.Models
             }
             get { return shuffle_; }
         }
-
+        [XmlIgnore]
         public bool Repeat;
+        [XmlIgnore]
         private bool shuffle_;
+        [XmlIgnore]
         private AMedia current_;
 
         private void RandomList(IList list, uint b = 0, uint n = 0)
@@ -60,19 +69,20 @@ namespace MyWmp.Models
 
         public Playlist()
         {
-            songs_ = new ArrayList();
+            medias_ = new ArrayList();
             shuffleList_ = new ArrayList();
             ResetIndex();
             Shuffle = false;
             Repeat = false;
+            Name = "New Playlist";
         }
 
         public void Add(AMedia s)
         {
-            songs_.Add(s);
+            medias_.Add(s);
             shuffleList_.Add(s);
             RandomList(shuffleList_);
-            if (songs_.Count == 1)
+            if (medias_.Count == 1)
             {
                 Current = s;
             }
@@ -80,9 +90,9 @@ namespace MyWmp.Models
 
         public void Remove(AMedia index)
         {
-            songs_.Remove(index);
+            medias_.Remove(index);
             shuffleList_.Remove(index);
-            if (songs_.Count == 0)
+            if (medias_.Count == 0)
                 ResetIndex();
             else if (Current == index)
                 Next();
@@ -90,14 +100,14 @@ namespace MyWmp.Models
 
         public void RemoveAll()
         {
-            songs_.Clear();
+            medias_.Clear();
             shuffleList_.Clear();
             ResetIndex();
         }
 
         public void Next()
         {
-            if (songs_.Count == 0) return;
+            if (medias_.Count == 0) return;
             int index;
             if (Shuffle)
             {
@@ -111,12 +121,12 @@ namespace MyWmp.Models
                     }
                     index = 0;
                 }
-                index = songs_.IndexOf(shuffleList_[index]);
+                index = medias_.IndexOf(shuffleList_[index]);
             }
             else
             {
-                index = songs_.IndexOf(Current) + 1;
-                if (index >= songs_.Count)
+                index = medias_.IndexOf(Current) + 1;
+                if (index >= medias_.Count)
                 {
                     if (!Repeat)
                     {
@@ -126,12 +136,12 @@ namespace MyWmp.Models
                     index = 0;
                 }
             }
-            Current = songs_[index] as AMedia;
+            Current = medias_[index] as AMedia;
         }
 
         public void Prev()
         {
-            if (songs_.Count == 0) return;
+            if (medias_.Count == 0) return;
             int index;
             if (Shuffle)
             {
@@ -145,11 +155,11 @@ namespace MyWmp.Models
                     }
                     index = shuffleList_.Count - 1;
                 }
-                index = songs_.IndexOf(shuffleList_[index]);
+                index = medias_.IndexOf(shuffleList_[index]);
             }
             else
             {
-                index = songs_.IndexOf(Current) - 1;
+                index = medias_.IndexOf(Current) - 1;
                 if (index < 0)
                 {
                     if (!Repeat)
@@ -157,10 +167,10 @@ namespace MyWmp.Models
                         ResetIndex();
                         return;
                     }
-                    index = songs_.Count - 1;
+                    index = medias_.Count - 1;
                 }
             }
-            Current = songs_[index] as AMedia;
+            Current = medias_[index] as AMedia;
         }
     }
 }
