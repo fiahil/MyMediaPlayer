@@ -9,6 +9,6 @@
     
     <Grid>
         <Label x:Name="MediaScreen" Style="{DynamicResource MediaScreen}" />
-        <uiElements:MediaPlaylistElement x:Name="Media" LoadedBehavior="Manual" />
+        <MediaElement x:Name="Media" LoadedBehavior="Manual" />
     </Grid>
 </UserControl>

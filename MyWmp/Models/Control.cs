@@ -16,6 +16,13 @@ namespace MyWmp.Models
             this.IsPlaying = false;
             this.IsShuffling = false;
             this.IsRepeatingAll = false;
+            this.Playlist = new Playlist();
+            var loader = new Loader {Root = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), FileExtension = new[]{".mp3"}};
+            loader.Load();
+            foreach (var media in loader.MediaPath)
+            {
+                this.Playlist.Add(new Song(media));
+            }
         }
 
         public void Play()
@@ -23,10 +30,10 @@ namespace MyWmp.Models
             if (this.MediaPlay != null)
             {
                 this.IsPlaying = true;
-
-                this.Playlist = new Playlist();
-                this.Playlist.Add(new Song(@"..\..\..\Media\Attack.mp3"));
-                this.MediaPlay(this, EventArgs.Empty);
+                if (Playlist.Current == null)
+                    Playlist.Reset();
+                if (Playlist.Current != null)
+                   this.MediaPlay(this, EventArgs.Empty);
             }
         }
 
@@ -50,6 +57,48 @@ namespace MyWmp.Models
             }
         }
 
+        public void Next()
+        {
+            if (this.MediaPlay != null)
+            {
+                this.Playlist.Next();
+                if (IsPlaying)
+                {
+                    if (Playlist.Current != null)
+                        this.MediaPlay(this, EventArgs.Empty);
+                    else
+                        Stop();
+                }
+            }
+        }
+
+        public void Prev()
+        {
+            if (this.MediaPlay != null)
+            {
+                this.Playlist.Prev();
+                if (IsPlaying)
+                {
+                    if (Playlist.Current != null)
+                        this.MediaPlay(this, EventArgs.Empty);
+                    else
+                        Stop();
+                }
+            }
+        }
+
+        public void Shuffle()
+        {
+            IsShuffling = IsShuffling == false;
+            Playlist.Shuffle = IsShuffling;
+        }
+
+        public void RepeatAll()
+        {
+            IsRepeatingAll = IsRepeatingAll == false;
+            Playlist.RepeatAll = IsRepeatingAll;
+        }
+
         public event EventHandler MediaPlay;
         public event EventHandler MediaPause;
         public event EventHandler MediaStop;
@@ -59,5 +108,6 @@ namespace MyWmp.Models
         public bool IsPlaying { get; set; }
         public bool IsShuffling { get; set; }
         public bool IsRepeatingAll { get; set; }
+
     }
 }

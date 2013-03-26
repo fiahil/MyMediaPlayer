@@ -38,21 +38,20 @@ namespace MyWmp.Models
             }
             get { return shuffle_; }
         }
-        [XmlIgnore]
-        public bool Repeat;
+        [XmlIgnore] public bool RepeatAll;
         [XmlIgnore]
         private bool shuffle_;
         [XmlIgnore]
         private AMedia current_;
 
-        private void RandomList(IList list, uint b = 0, uint n = 0)
+        private void RandomList(IList list, int b = 0, int n = 0)
         {
             if (n == 0)
-                n = (uint) list.Count - b;
+                n = list.Count - b;
             for (var i = b; i < n; ++i)
             {
-                var a = random_.Next((int)b, (int)n);
-                var c = random_.Next((int)b, (int)n);
+                var a = random_.Next(b, n);
+                var c = random_.Next(b, n);
                 if (a != c)
                 {
                     var tmp = list[a];
@@ -62,18 +61,13 @@ namespace MyWmp.Models
             }
         }
 
-        private void ResetIndex()
-        {
-            Current = null;
-        }
-
         public Playlist()
         {
             medias_ = new ArrayList();
             shuffleList_ = new ArrayList();
-            ResetIndex();
+            current_ = null;
             Shuffle = false;
-            Repeat = false;
+            RepeatAll = false;
             Name = "New Playlist";
         }
 
@@ -93,7 +87,7 @@ namespace MyWmp.Models
             medias_.Remove(index);
             shuffleList_.Remove(index);
             if (medias_.Count == 0)
-                ResetIndex();
+                current_ = null;
             else if (Current == index)
                 Next();
         }
@@ -102,7 +96,7 @@ namespace MyWmp.Models
         {
             medias_.Clear();
             shuffleList_.Clear();
-            ResetIndex();
+            current_ = null;
         }
 
         public void Next()
@@ -114,9 +108,9 @@ namespace MyWmp.Models
                 index = shuffleList_.IndexOf(Current) + 1;
                 if (index >= shuffleList_.Count)
                 {
-                    if (!Repeat)
+                    if (!RepeatAll)
                     {
-                        ResetIndex();
+                        current_ = null;
                         return;
                     }
                     index = 0;
@@ -128,9 +122,9 @@ namespace MyWmp.Models
                 index = medias_.IndexOf(Current) + 1;
                 if (index >= medias_.Count)
                 {
-                    if (!Repeat)
+                    if (!RepeatAll)
                     {
-                        ResetIndex();
+                        current_ = null;
                         return;
                     }
                     index = 0;
@@ -148,9 +142,9 @@ namespace MyWmp.Models
                 index = shuffleList_.IndexOf(Current) - 1;
                 if (index < 0)
                 {
-                    if (!Repeat)
+                    if (!RepeatAll)
                     {
-                        ResetIndex();
+                        current_ = null;
                         return;
                     }
                     index = shuffleList_.Count - 1;
@@ -162,15 +156,21 @@ namespace MyWmp.Models
                 index = medias_.IndexOf(Current) - 1;
                 if (index < 0)
                 {
-                    if (!Repeat)
+                    if (!RepeatAll)
                     {
-                        ResetIndex();
+                        current_ = null;
                         return;
                     }
                     index = medias_.Count - 1;
                 }
             }
             Current = medias_[index] as AMedia;
+        }
+
+        public void Reset()
+        {
+            if (medias_.Count > 0)
+                current_ = medias_[0] as AMedia;
         }
     }
 }

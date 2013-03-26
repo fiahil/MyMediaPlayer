@@ -33,24 +33,28 @@ namespace MyWmp.ViewModel
 
         private void OnRepeatAll()
         {
+            this.control_.RepeatAll();
             this.RefreshPlayPause();
             this.PropertyChanged(this, new PropertyChangedEventArgs("RepeatAllNotifier"));
         }
 
         private void OnShuffle()
         {
+            this.control_.Shuffle();
             this.RefreshPlayPause();
             this.PropertyChanged(this, new PropertyChangedEventArgs("ShuffleNotifier"));
         }
 
         private void OnNext()
         {
+            this.control_.Next();
             this.RefreshPlayPause();
             this.PropertyChanged(this, new PropertyChangedEventArgs("NextNotifier"));
         }
 
         private void OnPrev()
         {
+            this.control_.Prev();
             this.RefreshPlayPause();
             this.PropertyChanged(this, new PropertyChangedEventArgs("PrevNotifier"));
         }

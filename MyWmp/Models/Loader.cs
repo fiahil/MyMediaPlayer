@@ -9,11 +9,11 @@ namespace MyWmp.Models
     {
         public String Root;
         public String[] FileExtension;
-        public List<String> SoundPath { private set; get; }
+        public List<String> MediaPath { private set; get; }
 
         public Loader()
         {
-            SoundPath = new List<string>();
+            MediaPath = new List<string>();
             FileExtension = new string[] {};
         }
 
@@ -26,7 +26,7 @@ namespace MyWmp.Models
 
                 foreach (var sound in files)
                 {
-                    SoundPath.Add(sound);
+                    MediaPath.Add(sound);
                 }
                 foreach (var s in subDir)
                 {
@@ -42,7 +42,7 @@ namespace MyWmp.Models
 
         public void Load()
         {
-            SoundPath.Clear();
+            MediaPath.Clear();
             LoadRec(Root);
         }
     }
