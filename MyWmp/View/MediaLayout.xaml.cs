@@ -22,6 +22,8 @@ namespace MyWmp.View
                     this.Media.Playlist = this.viewModel_.Source;
                     this.Media.Play();
                 };
+            this.viewModel_.PauseRequest += (sender, args) => this.Media.Pause();
+            this.viewModel_.StopRequest += (sender, args) => this.Media.Stop();
         }
     }
 }

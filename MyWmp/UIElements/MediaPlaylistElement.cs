@@ -12,7 +12,7 @@ namespace MyWmp.UIElements
         {
             if (Playlist != null)
             {
-                Source = new Uri(Playlist.Current.Src);
+                Source = new Uri(Playlist.Current.Src, UriKind.Relative);
                 base.Play();
             }
         }

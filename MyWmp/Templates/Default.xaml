@@ -5,7 +5,7 @@
         <Grid>
             <Rectangle Name="Background" Fill="{DynamicResource FgBrush}" />
             <Image Name="Front" Source="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" Stretch="Uniform" />
-            <Image Name="Back" Source="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" Stretch="Uniform" Opacity="0.75" />
+            <Image Name="Back" Source="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" Stretch="Uniform" Opacity="0.50" />
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsPressed" Value="True">
@@ -14,7 +14,7 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter TargetName="Back" Property="Effect">
                     <Setter.Value>
-                        <BlurEffect Radius="3" KernelType="Box" />
+                        <BlurEffect Radius="7" KernelType="Box" />
                     </Setter.Value>
                 </Setter>
             </Trigger>

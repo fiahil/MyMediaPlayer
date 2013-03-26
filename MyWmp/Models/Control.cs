@@ -21,26 +21,39 @@ namespace MyWmp.Models
 
         public void Play()
         {
-            this.IsPlaying = true;
-
-            this.Playlist = new Playlist();
-            this.Playlist.Add(new Song(@"C:\Users\Fiahil\Music\StarCraft II - Heart of the Swarm\02 Heart of the Swarm.mp3"));
-
             if (this.MediaPlay != null)
+            {
+                this.IsPlaying = true;
+
+                this.Playlist = new Playlist();
+                this.Playlist.Add(new Song(@"..\..\..\Media\Attack.mp3"));
                 this.MediaPlay(this, EventArgs.Empty);
+            }
         }
 
         public void Pause()
         {
-            this.IsPlaying = false;
+            if (this.MediaPause != null)
+            {
+                this.IsPlaying = false;
+
+                this.MediaPause(this, EventArgs.Empty);
+            }
         }
 
         public void Stop()
         {
-            this.IsPlaying = false;
+            if (this.MediaStop != null)
+            {
+                this.IsPlaying = false;
+
+                this.MediaStop(this, EventArgs.Empty);
+            }
         }
 
         public event EventHandler MediaPlay;
+        public event EventHandler MediaPause;
+        public event EventHandler MediaStop;
 
         public Playlist Playlist { get; set; }
 
