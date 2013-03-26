@@ -26,7 +26,7 @@ namespace MyWmp.Models
         }
     }
 
-    class SettingsSerializer
+   /* class SettingsSerializer
     {
         public void Serialize(Settings s)
         {
@@ -41,5 +41,5 @@ namespace MyWmp.Models
             using (StreamReader rd = new StreamReader("settings.xml"))
                 return s = xs.Deserialize(rd) as Playlist;
         }
-    }
+    }*/
 }

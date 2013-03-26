@@ -81,8 +81,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\AMedia.cs" />
+    <Compile Include="Models\Library.cs" />
+    <Compile Include="Models\Picture.cs" />
     <Compile Include="Models\Serializer.cs" />
     <Compile Include="Models\Control.cs" />
+    <Compile Include="Models\Video.cs" />
     <Compile Include="UIElements\MediaPlaylistElement.cs" />
     <Compile Include="Models\Playlist.cs" />
     <Compile Include="Models\Song.cs" />

@@ -7,6 +7,7 @@ namespace MyWmp.Models
         {
             Song,
             Video,
+            Picture
         }
 
         public string Src { private set; get; }
@@ -20,4 +21,5 @@ namespace MyWmp.Models
 
         public abstract void Load();
     }
+
 }
