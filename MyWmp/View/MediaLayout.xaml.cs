@@ -1,4 +1,5 @@
-﻿using MyWmp.ViewModel;
+﻿using System.Windows.Controls.Primitives;
+using MyWmp.ViewModel;
 
 namespace MyWmp.View
 {
@@ -21,8 +22,19 @@ namespace MyWmp.View
                     this.Media.Source = this.viewModel_.Source;
                     this.Media.Play();
                 };
+
             this.viewModel_.PauseRequest += (sender, args) => this.Media.Pause();
             this.viewModel_.StopRequest += (sender, args) => this.Media.Stop();
+        }
+
+        private void TimeSlider_OnDragStarted(object sender, DragStartedEventArgs e)
+        {
+            this.Media.Pause();
+        }
+
+        private void TimeSlider_OnDragCompleted(object sender, DragCompletedEventArgs e)
+        {
+            this.Media.Play();
         }
     }
 }

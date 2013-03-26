@@ -14,7 +14,8 @@ namespace MyWmp.ViewModel
             this.control_ = Control.Instance;
 
             this.TimeEnabled = false;
-            this.TimeNotifier = 100;
+            this.TimeNotifier = 0;
+            this.MaxTimeNotifier = 100;
 
             this.PlayPauseNotifier = "/Resources/Play.png";
             this.StopNotifier = "/Resources/Stop.png";
@@ -86,6 +87,7 @@ namespace MyWmp.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public int MaxTimeNotifier { get; private set; }
         public int TimeNotifier { get; private set; }
         public bool TimeEnabled { get; private set; }
 

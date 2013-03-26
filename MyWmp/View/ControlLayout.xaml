@@ -12,7 +12,6 @@
     </UserControl.DataContext>
 
     <Grid>
-        <Slider x:Name="TimeSlider" Style="{DynamicResource Slider}" IsEnabled="{Binding TimeEnabled}" Maximum="{Binding TimeNotifier}" Minimum="0" SmallChange="1" LargeChange="1" TickFrequency="1" Delay="0" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True" AutoToolTipPlacement="TopLeft" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,0,0,50" />
         <StackPanel x:Name="ControlRoot" Height="50" VerticalAlignment="Bottom" Margin="0" Style="{DynamicResource ControlRoot}" Orientation="Horizontal" MinHeight="50" HorizontalAlignment="Center">
             <Button x:Name="PrevButton" Style="{DynamicResource Controls}" Content="{Binding PrevNotifier}" Command="{Binding PrevCommand}" />
             <Button x:Name="PlayButton" Style="{DynamicResource Controls}" Content="{Binding PlayPauseNotifier}" Command="{Binding PlayPauseCommand}" />

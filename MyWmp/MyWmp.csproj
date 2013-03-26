@@ -80,10 +80,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behaviors\MediaTimeSlider.cs" />
     <Compile Include="Models\AMedia.cs" />
     <Compile Include="Models\PlaylistSerializer.cs" />
     <Compile Include="Models\Control.cs" />
-    <Compile Include="UIElements\MediaPlaylistElement.cs" />
     <Compile Include="Models\Playlist.cs" />
     <Compile Include="Models\Song.cs" />
     <Compile Include="Models\Loader.cs" />

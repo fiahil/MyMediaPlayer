@@ -17,7 +17,8 @@ namespace MyWmp.Models
             this.IsShuffling = false;
             this.IsRepeatingAll = false;
             this.Playlist = new Playlist();
-            var loader = new Loader {Root = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), FileExtension = new[]{".mp3"}};
+
+            var loader = new Loader {Root = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), FileExtension = new[]{".mp3", ".mp4"}};
             loader.Load();
             foreach (var media in loader.MediaPath)
             {
@@ -105,9 +106,9 @@ namespace MyWmp.Models
 
         public Playlist Playlist { get; set; }
 
-        public bool IsPlaying { get; set; }
-        public bool IsShuffling { get; set; }
-        public bool IsRepeatingAll { get; set; }
+        public bool IsPlaying { get; private set; }
+        public bool IsShuffling { get; private set; }
+        public bool IsRepeatingAll { get; private set; }
 
     }
 }

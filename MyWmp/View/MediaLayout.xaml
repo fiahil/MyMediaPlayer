@@ -3,12 +3,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:uiElements="clr-namespace:MyWmp.UIElements"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:behaviors="clr-namespace:MyWmp.Behaviors"
     mc:Ignorable="d"
     x:Class="MyWmp.View.MediaLayout">
     
     <Grid>
         <Label x:Name="MediaScreen" Style="{DynamicResource MediaScreen}" />
-        <MediaElement x:Name="Media" LoadedBehavior="Manual" />
+        <MediaElement x:Name="Media" LoadedBehavior="Manual">
+            <i:Interaction.Behaviors>
+                <behaviors:MediaTimeSlider x:Name="MediaBehavior" />
+            </i:Interaction.Behaviors>
+        </MediaElement>
+        <Slider x:Name="TimeSlider" Style="{DynamicResource Slider}" IsEnabled="True" Value="{Binding Path=Position, ElementName=MediaBehavior}" Maximum="{Binding Path=Maximum, ElementName=MediaBehavior}" Thumb.DragStarted="TimeSlider_OnDragStarted" Thumb.DragCompleted="TimeSlider_OnDragCompleted" Minimum="0" SmallChange="1" LargeChange="1" TickFrequency="1" Delay="0" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True" AutoToolTipPlacement="TopLeft" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,0,0,0" />
     </Grid>
 </UserControl>
