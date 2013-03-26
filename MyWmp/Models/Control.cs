@@ -16,6 +16,7 @@ namespace MyWmp.Models
             this.IsPlaying = false;
             this.IsShuffling = false;
             this.IsRepeatingAll = false;
+
             this.Playlist = new Playlist();
 
             var loader = new Loader {Root = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), FileExtension = new[]{".mp3", ".mp4"}};
@@ -28,7 +29,7 @@ namespace MyWmp.Models
 
         public void Play()
         {
-            if (this.MediaPlay != null)
+            if (this.MediaPlay != null && Playlist != null)
             {
                 this.IsPlaying = true;
                 if (Playlist.Current == null)
@@ -40,7 +41,7 @@ namespace MyWmp.Models
 
         public void Pause()
         {
-            if (this.MediaPause != null)
+            if (this.MediaPause != null && Playlist != null)
             {
                 this.IsPlaying = false;
 
@@ -50,7 +51,7 @@ namespace MyWmp.Models
 
         public void Stop()
         {
-            if (this.MediaStop != null)
+            if (this.MediaStop != null && Playlist != null)
             {
                 this.IsPlaying = false;
 
@@ -60,7 +61,7 @@ namespace MyWmp.Models
 
         public void Next()
         {
-            if (this.MediaPlay != null)
+            if (this.MediaPlay != null && Playlist != null)
             {
                 this.Playlist.Next();
                 if (IsPlaying)
@@ -75,7 +76,7 @@ namespace MyWmp.Models
 
         public void Prev()
         {
-            if (this.MediaPlay != null)
+            if (this.MediaPlay != null && Playlist != null)
             {
                 this.Playlist.Prev();
                 if (IsPlaying)
@@ -91,13 +92,15 @@ namespace MyWmp.Models
         public void Shuffle()
         {
             IsShuffling = IsShuffling == false;
-            Playlist.Shuffle = IsShuffling;
+            if (Playlist != null)
+                Playlist.Shuffle = IsShuffling;
         }
 
         public void RepeatAll()
         {
             IsRepeatingAll = IsRepeatingAll == false;
-            Playlist.RepeatAll = IsRepeatingAll;
+            if (Playlist != null)
+               Playlist.RepeatAll = IsRepeatingAll;
         }
 
         public event EventHandler MediaPlay;

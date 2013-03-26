@@ -17,7 +17,7 @@ namespace MyWmp.Models
                 xs.Serialize(wr, p);
         }
 
-        public Playlist UnSerialize(string name)
+        public Playlist DeSerialize(string name)
         {
             XmlSerializer xs = new XmlSerializer(typeof(Playlist));
             Playlist p;
@@ -25,4 +25,21 @@ namespace MyWmp.Models
                 return p = xs.Deserialize(rd) as Playlist;
         }
     }
+
+   /* class SettingsSerializer
+    {
+        public void Serialize(Settings s)
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(Playlist));
+            using (StreamWriter wr = new StreamWriter("settings.xml"))
+                xs.Serialize(wr, s);
+        }
+        public Settings DeSerialize()
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(Playlist));
+            Settings p;
+            using (StreamReader rd = new StreamReader("settings.xml"))
+                return s = xs.Deserialize(rd) as Playlist;
+        }
+    }*/
 }
