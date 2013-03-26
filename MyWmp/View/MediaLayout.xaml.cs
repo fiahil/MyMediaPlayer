@@ -1,5 +1,4 @@
-﻿using System.Windows.Data;
-using MyWmp.ViewModel;
+﻿using MyWmp.ViewModel;
 
 namespace MyWmp.View
 {
@@ -19,7 +18,7 @@ namespace MyWmp.View
 
             this.viewModel_.PlayRequest += (sender, args) =>
                 {
-                    this.Media.Playlist = this.viewModel_.Source;
+                    this.Media.Source = this.viewModel_.Source;
                     this.Media.Play();
                 };
             this.viewModel_.PauseRequest += (sender, args) => this.Media.Pause();

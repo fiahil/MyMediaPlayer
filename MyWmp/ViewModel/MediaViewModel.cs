@@ -14,8 +14,7 @@ namespace MyWmp.ViewModel
 
             this.control_.MediaPlay += (sender, args) =>
                 {
-                    this.Source = this.control_.Playlist;
-
+                    this.Source = new Uri(this.control_.Playlist.Current.Src);
                     if (this.PlayRequest != null)
                         this.PlayRequest(this, EventArgs.Empty);
                 };
@@ -31,7 +30,7 @@ namespace MyWmp.ViewModel
                 };
         }
 
-        public Playlist Source { get; set; }
+        public Uri Source { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler PlayRequest;
