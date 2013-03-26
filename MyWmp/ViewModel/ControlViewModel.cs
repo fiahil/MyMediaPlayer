@@ -13,13 +13,15 @@ namespace MyWmp.ViewModel
         {
             this.control_ = Control.Instance;
 
+            this.TimeEnabled = false;
+            this.TimeNotifier = 100;
+
             this.PlayPauseNotifier = "/Resources/Play.png";
             this.StopNotifier = "/Resources/Stop.png";
             this.PrevNotifier = "/Resources/Prev.png";
             this.NextNotifier = "/Resources/Next.png";
             this.ShuffleNotifier = "/Resources/Shuffle.png";
             this.RepeatAllNotifier = "/Resources/RepeatAll.png";
-            this.RepeatOneNotifier = "/Resources/RepeatOne.png";
 
             this.PlayPauseCommand = new ActionCommand(OnPlayPause);
             this.StopCommand = new ActionCommand(OnStop);
@@ -27,13 +29,6 @@ namespace MyWmp.ViewModel
             this.NextCommand = new ActionCommand(OnNext);
             this.ShuffleCommand = new ActionCommand(OnShuffle);
             this.RepeatAllCommand = new ActionCommand(OnRepeatAll);
-            this.RepeatOneCommand = new ActionCommand(OnRepeatOne);
-        }
-
-        private void OnRepeatOne()
-        {
-            this.RefreshPlayPause();
-            this.PropertyChanged(this, new PropertyChangedEventArgs("RepeatOneNotifier"));
         }
 
         private void OnRepeatAll()
@@ -70,6 +65,8 @@ namespace MyWmp.ViewModel
         private void RefreshPlayPause()
         {
             this.PlayPauseNotifier = this.control_.IsPlaying ? "/Resources/Pause.png" : "/Resources/Play.png";
+            this.TimeEnabled = this.control_.IsPlaying;
+            this.PropertyChanged(this, new PropertyChangedEventArgs("TimeEnabled"));
             this.PropertyChanged(this, new PropertyChangedEventArgs("PlayPauseNotifier"));
         }
 
@@ -85,13 +82,15 @@ namespace MyWmp.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public int TimeNotifier { get; private set; }
+        public bool TimeEnabled { get; private set; }
+
         public string PlayPauseNotifier { get; private set; }
         public string StopNotifier { get; private set; }
         public string PrevNotifier { get; private set; }
         public string NextNotifier { get; private set; }
         public string ShuffleNotifier { get; private set; }
         public string RepeatAllNotifier { get; private set; }
-        public string RepeatOneNotifier { get; private set; }
 
         public ICommand PlayPauseCommand { get; private set; }
         public ICommand StopCommand { get; private set; }
@@ -99,6 +98,5 @@ namespace MyWmp.ViewModel
         public ICommand NextCommand { get; private set; }
         public ICommand ShuffleCommand { get; private set; }
         public ICommand RepeatAllCommand { get; private set; }
-        public ICommand RepeatOneCommand { get; private set; }
     }
 }

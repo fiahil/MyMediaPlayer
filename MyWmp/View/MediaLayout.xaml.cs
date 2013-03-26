@@ -1,5 +1,4 @@
-﻿using System.Windows.Data;
-using MyWmp.ViewModel;
+﻿using MyWmp.ViewModel;
 
 namespace MyWmp.View
 {

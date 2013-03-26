@@ -15,7 +15,6 @@ namespace MyWmp.Models
         {
             this.IsPlaying = false;
             this.IsShuffling = false;
-            this.IsRepeatingOne = false;
             this.IsRepeatingAll = false;
         }
 
@@ -59,7 +58,6 @@ namespace MyWmp.Models
 
         public bool IsPlaying { get; set; }
         public bool IsShuffling { get; set; }
-        public bool IsRepeatingOne { get; set; }
         public bool IsRepeatingAll { get; set; }
     }
 }
