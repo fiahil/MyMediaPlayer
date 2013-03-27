@@ -99,8 +99,12 @@
     <Compile Include="View\LibraryLayout.xaml.cs">
       <DependentUpon>LibraryLayout.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\MenuViewModel.cs" />
     <Compile Include="View\MediaLayout.xaml.cs">
       <DependentUpon>MediaLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MenuLayout.xaml.cs">
+      <DependentUpon>MenuLayout.xaml</DependentUpon>
     </Compile>
     <Page Include="Templates\Default.xaml">
       <SubType>Designer</SubType>
@@ -134,6 +138,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\MediaLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MenuLayout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -198,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\AlbumArt.jpg" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -11,6 +11,7 @@
     </Window.DataContext>
     <Grid x:Name="MainLayout" Style="{DynamicResource MainRoot}">
         <view:MediaLayout Margin="0,0,0,50"  MouseDoubleClick="OnFullScreenCommand"/>
+        <view:MenuLayout />
         <view:ControlLayout />
     </Grid>
     <Window.Resources>
