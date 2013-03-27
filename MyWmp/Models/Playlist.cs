@@ -4,6 +4,7 @@ using System.Xml.Serialization;
 
 namespace MyWmp.Models
 {
+    [XmlRoot]
     class Playlist
     {
         [XmlIgnore]
@@ -13,6 +14,7 @@ namespace MyWmp.Models
         [XmlIgnore]
         private readonly ArrayList shuffleList_;
 
+        [XmlAttribute("Name")]
         public string Name { set; get; }
         [XmlIgnore]
         public AMedia Current
