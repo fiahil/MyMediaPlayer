@@ -34,6 +34,7 @@ namespace MyWmp.Models
             using (StreamWriter wr = new StreamWriter("settings.xml"))
                 xs.Serialize(wr, s);
         }
+
         public Settings DeSerialize()
         {
             XmlSerializer xs = new XmlSerializer(typeof(Playlist));
