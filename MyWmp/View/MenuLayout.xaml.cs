@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Forms;
+using Microsoft.Win32;
 using MyWmp.ViewModel;
 
 namespace MyWmp.View
