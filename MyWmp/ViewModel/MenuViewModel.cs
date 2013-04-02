@@ -16,6 +16,48 @@ namespace MyWmp.ViewModel
             this.OpenCommand = new ActionCommand(OnOpen);
             this.QuitCommand = new ActionCommand(OnQuit);
             this.FailCommand = new ActionCommand(OnFail);
+            this.PlayCommand = new ActionCommand(OnPlay);
+            this.PauseCommand = new ActionCommand(OnPause);
+            this.StopCommand = new ActionCommand(OnStop);
+            this.PrevCommand = new ActionCommand(OnPrev);
+            this.NextCommand = new ActionCommand(OnNext);
+            this.ShuffleCommand = new ActionCommand(OnShuffle);
+            this.RepeatCommand = new ActionCommand(OnRepeat);
+        }
+
+        private void OnRepeat()
+        {
+            this.control_.RepeatAll();
+        }
+
+        private void OnShuffle()
+        {
+            this.control_.Shuffle();
+        }
+
+        private void OnNext()
+        {
+            this.control_.Next();
+        }
+
+        private void OnPrev()
+        {
+            this.control_.Prev();
+        }
+
+        private void OnStop()
+        {
+            this.control_.Stop();
+        }
+
+        private void OnPause()
+        {
+            this.control_.Pause();
+        }
+
+        private void OnPlay()
+        {
+            this.control_.Play();
         }
 
         private void OnOpen(object stream)
@@ -36,5 +78,14 @@ namespace MyWmp.ViewModel
         public ICommand OpenCommand { get; private set; }
         public ICommand QuitCommand { get; private set; }
         public ICommand FailCommand { get; private set; }
+        public ICommand PlayCommand { get; private set; }
+        public ICommand PauseCommand { get; private set; }
+        public ICommand StopCommand { get; private set; }
+        public ICommand PrevCommand { get; private set; }
+        public ICommand NextCommand { get; private set; }
+        public ICommand ShuffleCommand { get; private set; }
+        public ICommand RepeatCommand { get; private set; }
+        public ICommand SpeedUpCommand { get; private set; }
+        public ICommand SpeedDownCommand { get; private set; }
     }
 }

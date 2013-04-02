@@ -16,8 +16,20 @@
             <MenuItem Header="_Quit" Command="{Binding QuitCommand}" />
         </MenuItem>
         <MenuItem Header="_Playback">
+            <MenuItem Header="_Play" Command="{Binding PlayCommand}" />
+            <MenuItem Header="P_ause" Command="{Binding PauseCommand}" />
+            <MenuItem Header="_Stop" Command="{Binding StopCommand}" />
+            <MenuItem Header="_Next" Command="{Binding NextCommand}" />
+            <MenuItem Header="_Prev" Command="{Binding PrevCommand}" />
+            <Separator />
+            <MenuItem Header="Speed _Up" Command="{Binding SpeedUpCommand}" />
+            <MenuItem Header="Speed _Down" Command="{Binding SpeedDownCommand}" />
+            <Separator />
+            <MenuItem Header="Shu_ffle" Command="{Binding ShuffleCommand}" />
+            <MenuItem Header="Repea_t" Command="{Binding RepeatCommand}" />
         </MenuItem>
         <MenuItem Header="_Settings">
+            <MenuItem Header="Theme" />
         </MenuItem>
     </Menu>
 </UserControl>

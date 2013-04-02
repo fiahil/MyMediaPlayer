@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using Microsoft.Win32;
 using MyWmp.ViewModel;
@@ -17,26 +18,19 @@ namespace MyWmp.View
 
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            try
-            {
+
                 var f = new OpenFileDialog
                     {
                         CheckFileExists = true,
-                        ReadOnlyChecked = true
+                        ReadOnlyChecked = true,
+                        Multiselect = true
                     };
                 f.ShowDialog();
-                if (!String.IsNullOrEmpty(f.FileName))
+                if (f.FileNames.Any())
                 {
-                    var s = f.OpenFile();
-
-                    if (((MenuViewModel) this.DataContext).OpenCommand.CanExecute(s))
-                        ((MenuViewModel) this.DataContext).OpenCommand.Execute(s);
+                    if (((MenuViewModel) this.DataContext).OpenCommand.CanExecute(f))
+                        ((MenuViewModel) this.DataContext).OpenCommand.Execute(f);
                 }
-            }
-            catch (Exception exception)
-            {
-                ((MenuViewModel) this.DataContext).FailCommand.Execute(exception.Message);
-            }
         }
     }
 }
