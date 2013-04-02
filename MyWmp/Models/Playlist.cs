@@ -174,5 +174,10 @@ namespace MyWmp.Models
             if (medias_.Count > 0)
                 current_ = medias_[0] as AMedia;
         }
+
+        public Object[] ToArray()
+        {
+            return medias_.ToArray();
+        }
     }
 }

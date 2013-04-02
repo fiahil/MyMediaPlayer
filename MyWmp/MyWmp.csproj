@@ -92,6 +92,7 @@
     <Compile Include="Models\Song.cs" />
     <Compile Include="Models\Loader.cs" />
     <Compile Include="ViewModel\ControlViewModel.cs" />
+    <Compile Include="ViewModel\LibraryViewModel.cs" />
     <Compile Include="ViewModel\MediaViewModel.cs" />
     <Compile Include="View\LibraryLayout.xaml.cs">
       <DependentUpon>LibraryLayout.xaml</DependentUpon>
@@ -193,7 +194,9 @@
     <SplashScreen Include="Resources\Splash.png" />
     <Resource Include="Resources\Stop.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\AlbumArt.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

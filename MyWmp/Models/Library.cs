@@ -23,18 +23,19 @@ namespace MyWmp.Models
             Sounds = new Playlist();
             Videos = new Playlist();
             Pictures = new Playlist();
-            Load();
         }
 
         public void Load()
         {
             IsLoaded = false;
+            Sounds.RemoveAll();
             var loader = new Loader { Root = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), FileExtension = new[] { ".mp3" } };
             loader.Load();
             foreach (var media in loader.MediaPath)
             {
                 Sounds.Add(new Song(media));
             }
+            Videos.RemoveAll();
             loader.Root = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
             loader.FileExtension = new[] {".mp4"};
             loader.Load();
@@ -42,6 +43,7 @@ namespace MyWmp.Models
             {
                 Videos.Add(new Video(media));
             }
+            Pictures.RemoveAll();
             loader.Root = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
             loader.FileExtension = new[] {".png"};
             loader.Load();

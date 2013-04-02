@@ -4,10 +4,6 @@
         xmlns:view="clr-namespace:MyWmp.View"
         Title="MyWMP" Height="350" Width="525" WindowStartupLocation="CenterScreen" Icon="/MyWmp;component/Resources/Icon.png">
 
-    <Grid x:Name="MainLayout" Style="{DynamicResource MainRoot}">
-        <view:MediaLayout Margin="0,0,0,50" />
-        <view:ControlLayout />
-    </Grid>
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,4 +12,9 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+    <Grid x:Name="MainLayout" Style="{DynamicResource MainRoot}">
+        <view:MediaLayout Margin="0,0,0,50" />
+        <view:ControlLayout />
+        <!--<view:LibraryLayout></view:LibraryLayout>-->
+    </Grid>
 </Window>

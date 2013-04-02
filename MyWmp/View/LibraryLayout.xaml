@@ -1,15 +1,83 @@
-﻿<Page x:Class="MyWmp.View.LibraryLayout"
+﻿<UserControl x:Class="MyWmp.View.LibraryLayout"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-	Title="LibraryLayout">
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:viewModel="clr-namespace:MyWmp.ViewModel"
+             mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300">
+
+   <UserControl.DataContext>
+        <viewModel:LibraryViewModel/>
+    </UserControl.DataContext>
 
     <Grid>
-        <DataGrid HorizontalAlignment="Left" VerticalAlignment="Top" Height="300" Width="300">
-            </DataGrid>
-
+        <TabControl TabStripPlacement="Left">
+            <TabItem Header="Musics">
+                <DataGrid ItemsSource="{Binding LibraryMusics}" AutoGenerateColumns="False">
+                    <DataGrid.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.ContainerStyle>
+                                <Style TargetType="{x:Type GroupItem}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type GroupItem}">
+                                                <Expander IsExpanded="False">
+                                                    <Expander.Header>
+                                                        <TextBlock Foreground="Black" Text="{Binding Name}"/>
+                                                    </Expander.Header>
+                                                    <ItemsPresenter></ItemsPresenter>
+                                                        </Expander>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </GroupStyle.ContainerStyle>
+                        </GroupStyle>
+                    </DataGrid.GroupStyle>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Album">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding AlbumArt}"></Image>
+                                        <TextBlock Text="{Binding Album}"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="#" Binding="{Binding Track}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Length" Binding="{Binding Duration}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Genre" Binding="{Binding Genre}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Year" Binding="{Binding Year}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Type" Binding="{Binding Extension}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Videos">
+                <DataGrid ItemsSource="{Binding LibraryVideos}" AutoGenerateColumns="False">
+                    
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Length" Binding="{Binding Duration}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Year" Binding="{Binding Track}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Genre" Binding="{Binding Genre}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Type" Binding="{Binding Extension}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Height" Binding="{Binding Height}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Width" Binding="{Binding Width}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Pictures">
+                <DataGrid ItemsSource="{Binding LibraryPictures}" SelectionUnit="FullRow" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Length" Binding="{Binding Duration}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Year" Binding="{Binding Track}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Genre" Binding="{Binding Genre}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
     </Grid>
-</Page>
+</UserControl>

@@ -24,4 +24,5 @@
     <ControlTemplate x:Key="MediaScreenTemplate" TargetType="{x:Type Label}">
         <Rectangle Name="Background" Fill="{DynamicResource MediaScreenBgBrush}" />
     </ControlTemplate>
+
 </ResourceDictionary>
