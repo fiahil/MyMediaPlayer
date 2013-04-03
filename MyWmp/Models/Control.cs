@@ -16,6 +16,7 @@ namespace MyWmp.Models
             this.IsPlaying = false;
             this.IsShuffling = false;
             this.IsRepeatingAll = false;
+            this.Speed = 1;
 
             this.Playlist = new Playlist();
 
@@ -103,11 +104,28 @@ namespace MyWmp.Models
                Playlist.RepeatAll = IsRepeatingAll;
         }
 
+        public void SpeedUp()
+        {
+            this.Speed += 0.25;
+            if (this.MediaSpeed != null)
+                this.MediaSpeed(this, EventArgs.Empty);
+        }
+
+        public void SpeedDown()
+        {
+            this.Speed -= 0.25;
+            if (this.MediaSpeed != null)
+                this.MediaSpeed(this, EventArgs.Empty);
+        }
+
         public event EventHandler MediaPlay;
         public event EventHandler MediaPause;
         public event EventHandler MediaStop;
+        public event EventHandler MediaSpeed;
 
         public Playlist Playlist { get; set; }
+
+        public double Speed { get; private set; }
 
         public bool IsPlaying { get; private set; }
         public bool IsShuffling { get; private set; }

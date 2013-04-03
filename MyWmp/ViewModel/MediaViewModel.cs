@@ -33,14 +33,22 @@ namespace MyWmp.ViewModel
                     if (this.StopRequest != null)
                         this.StopRequest(this, EventArgs.Empty);
                 };
+            this.control_.MediaSpeed += (sender, args) =>
+                {
+                    this.Speed = this.control_.Speed;
+                    if (this.SpeedRequest != null)
+                        this.SpeedRequest(this, EventArgs.Empty);
+                };
         }
 
-        public Uri Source { get; set; }
+        public Uri Source { get; private set; }
+        public double Speed { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public event EventHandler OpenRequest;
         public event EventHandler PlayRequest;
         public event EventHandler PauseRequest;
         public event EventHandler StopRequest;
+        public event EventHandler SpeedRequest;
     }
 }

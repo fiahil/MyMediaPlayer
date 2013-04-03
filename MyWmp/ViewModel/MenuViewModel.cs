@@ -23,6 +23,18 @@ namespace MyWmp.ViewModel
             this.NextCommand = new ActionCommand(OnNext);
             this.ShuffleCommand = new ActionCommand(OnShuffle);
             this.RepeatCommand = new ActionCommand(OnRepeat);
+            this.SpeedUpCommand = new ActionCommand(OnSpeedUp);
+            this.SpeedDownCommand = new ActionCommand(OnSpeedDown);
+        }
+
+        private void OnSpeedDown()
+        {
+            this.control_.SpeedDown();
+        }
+
+        private void OnSpeedUp()
+        {
+            this.control_.SpeedUp();
         }
 
         private void OnRepeat()

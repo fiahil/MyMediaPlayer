@@ -29,7 +29,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <view:MenuLayout Visibility="Hidden"/>
+        <view:MenuLayout/>
     </Grid>
     
     <Window.Resources>
