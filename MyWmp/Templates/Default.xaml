@@ -25,4 +25,33 @@
         <Rectangle Name="Background" Fill="{DynamicResource MediaScreenBgBrush}" />
     </ControlTemplate>
 
+    <ControlTemplate x:Key="SliderTemplate" TargetType="{x:Type Slider}">
+        <Grid>
+            <Border Name="TrackBackground" Margin="0" Padding="0" Height="10" Grid.Row="1" BorderThickness="0" />
+            <Track Grid.Row="1" Name="PART_Track">
+                <Track.DecreaseRepeatButton>
+                    <RepeatButton Style="{DynamicResource SliderButtonDown}" />
+                </Track.DecreaseRepeatButton>
+                <Track.Thumb>
+                    <Thumb Style="{DynamicResource SliderThumb}" />
+                </Track.Thumb>
+                <Track.IncreaseRepeatButton>
+                    <RepeatButton Style="{DynamicResource SliderButtonUp}" />
+                </Track.IncreaseRepeatButton>
+            </Track>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="SliderButtonDownTemplate">
+        <Rectangle Fill="{DynamicResource SliderBgDownBrush}" />
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="SliderButtonUpTemplate">
+        <Rectangle Fill="{DynamicResource SliderBgUpBrush}" />
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="SliderThumbTemplate">
+        <Rectangle Fill="{DynamicResource SliderFgBrush}" Width="10" Height="10" />
+    </ControlTemplate>
+
 </ResourceDictionary>

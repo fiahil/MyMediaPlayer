@@ -1,11 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <SolidColorBrush x:Key="TitleBrush">#143A61</SolidColorBrush>
-    <SolidColorBrush x:Key="BgBrush">#222D38</SolidColorBrush>
-    <SolidColorBrush x:Key="FgBrush">#2C3E50</SolidColorBrush>
-    <SolidColorBrush x:Key="PressBrush">#34495E</SolidColorBrush>
-    <SolidColorBrush x:Key="MediaScreenBgBrush">#222D38</SolidColorBrush>
+    <SolidColorBrush x:Key="TitleBrush">#244674</SolidColorBrush>
+    <SolidColorBrush x:Key="BgBrush">#244674</SolidColorBrush>
+    <SolidColorBrush x:Key="FgBrush">#4873A8</SolidColorBrush>
+    <SolidColorBrush x:Key="PressBrush">#4873A8</SolidColorBrush>
+    <SolidColorBrush x:Key="MediaScreenBgBrush">#244674</SolidColorBrush>
+    <SolidColorBrush x:Key="SliderBgDownBrush">#5F87B9</SolidColorBrush>
+    <SolidColorBrush x:Key="SliderBgUpBrush">#4873A8</SolidColorBrush>
+    <SolidColorBrush x:Key="SliderFgBrush">#7CA3CC</SolidColorBrush>
 
     <Style x:Key="MainRoot" TargetType="{x:Type Grid}">
         <Setter Property="Background" Value="{DynamicResource BgBrush}" />
@@ -23,5 +26,21 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template" Value="{DynamicResource ButtonTemplate}" />
+    </Style>
+    
+    <Style x:Key="Slider" TargetType="{x:Type Slider}">
+        <Setter Property="Template" Value="{DynamicResource SliderTemplate}" />
+    </Style>
+    
+    <Style x:Key="SliderButtonDown" TargetType="{x:Type RepeatButton}">
+        <Setter Property="Template" Value="{DynamicResource SliderButtonDownTemplate}" />
+    </Style>
+
+    <Style x:Key="SliderButtonUp" TargetType="{x:Type RepeatButton}">
+        <Setter Property="Template" Value="{DynamicResource SliderButtonUpTemplate}" />
+    </Style>
+
+    <Style x:Key="SliderThumb" TargetType="{x:Type Thumb}">
+        <Setter Property="Template" Value="{DynamicResource SliderThumbTemplate}" />
     </Style>
 </ResourceDictionary>

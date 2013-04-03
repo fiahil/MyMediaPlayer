@@ -24,6 +24,7 @@
             <Separator />
             <MenuItem Header="Speed _Up" Command="{Binding SpeedUpCommand}" />
             <MenuItem Header="Speed _Down" Command="{Binding SpeedDownCommand}" />
+            <MenuItem Header="_Reset Speed" Command="{Binding SpeedResetCommand}" />
             <Separator />
             <MenuItem Header="Shu_ffle" Command="{Binding ShuffleCommand}" />
             <MenuItem Header="Repea_t" Command="{Binding RepeatCommand}" />

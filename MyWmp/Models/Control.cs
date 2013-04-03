@@ -106,14 +106,23 @@ namespace MyWmp.Models
 
         public void SpeedUp()
         {
-            this.Speed += 0.25;
+            if (this.Speed < 4)
+                this.Speed += 0.25;
             if (this.MediaSpeed != null)
                 this.MediaSpeed(this, EventArgs.Empty);
         }
 
         public void SpeedDown()
         {
-            this.Speed -= 0.25;
+            if (this.Speed > 0.25)
+                this.Speed -= 0.25;
+            if (this.MediaSpeed != null)
+                this.MediaSpeed(this, EventArgs.Empty);
+        }
+
+        public void SpeedReset()
+        {
+            this.Speed = 1;
             if (this.MediaSpeed != null)
                 this.MediaSpeed(this, EventArgs.Empty);
         }
@@ -130,6 +139,5 @@ namespace MyWmp.Models
         public bool IsPlaying { get; private set; }
         public bool IsShuffling { get; private set; }
         public bool IsRepeatingAll { get; private set; }
-
     }
 }
