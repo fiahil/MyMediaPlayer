@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows;
 
 namespace MyWmp.Models
 {
@@ -14,7 +15,7 @@ namespace MyWmp.Models
         public Loader()
         {
             MediaPath = new List<string>();
-            FileExtension = new string[] {};
+            FileExtension = new string[] { };
         }
 
         private void LoadRec(String dir)
@@ -33,9 +34,9 @@ namespace MyWmp.Models
                     LoadRec(s);
                 }
             }
-// ReSharper disable EmptyGeneralCatchClause
+            // ReSharper disable EmptyGeneralCatchClause
             catch (Exception)
-// ReSharper restore EmptyGeneralCatchClause
+            // ReSharper restore EmptyGeneralCatchClause
             {
             }
         }

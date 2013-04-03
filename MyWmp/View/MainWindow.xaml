@@ -11,8 +11,8 @@
         Icon="/MyWmp;component/Resources/Icon.png"
         WindowStyle="None"
         WindowState="{Binding WindowStateNotifier}"
-        AllowsTransparency="True" MinWidth="380" MinHeight="90">
-    
+        AllowsTransparency="True" MinWidth="380" MinHeight="90"
+        AllowDrop="true" Drop="MainWindow_OnDrop">
     <Window.DataContext>
         <viewModel:MainWindowViewModel />
     </Window.DataContext>
