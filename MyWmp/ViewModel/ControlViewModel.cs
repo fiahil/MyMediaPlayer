@@ -26,6 +26,22 @@ namespace MyWmp.ViewModel
             this.NextCommand = new ActionCommand(OnNext);
             this.ShuffleCommand = new ActionCommand(OnShuffle);
             this.RepeatAllCommand = new ActionCommand(OnRepeatAll);
+
+            this.control_.MediaPlay += (sender, args) =>
+            {
+                this.RefreshPlayPause();
+                this.PropertyChanged(this, new PropertyChangedEventArgs("RepeatAllNotifier"));
+            };
+            this.control_.MediaPause += (sender, args) =>
+            {
+                this.RefreshPlayPause();
+                this.PropertyChanged(this, new PropertyChangedEventArgs("RepeatAllNotifier"));
+            };
+            this.control_.MediaStop += (sender, args) =>
+            {
+                this.RefreshPlayPause();
+                this.PropertyChanged(this, new PropertyChangedEventArgs("RepeatAllNotifier"));
+            };
         }
 
         private void OnRepeatAll()

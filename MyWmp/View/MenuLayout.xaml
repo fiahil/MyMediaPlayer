@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="MyWmp.View.MenuLayout"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:viewModel="clr-namespace:MyWmp.ViewModel"
+             mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.DataContext>
+        <viewModel:MenuViewModel />
+    </UserControl.DataContext>
+
+    <Menu x:Name="MenuRoot" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <MenuItem Header="_Media">
+            <MenuItem Header="_Open" Click="MenuItem_OnClick" />
+            <MenuItem Header="_Quit" Command="{Binding QuitCommand}" />
+        </MenuItem>
+        <MenuItem Header="_Playback">
+            <MenuItem Header="_Play" Command="{Binding PlayCommand}" />
+            <MenuItem Header="P_ause" Command="{Binding PauseCommand}" />
+            <MenuItem Header="_Stop" Command="{Binding StopCommand}" />
+            <MenuItem Header="_Next" Command="{Binding NextCommand}" />
+            <MenuItem Header="_Prev" Command="{Binding PrevCommand}" />
+            <Separator />
+            <MenuItem Header="Speed _Up" Command="{Binding SpeedUpCommand}" />
+            <MenuItem Header="Speed _Down" Command="{Binding SpeedDownCommand}" />
+            <Separator />
+            <MenuItem Header="Shu_ffle" Command="{Binding ShuffleCommand}" />
+            <MenuItem Header="Repea_t" Command="{Binding RepeatCommand}" />
+        </MenuItem>
+        <MenuItem Header="_Settings">
+            <MenuItem Header="Theme" />
+        </MenuItem>
+    </Menu>
+</UserControl>

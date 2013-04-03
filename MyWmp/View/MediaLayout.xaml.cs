@@ -17,12 +17,8 @@ namespace MyWmp.View
             this.viewModel_ = new MediaViewModel();
             this.DataContext = this.viewModel_;
 
-            this.viewModel_.PlayRequest += (sender, args) =>
-                {
-                    this.Media.Source = this.viewModel_.Source;
-                    this.Media.Play();
-                };
-
+            this.viewModel_.OpenRequest += (sender, args) => this.Media.Source = this.viewModel_.Source;
+            this.viewModel_.PlayRequest += (sender, args) => this.Media.Play();
             this.viewModel_.PauseRequest += (sender, args) => this.Media.Pause();
             this.viewModel_.StopRequest += (sender, args) => this.Media.Stop();
         }
