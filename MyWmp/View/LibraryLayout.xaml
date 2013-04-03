@@ -39,7 +39,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Source="{Binding AlbumArt}"></Image>
+                                        <Image Width="80" Height="80" Source="{Binding AlbumArt}"></Image>
                                         <TextBlock Text="{Binding Album}"></TextBlock>
                                     </StackPanel>
                                 </DataTemplate>
@@ -71,10 +71,37 @@
             <TabItem Header="Pictures">
                 <DataGrid ItemsSource="{Binding LibraryPictures}" SelectionUnit="FullRow" AutoGenerateColumns="False">
                     <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                        <Image Width="80" Height="80" Source="{Binding Src}"></Image>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Height" Binding="{Binding Height}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Width" Binding="{Binding Width}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Type" Binding="{Binding Extension}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <ListView Style="{DynamicResource PlaylistStyle}" ItemsSource="{Binding Playlists}">
+                        </ListView>
+                    </StackPanel>
+                </TabItem.Header>
+                <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="#" Binding="{Binding Track}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Length" Binding="{Binding Duration}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Year" Binding="{Binding Track}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Artist" Binding="{Binding Artist}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Album" Binding="{Binding Album}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Genre" Binding="{Binding Genre}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Year" Binding="{Binding Year}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Type" Binding="{Binding Extension}"></DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>

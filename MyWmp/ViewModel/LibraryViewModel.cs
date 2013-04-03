@@ -6,13 +6,14 @@ using MyWmp.Models;
 
 namespace MyWmp.ViewModel
 {
-    class LibraryViewModel : INotifyPropertyChanged
+    internal class LibraryViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ListCollectionView LibraryMusics { get; private set; }
         public ListCollectionView LibraryVideos { get; private set; }
         public ArrayList LibraryPictures { get; private set; }
+        public ArrayList Playlists { get; private set; }
 
         private readonly Library library_;
 
@@ -25,6 +26,7 @@ namespace MyWmp.ViewModel
             LibraryMusics.GroupDescriptions.Add(new PropertyGroupDescription("Album"));
             LibraryVideos = new ListCollectionView(library_.Videos.ToArray());
             LibraryPictures = new ArrayList(library_.Pictures.ToArray());
+            Playlists = new ArrayList {new Playlist()};
         }
 
     }

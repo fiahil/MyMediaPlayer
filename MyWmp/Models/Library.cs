@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections;
 
 namespace MyWmp.Models
 {
@@ -15,6 +16,7 @@ namespace MyWmp.Models
         public Playlist Sounds { get; private set; }
         public Playlist Videos { get; private set; }
         public Playlist Pictures { get; private set; }
+        public ArrayList Playlists { get; private set; }
 
         public bool IsLoaded { get; private set; }
 
@@ -23,6 +25,7 @@ namespace MyWmp.Models
             Sounds = new Playlist();
             Videos = new Playlist();
             Pictures = new Playlist();
+            Playlists = new ArrayList();
         }
 
         public void Load()

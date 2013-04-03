@@ -22,6 +22,7 @@ namespace MyWmp.Models
         public override sealed void Load()
         {
             var file = File.Create(Src);
+            Title = Path.GetFileNameWithoutExtension(Src);
             Height = file.Properties.PhotoHeight;
             Width = file.Properties.PhotoWidth;
             var extension = Path.GetExtension(Src);

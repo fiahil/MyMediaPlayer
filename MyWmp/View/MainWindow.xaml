@@ -13,8 +13,8 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid x:Name="MainLayout" Style="{DynamicResource MainRoot}">
-        <view:MediaLayout Margin="0,0,0,50" />
-        <view:ControlLayout />
-        <!--<view:LibraryLayout></view:LibraryLayout>-->
+        <!--<view:MediaLayout Margin="0,0,0,50" />
+        <view:ControlLayout />-->
+        <view:LibraryLayout></view:LibraryLayout>
     </Grid>
 </Window>
