@@ -19,11 +19,11 @@ namespace MyWmp.Models
 
             this.Playlist = new Playlist();
 
-            var loader = new Loader {Root = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos), FileExtension = new[]{".mp3", ".mp4", ".avi"}};
+            var loader = new Loader {Root = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), FileExtension = new[]{".mp3", ".mp4", ".avi", ".jpg", ".png"}};
             loader.Load();
             foreach (var media in loader.MediaPath)
             {
-                this.Playlist.Add(new Song(media));
+                this.Playlist.Add(new Picture(media));
             }
         }
 

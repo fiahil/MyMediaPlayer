@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Xml.Serialization;
+using File = TagLib.File;
 
 namespace MyWmp.Models
 {
@@ -12,7 +10,9 @@ namespace MyWmp.Models
         [XmlIgnore]
         public static readonly String Unknown = "Unknown";
         public String Title { private set; get; }
-        public String Author { private set; get; }
+        public int Height { private set; get; }
+        public int Width { private set; get; }
+        public String Extension { private set; get; }
 
         public Picture(string src) : base(src, Type.Picture)
         {
@@ -21,6 +21,11 @@ namespace MyWmp.Models
 
         public override sealed void Load()
         {
+            var file = File.Create(Src);
+            Height = file.Properties.PhotoHeight;
+            Width = file.Properties.PhotoWidth;
+            var extension = Path.GetExtension(Src);
+            if (extension != null) Extension = extension.Remove(0, 1).ToLower();
         }
     }
 }
