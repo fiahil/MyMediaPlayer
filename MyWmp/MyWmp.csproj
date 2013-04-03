@@ -91,7 +91,9 @@
     <Compile Include="Models\Playlist.cs" />
     <Compile Include="Models\Song.cs" />
     <Compile Include="Models\Loader.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\ControlViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MediaViewModel.cs" />
     <Compile Include="View\MediaLayout.xaml.cs">
       <DependentUpon>MediaLayout.xaml</DependentUpon>
