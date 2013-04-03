@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls.Primitives;
+﻿using System.Windows;
+using System.Windows.Controls.Primitives;
 using MyWmp.ViewModel;
 
 namespace MyWmp.View

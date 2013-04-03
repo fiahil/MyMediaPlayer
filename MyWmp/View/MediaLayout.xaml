@@ -4,7 +4,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-    xmlns:behaviors="clr-namespace:MyWmp.Behaviors"
+    xmlns:behaviors="clr-namespace:MyWmp.Behaviors" xmlns:uiElements="clr-namespace:MyWmp.UIElements"
     mc:Ignorable="d"
     x:Class="MyWmp.View.MediaLayout">
     
@@ -15,7 +15,7 @@
                 <behaviors:MediaTimeSlider x:Name="MediaBehavior" />
             </i:Interaction.Behaviors>
         </MediaElement>
-        <Slider x:Name="VolumeSlider" Style="{DynamicResource Slider}" Value="{Binding Path=Volume, ElementName=Media}" Minimum="0" Maximum="1" SmallChange="0.05" LargeChange="0.05" TickFrequency="0.05" Delay="0" IsMoveToPointEnabled="True" IsSnapToTickEnabled="True" Orientation="Vertical" AutoToolTipPlacement="TopLeft" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" AutoToolTipPrecision="2" />
-        <Slider x:Name="TimeSlider" Style="{DynamicResource Slider}" IsEnabled="True" Value="{Binding Path=Position, ElementName=MediaBehavior}" Maximum="{Binding Path=Maximum, ElementName=MediaBehavior}" Thumb.DragStarted="TimeSlider_OnDragStarted" Thumb.DragCompleted="TimeSlider_OnDragCompleted" Minimum="0" SmallChange="1" LargeChange="1" TickFrequency="1" Delay="0" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True" AutoToolTipPlacement="TopLeft" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,0,0,0" />
+        <uiElements:FormatedSlider x:Name="VolumeSlider" Style="{DynamicResource Slider}" Value="{Binding Path=Volume, ElementName=Media}" Minimum="0" Maximum="1" SmallChange="0.05" LargeChange="0.05" TickFrequency="0.05" Delay="0" IsMoveToPointEnabled="True" IsSnapToTickEnabled="True" Orientation="Vertical" AutoToolTipPlacement="TopLeft" AutoToolTipFormat="volume" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" AutoToolTipPrecision="2" />
+        <uiElements:FormatedSlider x:Name="TimeSlider" Style="{DynamicResource Slider}" Value="{Binding Path=Position, ElementName=MediaBehavior}" Maximum="{Binding Path=Maximum, ElementName=MediaBehavior}" Thumb.DragStarted="TimeSlider_OnDragStarted" Thumb.DragCompleted="TimeSlider_OnDragCompleted" Minimum="0" SmallChange="1" LargeChange="1" TickFrequency="1" Delay="0" AutoToolTipFormat="time" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True" AutoToolTipPlacement="TopLeft" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0,0,0,0" />
     </Grid>
 </UserControl>
