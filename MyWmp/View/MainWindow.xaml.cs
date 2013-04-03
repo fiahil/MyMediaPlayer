@@ -1,4 +1,9 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Runtime.InteropServices;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Interop;
+using System.Windows.Shapes;
 using MyWmp.ViewModel;
 
 namespace MyWmp.View
@@ -24,6 +29,23 @@ namespace MyWmp.View
                 ((MainWindowViewModel) this.DataContext).FullScreenCommand.Execute(null);
 
         }
+
+        private void OnMinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void OnRestoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
+        }
+
+        private void OnCloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+
 
     }
 }

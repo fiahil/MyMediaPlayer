@@ -18,7 +18,22 @@
     </Window.DataContext>
     
     <Grid x:Name="MainLayout" Style="{DynamicResource MainRoot}">
-        <TabControl TabStripPlacement="Left">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Rectangle Fill="{DynamicResource TitleBrush}" Grid.Row="0" Grid.ColumnSpan="4" />
+       
+        <Button Content="-" Grid.Column="1" Click="OnMinimizeButton_Click" />
+        <Button Content="+" Grid.Column="2" Click="OnRestoreButton_Click" />
+        <Button Content="X" Grid.Column="3" Click="OnCloseButton_Click" />
+        <TabControl TabStripPlacement="Left" Grid.Row="1" Grid.ColumnSpan="4">
             <TabItem Header="Library">
                 <view:LibraryLayout />
             </TabItem>

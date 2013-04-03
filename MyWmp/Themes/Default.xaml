@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <SolidColorBrush x:Key="TitleBrush">#143A61</SolidColorBrush>
     <SolidColorBrush x:Key="BgBrush">#222D38</SolidColorBrush>
     <SolidColorBrush x:Key="FgBrush">#2C3E50</SolidColorBrush>
     <SolidColorBrush x:Key="PressBrush">#34495E</SolidColorBrush>
@@ -9,7 +10,7 @@
     <Style x:Key="MainRoot" TargetType="{x:Type Grid}">
         <Setter Property="Background" Value="{DynamicResource BgBrush}" />
     </Style>
-    
+
     <Style x:Key="ControlRoot" TargetType="{x:Type StackPanel}">
         <Setter Property="Background" Value="{DynamicResource BgBrush}" />
     </Style>
