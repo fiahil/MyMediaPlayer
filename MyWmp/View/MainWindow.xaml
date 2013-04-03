@@ -2,18 +2,36 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:view="clr-namespace:MyWmp.View"
- xmlns:viewModel="clr-namespace:MyWmp.ViewModel"
+        xmlns:viewModel="clr-namespace:MyWmp.ViewModel"
 		MouseLeftButtonDown="OnMouseLeftButtonDown"
-       
-        Title="MyWMP" Height="350" Width="525" WindowStartupLocation="CenterScreen" Icon="/MyWmp;component/Resources/Icon.png" WindowStyle="None" WindowState="{Binding WindowStateNotifier}"  AllowsTransparency="True">
+        Title="MyWMP"
+        Height="480"
+        Width="854"
+        WindowStartupLocation="CenterScreen"
+        Icon="/MyWmp;component/Resources/Icon.png"
+        WindowStyle="None"
+        WindowState="{Binding WindowStateNotifier}"
+        AllowsTransparency="True" MinWidth="380" MinHeight="90">
+    
     <Window.DataContext>
         <viewModel:MainWindowViewModel />
     </Window.DataContext>
+    
     <Grid x:Name="MainLayout" Style="{DynamicResource MainRoot}">
-        <view:MediaLayout Margin="0,0,0,50"  MouseDoubleClick="OnFullScreenCommand"/>
-        <view:MenuLayout />
-        <view:ControlLayout />
+        <TabControl TabStripPlacement="Left">
+            <TabItem Header="Library">
+                <view:LibraryLayout />
+            </TabItem>
+            <TabItem Header="Playback">
+                <Grid>
+                    <view:MediaLayout Margin="0,0,0,50"  MouseDoubleClick="OnFullScreenCommand"/>
+                    <view:ControlLayout />
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <view:MenuLayout Visibility="Hidden"/>
     </Grid>
+    
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -22,5 +40,4 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-
 </Window>
