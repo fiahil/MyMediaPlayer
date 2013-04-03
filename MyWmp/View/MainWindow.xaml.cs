@@ -45,12 +45,14 @@ namespace MyWmp.View
 
         private void OnMinimizeButton_Click(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Minimized;
+            if (((MainWindowViewModel)this.DataContext).MinimizeCommand.CanExecute(null))
+                ((MainWindowViewModel)this.DataContext).MinimizeCommand.Execute(null);
         }
 
         private void OnRestoreButton_Click(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
+            if (((MainWindowViewModel)this.DataContext).RestoreCommand.CanExecute(null))
+                ((MainWindowViewModel)this.DataContext).RestoreCommand.Execute(null);
         }
 
         private void OnCloseButton_Click(object sender, RoutedEventArgs e)
