@@ -11,7 +11,10 @@
         Icon="/MyWmp;component/Resources/Icon.png"
         WindowStyle="None"
         WindowState="{Binding WindowStateNotifier}"
-        AllowsTransparency="True" MinWidth="380" MinHeight="90" ResizeMode="CanResizeWithGrip">
+        AllowsTransparency="True"
+        MinWidth="370"
+        MinHeight="94"
+        ResizeMode="CanResizeWithGrip">
     
     <Window.DataContext>
         <viewModel:MainWindowViewModel />
@@ -35,13 +38,13 @@
         <Button Content="-" Grid.Column="3" Click="OnMinimizeButton_Click" />
         <Button Content="+" Grid.Column="4" Click="OnRestoreButton_Click" />
         <Button Content="X" Grid.Column="5" Click="OnCloseButton_Click" />
-        <TabControl TabStripPlacement="Left" Grid.Row="1" Grid.ColumnSpan="6">
+        <TabControl TabStripPlacement="Left" Grid.Row="1" Grid.ColumnSpan="6" Style="{DynamicResource TabControl}">
             <TabItem Header="Library">
                 <view:LibraryLayout />
             </TabItem>
             <TabItem Header="Playback">
                 <Grid>
-                    <view:MediaLayout Margin="0,0,0,50"  MouseDoubleClick="OnFullScreenCommand"/>
+                    <view:MediaLayout Margin="0,0,0,52"  MouseDoubleClick="OnFullScreenCommand"/>
                     <view:ControlLayout />
                 </Grid>
             </TabItem>
