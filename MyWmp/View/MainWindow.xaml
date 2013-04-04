@@ -34,10 +34,10 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
             <Rectangle MouseLeftButtonDown="OnMouseLeftButtonDown" Fill="{DynamicResource TitleBrush}" Grid.Row="0" Grid.ColumnSpan="4" />
-        
-        <Button Content="-" Grid.Column="3" Click="OnMinimizeButton_Click" />
-        <Button Content="+" Grid.Column="4" Click="OnRestoreButton_Click" />
-        <Button Content="X" Grid.Column="5" Click="OnCloseButton_Click" />
+
+        <Button Content="/Resources/Minimize.png" Style="{DynamicResource Controls}" Grid.Column="3" Click="OnMinimizeButton_Click" />
+        <Button Content="/Resources/Maximize.png" Style="{DynamicResource Controls}" Grid.Column="4" Click="OnRestoreButton_Click" />
+        <Button Content="/Resources/Close.png" Style="{DynamicResource Controls}" Grid.Column="5" Click="OnCloseButton_Click" />
         <TabControl TabStripPlacement="Left" Grid.Row="1" Grid.ColumnSpan="6" Style="{DynamicResource TabControl}">
             <TabItem Header="Library">
                 <view:LibraryLayout />

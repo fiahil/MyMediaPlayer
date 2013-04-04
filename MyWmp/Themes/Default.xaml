@@ -6,7 +6,7 @@
     <SolidColorBrush x:Key="DarkBgBrush">#19304F</SolidColorBrush>
     <SolidColorBrush x:Key="FgBrush">#4873A8</SolidColorBrush>
     <SolidColorBrush x:Key="PressBrush">#4873A8</SolidColorBrush>
-    <SolidColorBrush x:Key="MediaScreenBgBrush">#244674</SolidColorBrush>
+    <SolidColorBrush x:Key="MediaScreenBgBrush">#111111</SolidColorBrush>
     <SolidColorBrush x:Key="SliderBgDownBrush">#5F87B9</SolidColorBrush>
     <SolidColorBrush x:Key="SliderBgUpBrush">#4873A8</SolidColorBrush>
     <SolidColorBrush x:Key="SliderFgBrush">#7CA3CC</SolidColorBrush>
