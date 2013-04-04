@@ -122,4 +122,14 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+
+    <ControlTemplate x:Key="GroupItemTemplate" TargetType="{x:Type GroupItem}">
+        <Expander IsExpanded="True">
+            <Expander.Header>
+                <TextBlock Foreground="{DynamicResource TextFgBrush}" Text="{Binding Name}"/>
+            </Expander.Header>
+            <ItemsPresenter />
+        </Expander>
+    </ControlTemplate>
+
 </ResourceDictionary>

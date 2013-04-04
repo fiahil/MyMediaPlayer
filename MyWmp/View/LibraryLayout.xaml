@@ -11,50 +11,43 @@
     </UserControl.DataContext>
 
     <Grid>
-        <TabControl TabStripPlacement="Left">
-            <TabItem Header="Musics">
+        <TabControl TabStripPlacement="Left" Style="{DynamicResource TabControl}">
+            <TabItem Header="Music" Style="{DynamicResource TabItem}">
                 <DataGrid ItemsSource="{Binding LibraryMusics}" AutoGenerateColumns="False">
                     <DataGrid.GroupStyle>
                         <GroupStyle>
                             <GroupStyle.ContainerStyle>
                                 <Style TargetType="{x:Type GroupItem}">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type GroupItem}">
-                                                <Expander IsExpanded="False">
-                                                    <Expander.Header>
-                                                        <TextBlock Foreground="Black" Text="{Binding Name}"/>
-                                                    </Expander.Header>
-                                                    <ItemsPresenter></ItemsPresenter>
-                                                        </Expander>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
+                                    <Setter Property="Template" Value="{DynamicResource GroupItemTemplate}" />
                                 </Style>
                             </GroupStyle.ContainerStyle>
                         </GroupStyle>
                     </DataGrid.GroupStyle>
+                    
                     <DataGrid.Columns>
+                        
                         <DataGridTemplateColumn Header="Album">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <Image Source="{Binding AlbumArt}"></Image>
-                                        <TextBlock Text="{Binding Album}"></TextBlock>
+                                        <Image Source="{Binding AlbumArt}" />
+                                        <TextBlock Text="{Binding Album}" />
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="#" Binding="{Binding Track}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Length" Binding="{Binding Duration}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Genre" Binding="{Binding Genre}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Year" Binding="{Binding Year}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Type" Binding="{Binding Extension}"></DataGridTextColumn>
+                        
+                        <DataGridTextColumn Header="#" Binding="{Binding Track}" />
+                        <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
+                        <DataGridTextColumn Header="Length" Binding="{Binding Duration}" />
+                        <DataGridTextColumn Header="Genre" Binding="{Binding Genre}" />
+                        <DataGridTextColumn Header="Year" Binding="{Binding Year}" />
+                        <DataGridTextColumn Header="Type" Binding="{Binding Extension}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-            <TabItem Header="Videos">
+            
+            <TabItem Header="Video" Style="{DynamicResource TabItem}">
                 <DataGrid ItemsSource="{Binding LibraryVideos}" AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
@@ -67,7 +60,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-            <TabItem Header="Pictures">
+            <TabItem Header="Picture" Style="{DynamicResource TabItem}">
                 <DataGrid ItemsSource="{Binding LibraryPictures}" SelectionUnit="FullRow" AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Title" Binding="{Binding Title}"></DataGridTextColumn>

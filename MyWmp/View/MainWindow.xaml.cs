@@ -1,12 +1,6 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
-using MyWmp.Models;
-using System.Windows.Interop;
-using System.Windows.Shapes;
 using MyWmp.ViewModel;
 
 namespace MyWmp.View

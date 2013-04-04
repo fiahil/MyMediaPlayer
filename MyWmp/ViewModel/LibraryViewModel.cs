@@ -20,8 +20,6 @@ namespace MyWmp.ViewModel
             library_ = Library.Instance;
             library_.Load();
             LibraryMusics = new ListCollectionView(library_.Sounds.ToArray());
-            LibraryMusics.GroupDescriptions.Add(new PropertyGroupDescription("Artist"));
-            LibraryMusics.GroupDescriptions.Add(new PropertyGroupDescription("Album"));
             LibraryVideos = new ListCollectionView(library_.Videos.ToArray());
             LibraryPictures = new ArrayList(library_.Pictures.ToArray());
         }

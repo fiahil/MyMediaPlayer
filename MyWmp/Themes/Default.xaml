@@ -77,4 +77,5 @@
         <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
         <Setter Property="Template" Value="{DynamicResource TabItemTemplate}" />
     </Style>
+
 </ResourceDictionary>
