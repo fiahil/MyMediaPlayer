@@ -56,7 +56,6 @@
             </TabItem>
             <TabItem Header="Videos">
                 <DataGrid ItemsSource="{Binding LibraryVideos}" AutoGenerateColumns="False">
-                    
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Length" Binding="{Binding Duration}"></DataGridTextColumn>

@@ -68,5 +68,13 @@
         <Setter Property="Background" Value="{DynamicResource BgBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource FgBrush}" />
         <Setter Property="BorderThickness" Value="3" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    
+    <Style x:Key="TabItem" TargetType="TabItem">
+        <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BgBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
+        <Setter Property="Template" Value="{DynamicResource TabItemTemplate}" />
     </Style>
 </ResourceDictionary>
