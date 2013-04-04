@@ -3,12 +3,14 @@
 
     <SolidColorBrush x:Key="TitleBrush">#244674</SolidColorBrush>
     <SolidColorBrush x:Key="BgBrush">#244674</SolidColorBrush>
+    <SolidColorBrush x:Key="DarkBgBrush">#19304F</SolidColorBrush>
     <SolidColorBrush x:Key="FgBrush">#4873A8</SolidColorBrush>
     <SolidColorBrush x:Key="PressBrush">#4873A8</SolidColorBrush>
     <SolidColorBrush x:Key="MediaScreenBgBrush">#244674</SolidColorBrush>
     <SolidColorBrush x:Key="SliderBgDownBrush">#5F87B9</SolidColorBrush>
     <SolidColorBrush x:Key="SliderBgUpBrush">#4873A8</SolidColorBrush>
     <SolidColorBrush x:Key="SliderFgBrush">#7CA3CC</SolidColorBrush>
+    <SolidColorBrush x:Key="TextFgBrush">#EEF7FF</SolidColorBrush>
 
     <Style x:Key="MainRoot" TargetType="{x:Type Grid}">
         <Setter Property="Background" Value="{DynamicResource BgBrush}" />
@@ -42,5 +44,23 @@
 
     <Style x:Key="SliderThumb" TargetType="{x:Type Thumb}">
         <Setter Property="Template" Value="{DynamicResource SliderThumbTemplate}" />
+    </Style>
+    
+    <Style x:Key="Menu" TargetType="Menu">
+        <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
+    </Style>
+    
+    <Style x:Key="MenuItem" TargetType="MenuItem">
+        <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template" Value="{DynamicResource MenuItemTemplate}" />
+    </Style>
+    
+    <Style x:Key="Separator" TargetType="Separator">
+        <Setter Property="Template" Value="{DynamicResource SeparatorTemplate}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource FgBrush}" />
+        <Setter Property="Margin" Value="0,3,0,3" />
     </Style>
 </ResourceDictionary>

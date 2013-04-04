@@ -54,4 +54,56 @@
         <Rectangle Fill="{DynamicResource SliderFgBrush}" Width="10" Height="10" />
     </ControlTemplate>
 
+    <ControlTemplate x:Key="SeparatorTemplate" TargetType="{x:Type Separator}">
+        <Grid>
+            <Rectangle Height="2" Fill="{TemplateBinding BorderBrush}" />
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MenuItemTemplate" TargetType="{x:Type MenuItem}">
+        <Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="Col0" MinWidth="17" Width="Auto" SharedSizeGroup="MenuItemIconColumnGroup"/>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="MenuTextColumnGroup"/>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIGTColumnGroup"/>
+                    <ColumnDefinition x:Name="Col3" Width="14"/>
+                </Grid.ColumnDefinitions>
+
+                <ContentPresenter Grid.Column="1" Margin="{TemplateBinding Padding}" x:Name="HeaderHost" RecognizesAccessKey="True" ContentSource="Header"/>
+
+                <Popup IsOpen="{Binding Path=IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Right" x:Name="SubMenuPopup" Focusable="false">
+                    <Border x:Name="SubMenuBorder" BorderBrush="{TemplateBinding Background}" Background="{TemplateBinding Background}" BorderThickness="1" Padding="2,2,2,2">
+                        <Grid x:Name="SubMenu" Grid.IsSharedSizeScope="True">
+                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                        </Grid>
+                    </Border>
+                </Popup>
+            </Grid>
+        </Border>
+        
+
+        <ControlTemplate.Triggers>
+            <!-- Role = TopLevelHeader : this is the root menu item in a menu; the Popup expands down -->
+            <Trigger Property="Role" Value="TopLevelHeader">
+                <Setter Property="Placement" Value="Bottom" TargetName="SubMenuPopup"/>
+                <Setter Property="MinWidth" Value="0" TargetName="Col0"/>
+                <Setter Property="Width" Value="Auto" TargetName="Col3"/>
+            </Trigger>
+
+            <!-- Role = SubMenuHeader : this is a child menu item which does not have children -->
+            <Trigger Property="Role" Value="SubmenuHeader">
+                <Setter Property="DockPanel.Dock" Value="Top"/>
+            </Trigger>
+
+            <!-- Role = SubMenuItem : this is a child menu item which has children-->
+            <Trigger Property="Role" Value="SubmenuItem">
+                <Setter Property="DockPanel.Dock" Value="Top"/>
+            </Trigger>
+
+            <Trigger Property="IsHighlighted" Value="true">
+                <Setter Property="Background" Value="{DynamicResource FgBrush}" TargetName="Border"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
 </ResourceDictionary>
