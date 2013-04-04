@@ -1,6 +1,8 @@
 ﻿
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace MyWmp.Models
 {
@@ -16,7 +18,7 @@ namespace MyWmp.Models
         public Playlist Sounds { get; private set; }
         public Playlist Videos { get; private set; }
         public Playlist Pictures { get; private set; }
-        public ArrayList Playlists { get; private set; }
+        public ObservableCollection<Playlist> Playlists { get; private set; }
 
         public bool IsLoaded { get; private set; }
 
@@ -25,7 +27,7 @@ namespace MyWmp.Models
             Sounds = new Playlist();
             Videos = new Playlist();
             Pictures = new Playlist();
-            Playlists = new ArrayList();
+            Playlists = new ObservableCollection<Playlist>();
         }
 
         public void Load()
@@ -54,7 +56,13 @@ namespace MyWmp.Models
             {
                 Pictures.Add(new Picture(media));
             }
+            Playlists.Add(Sounds);
             IsLoaded = true;
+        }
+
+        public void AddPlaylist()
+        {
+            Playlists.Add(new Playlist());
         }
     }
 }

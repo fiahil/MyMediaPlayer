@@ -25,14 +25,8 @@
         <Rectangle Name="Background" Fill="{DynamicResource MediaScreenBgBrush}" />
     </ControlTemplate>
 
-    <Style x:Key="PlaylistStyle" TargetType="{x:Type ListView}">
-        <Setter Property="ItemTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <TextBox Text="{Binding Name}" IsReadOnly="True"></TextBox>
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
+    <Style x:Key="PlaylistHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+        <Setter Property="Visibility" Value="Collapsed" />
     </Style>
-
+    
 </ResourceDictionary>

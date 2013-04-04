@@ -20,7 +20,10 @@
     <Grid x:Name="MainLayout" Style="{DynamicResource MainRoot}">
         <TabControl TabStripPlacement="Left">
             <TabItem Header="Library">
-                <view:LibraryLayout />
+                <Grid>
+                    <view:LibraryLayout />
+                    <view:ControlLayout/>
+                </Grid>
             </TabItem>
             <TabItem Header="Playback">
                 <Grid>
