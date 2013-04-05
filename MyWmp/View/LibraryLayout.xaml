@@ -26,7 +26,6 @@
                         </DataGrid.GroupStyle>
 
                         <DataGrid.Columns>
-
                             <DataGridTemplateColumn Header="Album">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -37,16 +36,17 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            <DataGridTextColumn Header="#" Binding="{Binding Track}" Visibility="Collapsed" />
-                            <DataGridTextColumn Header="Album" Binding="{Binding Album}" Visibility="Collapsed" />
-                            <DataGridTextColumn x:Name="Artist" Header="Artist" Binding="{Binding Artist}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="#" Binding="{Binding Track}" Visibility="Visible" />
+                            <DataGridTextColumn Header="Album" Binding="{Binding Album}" Visibility="Visible" />
+                            <DataGridTextColumn x:Name="Artist" Header="Artist" Binding="{Binding Artist}" Visibility="Visible" />
                             <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
-                            <DataGridTextColumn Header="Length" Binding="{Binding Duration}" Visibility="Collapsed" />
-                            <DataGridTextColumn Header="Genre" Binding="{Binding Genre}" Visibility="Collapsed" />
-                            <DataGridTextColumn Header="Year" Binding="{Binding Year}" Visibility="Collapsed" />
-                            <DataGridTextColumn Header="Type" Binding="{Binding Extension}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="Length" Binding="{Binding Duration}" Visibility="Visible" />
+                            <DataGridTextColumn Header="Genre" Binding="{Binding Genre}" Visibility="Visible" />
+                            <DataGridTextColumn Header="Year" Binding="{Binding Year}" Visibility="Visible" />
+                            <DataGridTextColumn Header="Type" Binding="{Binding Extension}" Visibility="Visible" />
                         </DataGrid.Columns>
                     </DataGrid>
+                    
                     <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="80">
                         <GroupBox x:Name="ArtistGroupBox" Header="Artist">
                             <StackPanel Orientation="Vertical">
@@ -71,14 +71,6 @@
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
                                 <TextBox x:Name="ArtistValue" TextChanged="ArtistValue_OnTextChanged" />
-                            </StackPanel>
-                        </GroupBox>
-                        
-                        <GroupBox Header="Album">
-                            <StackPanel Orientation="Vertical">
-                                <CheckBox Content="Filter" Command="{Binding FilterCommand}" />
-                                <CheckBox Content="Group" />
-                                <TextBox />
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
