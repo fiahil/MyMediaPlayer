@@ -14,9 +14,9 @@ namespace MyWmp.ViewModel
 
             this.control_.MediaPlay += (sender, args) =>
                 {
-                    if (this.Source == null || this.Source.OriginalString != this.control_.Playlist.Current.Src)
+                    if (this.Source == null || this.Source.OriginalString != this.control_.Playlist.Current.Source)
                     {
-                        this.Source = new Uri(this.control_.Playlist.Current.Src);
+                        this.Source = new Uri(this.control_.Playlist.Current.Source);
                         if (this.OpenRequest != null)
                             this.OpenRequest(this, EventArgs.Empty);
                     }

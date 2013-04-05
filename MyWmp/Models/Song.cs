@@ -36,7 +36,7 @@ namespace MyWmp.Models
         {
             try
             {
-                var file = File.Create(Src);
+                var file = File.Create(Source);
                 Title = file.Tag.Title;
                 if (file.Tag.AlbumArtists.Length != 0)
                     Artist = file.Tag.AlbumArtists[0];
@@ -48,7 +48,7 @@ namespace MyWmp.Models
                 Track = file.Tag.Track;
                 if (file.Properties.MediaTypes != MediaTypes.None)
                     Duration = file.Properties.Duration;
-                var extension = Path.GetExtension(Src);
+                var extension = Path.GetExtension(Source);
                 if (extension != null) Extension = extension.Remove(0, 1).ToLower();
                 if (file.Tag.Pictures.Length >= 1)
                 {

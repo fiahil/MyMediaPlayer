@@ -10,12 +10,12 @@ namespace MyWmp.Models
             Picture
         }
 
-        public string Src { private set; get; }
+        public string Source { private set; get; }
         public Type MediaType { private set; get; }
 
         protected AMedia(string src, Type type)
         {
-            Src = src;
+            Source = src;
             MediaType = type;
         }
 

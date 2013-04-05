@@ -2,71 +2,110 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:viewModel="clr-namespace:MyWmp.ViewModel"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:converters="clr-namespace:MyWmp.Converters"
              mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300">
 
-   <UserControl.DataContext>
-        <viewModel:LibraryViewModel/>
-    </UserControl.DataContext>
-
+    <UserControl.Resources>
+        <converters:LibraryConverter x:Key="LibraryConverter" />
+    </UserControl.Resources>
+    
     <Grid>
-        <TabControl TabStripPlacement="Left" Style="{DynamicResource TabControl}">
+        <TabControl x:Name="Music" TabStripPlacement="Left" Style="{DynamicResource TabControl}">
             <TabItem Header="Music" Style="{DynamicResource TabItem}">
-                <DataGrid ItemsSource="{Binding LibraryMusics}" AutoGenerateColumns="False">
-                    <DataGrid.GroupStyle>
-                        <GroupStyle>
-                            <GroupStyle.ContainerStyle>
-                                <Style TargetType="{x:Type GroupItem}">
-                                    <Setter Property="Template" Value="{DynamicResource GroupItemTemplate}" />
-                                </Style>
-                            </GroupStyle.ContainerStyle>
-                        </GroupStyle>
-                    </DataGrid.GroupStyle>
-                    
+                <Grid>
+                    <DataGrid Margin="0,0,80,0" x:Name="MusicDatagrid" ItemsSource="{Binding LibraryMusics}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+                        <DataGrid.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Template" Value="{DynamicResource GroupItemTemplate}" />
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </DataGrid.GroupStyle>
+
+                        <DataGrid.Columns>
+
+                            <DataGridTemplateColumn Header="Album">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding AlbumArt}" Visibility="Visible" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTextColumn Header="#" Binding="{Binding Track}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="Album" Binding="{Binding Album}" Visibility="Collapsed" />
+                            <DataGridTextColumn x:Name="Artist" Header="Artist" Binding="{Binding Artist}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
+                            <DataGridTextColumn Header="Length" Binding="{Binding Duration}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="Genre" Binding="{Binding Genre}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="Year" Binding="{Binding Year}" Visibility="Collapsed" />
+                            <DataGridTextColumn Header="Type" Binding="{Binding Extension}" Visibility="Collapsed" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="80">
+                        <GroupBox x:Name="ArtistGroupBox" Header="Artist">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox x:Name="ArtistFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="ArtistFilter" />
+                                            <Binding Path="IsChecked" ElementName="ArtistGroup" />
+                                            <Binding Path="Text" ElementName="ArtistValue" />
+                                            <Binding Path="Header" ElementName="ArtistGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox x:Name="ArtistGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="ArtistFilter" />
+                                            <Binding Path="IsChecked" ElementName="ArtistGroup" />
+                                            <Binding Path="Text" ElementName="ArtistValue" />
+                                            <Binding Path="Header" ElementName="ArtistGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox x:Name="ArtistValue" TextChanged="ArtistValue_OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+                        
+                        <GroupBox Header="Album">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Content="Filter" Command="{Binding FilterCommand}" />
+                                <CheckBox Content="Group" />
+                                <TextBox />
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Video" Style="{DynamicResource TabItem}">
+                <DataGrid ItemsSource="{Binding LibraryVideos}" AutoGenerateColumns="False">
                     <DataGrid.Columns>
-                        
-                        <DataGridTemplateColumn Header="Album">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Image Source="{Binding AlbumArt}" />
-                                        <TextBlock Text="{Binding Album}" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        
-                        <DataGridTextColumn Header="#" Binding="{Binding Track}" />
                         <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
                         <DataGridTextColumn Header="Length" Binding="{Binding Duration}" />
+                        <DataGridTextColumn Header="Year" Binding="{Binding Track}" />
                         <DataGridTextColumn Header="Genre" Binding="{Binding Genre}" />
-                        <DataGridTextColumn Header="Year" Binding="{Binding Year}" />
                         <DataGridTextColumn Header="Type" Binding="{Binding Extension}" />
+                        <DataGridTextColumn Header="Height" Binding="{Binding Height}" />
+                        <DataGridTextColumn Header="Width" Binding="{Binding Width}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
             
-            <TabItem Header="Video" Style="{DynamicResource TabItem}">
-                <DataGrid ItemsSource="{Binding LibraryVideos}" AutoGenerateColumns="False">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Length" Binding="{Binding Duration}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Year" Binding="{Binding Track}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Genre" Binding="{Binding Genre}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Type" Binding="{Binding Extension}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Height" Binding="{Binding Height}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Width" Binding="{Binding Width}"></DataGridTextColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </TabItem>
             <TabItem Header="Picture" Style="{DynamicResource TabItem}">
                 <DataGrid ItemsSource="{Binding LibraryPictures}" SelectionUnit="FullRow" AutoGenerateColumns="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Title" Binding="{Binding Title}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Length" Binding="{Binding Duration}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Year" Binding="{Binding Track}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Genre" Binding="{Binding Genre}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
+                        <DataGridTextColumn Header="Length" Binding="{Binding Duration}" />
+                        <DataGridTextColumn Header="Year" Binding="{Binding Track}" />
+                        <DataGridTextColumn Header="Genre" Binding="{Binding Genre}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>

@@ -21,10 +21,10 @@ namespace MyWmp.Models
 
         public override sealed void Load()
         {
-            var file = File.Create(Src);
+            var file = File.Create(Source);
             Height = file.Properties.PhotoHeight;
             Width = file.Properties.PhotoWidth;
-            var extension = Path.GetExtension(Src);
+            var extension = Path.GetExtension(Source);
             if (extension != null) Extension = extension.Remove(0, 1).ToLower();
         }
     }

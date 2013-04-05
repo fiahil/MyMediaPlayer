@@ -28,16 +28,16 @@ namespace MyWmp.Models
         {
             try
             {
-                var file = File.Create(Src);
+                var file = File.Create(Source);
                 Title = file.Tag.Title;
                 if (Title == null)
-                    Title = Path.GetFileNameWithoutExtension(Src);
+                    Title = Path.GetFileNameWithoutExtension(Source);
                 Genre = String.Join(";", file.Tag.Genres);
                 if (file.Properties.MediaTypes != MediaTypes.None)
                     Duration = file.Properties.Duration;
                 Height = file.Properties.VideoHeight;
                 Width = file.Properties.VideoWidth;
-                Extension = Path.GetExtension(Src).Remove(0, 1).ToLower();
+                Extension = Path.GetExtension(Source).Remove(0, 1).ToLower();
             }
             catch (UnsupportedFormatException)
             {

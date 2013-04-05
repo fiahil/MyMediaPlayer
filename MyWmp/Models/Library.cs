@@ -29,7 +29,11 @@ namespace MyWmp.Models
         {
             IsLoaded = false;
             Sounds.RemoveAll();
-            var loader = new Loader { Root = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), FileExtension = new[] { ".mp3" } };
+            var loader = new Loader
+                {
+                    Root = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
+                    FileExtension = new[] { ".mp3" }
+                };
             loader.Load();
             foreach (var media in loader.MediaPath)
             {
