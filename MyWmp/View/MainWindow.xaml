@@ -12,17 +12,17 @@
         WindowStyle="None"
         WindowState="{Binding WindowStateNotifier}"
         AllowsTransparency="True"
-        MinWidth="370"
-        MinHeight="94"
+        MinWidth="450"
+        MinHeight="84"
         ResizeMode="CanResizeWithGrip">
     
     <Window.DataContext>
         <viewModel:MainWindowViewModel />
     </Window.DataContext>
-    
+
     <Grid x:Name="MainLayout" Style="{DynamicResource MainRoot}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="22" />
+            <ColumnDefinition Width="20" />
             <ColumnDefinition Width="180" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="20" />
@@ -30,29 +30,27 @@
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="22" />
+            <RowDefinition Height="20" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-            <Rectangle MouseLeftButtonDown="OnMouseLeftButtonDown" Fill="{DynamicResource TitleBrush}" Grid.Row="0" Grid.ColumnSpan="4" />
+        
+        <Rectangle MouseLeftButtonDown="OnMouseLeftButtonDown" Fill="{DynamicResource TitleBrush}" Grid.Row="0" Grid.ColumnSpan="4" />
+        <Image Grid.Column="0" Grid.Row="0" Source="/Resources/Icon.png" Stretch="Fill" />
 
         <Button Content="/Resources/Minimize.png" Style="{DynamicResource Controls}" Grid.Column="3" Click="OnMinimizeButton_Click" />
         <Button Content="/Resources/Maximize.png" Style="{DynamicResource Controls}" Grid.Column="4" Click="OnRestoreButton_Click" />
         <Button Content="/Resources/Close.png" Style="{DynamicResource Controls}" Grid.Column="5" Click="OnCloseButton_Click" />
-        <TabControl TabStripPlacement="Left" Grid.Row="1" Grid.ColumnSpan="6" Style="{DynamicResource TabControl}">
-            <TabItem Header="Library" Style="{DynamicResource TabItem}">
-                <view:LibraryLayout />
-            </TabItem>
-            <TabItem Header="Playback" Style="{DynamicResource TabItem}">
-                <Grid>
-                    <view:MediaLayout Margin="0,0,0,52"  MouseDoubleClick="OnFullScreenCommand"/>
-                    <view:ControlLayout />
-                </Grid>
-            </TabItem>
-        </TabControl>
-        <view:MenuLayout Grid.Column="1" />
-        </Grid>     
-   
-    
+      
+        <view:LibraryLayout x:Name="LibraryLayout" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Visibility="Visible" />
+        <view:MediaLayout x:Name="MediaLayout" Margin="0,0,0,52"  MouseDoubleClick="OnFullScreenCommand" Visibility="Collapsed" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" />
+        <view:ControlLayout x:Name="ControlLayout" Visibility="Collapsed" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" />
+        
+        <Button x:Name="SwitchButton" Content="/Resources/Minimize.png" Height="32" Width="32" Style="{DynamicResource Controls}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0" Click="SwitchButton_OnClick" />
+
+        <view:MenuLayout Grid.Column="1" Grid.Row="0" />
+    </Grid>
+
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
