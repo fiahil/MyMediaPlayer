@@ -14,7 +14,7 @@
         <TabControl x:Name="Music" TabStripPlacement="Left" Style="{DynamicResource TabControl}">
             <TabItem Header="Music" Style="{DynamicResource TabItem}">
                 <Grid>
-                    <DataGrid Margin="0,0,80,0" x:Name="MusicDatagrid" ItemsSource="{Binding LibraryMusics}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+                    <DataGrid Margin="0,0,85,0" x:Name="MusicDatagrid" Style="{DynamicResource Datagrid}" ItemsSource="{Binding LibraryMusics}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False">
                         <DataGrid.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.ContainerStyle>
@@ -25,7 +25,7 @@
                             </GroupStyle>
                         </DataGrid.GroupStyle>
 
-                        <DataGrid.Columns>
+                        <DataGrid.Columns><!--
                             <DataGridTemplateColumn Header="Cover">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -34,7 +34,7 @@
                                         </StackPanel>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                            </DataGridTemplateColumn>-->
 
                             <DataGridTextColumn x:Name="Track" Header="#" Binding="{Binding Track}" Visibility="Visible" />
                             <DataGridTextColumn x:Name="Album" Header="Album" Binding="{Binding Album}" Visibility="Visible" />
@@ -48,9 +48,9 @@
                     </DataGrid>
                     
                     <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="80">
-                        <GroupBox x:Name="TrackGroupBox" Header="Track" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="TrackGroupBox" Header="Track" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox x:Name="TrackFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="TrackFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="TrackFilter" />
@@ -61,7 +61,7 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox x:Name="TrackGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="TrackGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="TrackFilter" />
@@ -72,13 +72,13 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox x:Name="TrackValue" Tag="Track" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="TrackValue" Tag="Track" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox x:Name="ArtistGroupBox" Header="Artist" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="ArtistGroupBox" Header="Artist" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox x:Name="ArtistFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="ArtistFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="ArtistFilter" />
@@ -89,7 +89,7 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox x:Name="ArtistGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="ArtistGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="ArtistFilter" />
@@ -100,13 +100,13 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox x:Name="ArtistValue" Tag="Artist" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="ArtistValue" Tag="Artist" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox x:Name="AlbumGroupBox" Header="Album" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="AlbumGroupBox" Header="Album" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox x:Name="AlbumFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="AlbumFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="AlbumFilter" />
@@ -117,7 +117,7 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox x:Name="AlbumGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="AlbumGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="AlbumFilter" />
@@ -128,13 +128,13 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox x:Name="AlbumValue" Tag="Album" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="AlbumValue" Tag="Album" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox x:Name="TitleGroupBox" Header="Title" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="TitleGroupBox" Header="Title" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox x:Name="TitleFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="TitleFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="TitleFilter" />
@@ -145,7 +145,7 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox x:Name="TitleGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="TitleGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="TitleFilter" />
@@ -156,13 +156,13 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox x:Name="TitleValue" Tag="Title" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="TitleValue" Tag="Title" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox x:Name="DurationGroupBox" Header="Duration" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="DurationGroupBox" Header="Duration" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox x:Name="DurationFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="DurationFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="DurationFilter" />
@@ -173,7 +173,7 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox x:Name="DurationGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="DurationGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="DurationFilter" />
@@ -184,13 +184,13 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox x:Name="DurationValue" Tag="Duration" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="DurationValue" Tag="Duration" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox x:Name="GenreGroupBox" Header="Genre" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="GenreGroupBox" Header="Genre" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox x:Name="GenreFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="GenreFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="GenreFilter" />
@@ -201,7 +201,7 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox x:Name="GenreGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="GenreGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="GenreFilter" />
@@ -212,13 +212,13 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox x:Name="GenreValue" Tag="Genre" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="GenreValue" Tag="Genre" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox x:Name="YearGroupBox" Header="Year" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="YearGroupBox" Header="Year" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox x:Name="YearFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="YearFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="YearFilter" />
@@ -229,7 +229,7 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox x:Name="YearGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="YearGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="YearFilter" />
@@ -240,13 +240,13 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox x:Name="YearValue" Tag="Year" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="YearValue" Tag="Year" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox x:Name="ExtensionGroupBox" Header="Extension" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="ExtensionGroupBox" Header="Extension" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox x:Name="ExtensionFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="ExtensionFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="ExtensionFilter" />
@@ -257,7 +257,7 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox x:Name="ExtensionGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="ExtensionGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
                                             <Binding Path="IsChecked" ElementName="ExtensionFilter" />
@@ -268,7 +268,7 @@
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox x:Name="ExtensionValue" Tag="Extension" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="ExtensionValue" Tag="Extension" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>

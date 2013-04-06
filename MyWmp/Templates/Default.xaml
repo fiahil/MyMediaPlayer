@@ -131,5 +131,16 @@
             <ItemsPresenter />
         </Expander>
     </ControlTemplate>
+    
+    <ControlTemplate x:Key="GroupboxTemplate" TargetType="{x:Type GroupBox}">
+        <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+            <Grid>
+                <Label Foreground="{TemplateBinding Foreground}">
+                    <ContentPresenter ContentSource="Header" Margin="5,0,0,0" />
+                </Label>
+                <ContentPresenter Margin="0,25,0,0" />
+            </Grid>
+        </Border>
+    </ControlTemplate>
 
 </ResourceDictionary>
