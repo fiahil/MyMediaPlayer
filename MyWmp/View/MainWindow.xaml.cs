@@ -57,5 +57,23 @@ namespace MyWmp.View
         {
             Close();
         }
+
+        private void SwitchButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if ((string) this.SwitchButton.Content == "/Resources/Minimize.png")
+            {
+                this.MediaLayout.Visibility = Visibility.Visible;
+                this.ControlLayout.Visibility = Visibility.Visible;
+                this.LibraryLayout.Visibility = Visibility.Collapsed;
+                this.SwitchButton.Content = "/Resources/Maximize.png";
+            }
+            else
+            {
+                this.MediaLayout.Visibility = Visibility.Collapsed;
+                this.ControlLayout.Visibility = Visibility.Collapsed;
+                this.LibraryLayout.Visibility = Visibility.Visible;
+                this.SwitchButton.Content = "/Resources/Minimize.png";
+            }
+        }
     }
 }
