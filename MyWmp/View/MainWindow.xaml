@@ -5,8 +5,10 @@
         xmlns:viewModel="clr-namespace:MyWmp.ViewModel"
 	
         Title="MyWMP"
-        Height="480"
-        Width="850"
+        Height="{Binding HeightNotifier}"
+        Width="{Binding WidthNotifier}"
+        Top="{Binding TopNotifier}"
+        Left="{Binding LeftNotifier}"
         WindowStartupLocation="CenterScreen"
         Icon="/MyWmp;component/Resources/Icon.png"
         WindowStyle="None"

@@ -9,10 +9,10 @@ namespace MyWmp.ViewModel
     {
         public MainWindowViewModel()
         {
-            this.WidthNotifier = 480;
-            this.HeightNotifier = 850;
-            this.TopNotifier = 0;
-            this.LeftNotifier = 0;
+            this.WidthNotifier = 850;
+            this.HeightNotifier = 480;
+            this.TopNotifier = (SystemParameters.VirtualScreenHeight - 480) / 2;
+            this.LeftNotifier = (SystemParameters.VirtualScreenWidth - 850) / 2;
             this.WindowStateNotifier = WindowState.Normal;
             this.FullScreenCommand = new ActionCommand(OnFullScreenCommand);
             this.MinimizeCommand = new ActionCommand(OnMinimizeCommand);
@@ -41,10 +41,7 @@ namespace MyWmp.ViewModel
             this.PropertyChanged(this, new PropertyChangedEventArgs("WidthNotifier"));
             this.PropertyChanged(this, new PropertyChangedEventArgs("HeightNotifier"));
             this.PropertyChanged(this, new PropertyChangedEventArgs("TopNotifier"));
-            this.PropertyChanged(this, new PropertyChangedEventArgs("LeftNotifier"));
-            /*
-            this.WindowStateNotifier = this.WindowStateNotifier == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
-            this.PropertyChanged(this, new PropertyChangedEventArgs("WindowStateNotifier"));*/
+            this.PropertyChanged(this, new PropertyChangedEventArgs("LeftNotifier"));       
         }
 
 
