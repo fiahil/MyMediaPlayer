@@ -18,7 +18,7 @@ namespace MyWmp.ViewModel
         {
             control_ = Control.Instance;
 
-            this.control_.MediaPlay += (sender, args) =>
+            this.control_.PlaybackListRefresh += (sender, args) =>
                 {
                     Name = control_.Playlist.Name;
                     PropertyChanged(this, new PropertyChangedEventArgs("Name"));
@@ -30,6 +30,12 @@ namespace MyWmp.ViewModel
                     PropertyChanged(this, new PropertyChangedEventArgs("Playlist"));
                 };
             Playlist = new ObservableCollection<AMedia>(new List<AMedia>());
+        }
+
+        public void OnPlay(int selectedIndex)
+        {
+            control_.Playlist.Current = Playlist[selectedIndex];
+            control_.Play();
         }
     }
 }

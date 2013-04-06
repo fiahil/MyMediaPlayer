@@ -12,7 +12,7 @@
     
     <StackPanel Orientation="Vertical" Background="White">
         <TextBlock Text="{Binding Name}"/>
-        <ListView ItemsSource="{Binding Playlist}">
+        <ListView ItemsSource="{Binding Playlist}" MouseDoubleClick="Control_OnMouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>

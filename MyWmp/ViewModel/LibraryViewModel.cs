@@ -68,7 +68,7 @@ namespace MyWmp.ViewModel
 
         public void OnPlayLibraryVideos(int selectedIndex)
         {
-            var playlist = new Playlist { Name = "Current" };
+            var playlist = new Playlist { Name = "Current Playlist" };
             playlist.Add(LibraryVideos.GetItemAt(selectedIndex) as AMedia);
             playlist.Current = LibraryVideos.GetItemAt(selectedIndex) as AMedia;
             control_.Playlist = playlist;
@@ -77,7 +77,7 @@ namespace MyWmp.ViewModel
 
         public void OnPlayLibraryMusics(int selectedIndex)
         {
-            var playlist = new Playlist { Name = "Current" };
+            var playlist = new Playlist { Name = "Current Playlist" };
             foreach (var media in LibraryMusics)
             {
                 playlist.Add(media as AMedia);

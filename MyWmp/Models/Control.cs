@@ -23,11 +23,14 @@ namespace MyWmp.Models
         {
             if (this.MediaPlay != null && Playlist != null)
             {
-                this.IsPlaying = true;
                 if (Playlist.Current == null)
                     Playlist.Reset();
                 if (Playlist.Current != null)
-                   this.MediaPlay(this, EventArgs.Empty);
+                {
+                    this.MediaStop(this, EventArgs.Empty);
+                    this.IsPlaying = true;
+                    this.MediaPlay(this, EventArgs.Empty);
+                }
             }
         }
 

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using Microsoft.Expression.Interactivity.Core;
 using MyWmp.Models;
@@ -7,7 +9,7 @@ namespace MyWmp.ViewModel
 {
     class MenuViewModel
     {
-        private Control control_;
+        private readonly Control control_;
 
         public MenuViewModel()
         {
@@ -78,9 +80,36 @@ namespace MyWmp.ViewModel
             this.control_.Play();
         }
 
-        private void OnOpen(object stream)
+        private void OnOpen(object fileNames)
         {
-            throw new System.NotImplementedException();
+            var soundExt = new string[] {".mp3"};
+            var videoExt = new string[] { ".mp4" };
+            var pictureExt = new string[] { ".jpg" };
+            var loader = new Loader() { FileExtension = new string[] { ".mp3", ".mp4", ".jpg" } };
+            var playlist = control_.Playlist ?? new Playlist() {Name = "Current Playlist"};
+            foreach (var file in fileNames as string[])
+            {
+                loader.Root = file;
+                loader.Load();
+                foreach (var media in loader.MediaPath)
+                {
+                    AMedia item = null;
+                    var ext = new FileInfo(media).Extension.ToLower();
+                    if (soundExt.Contains(ext))
+                    {
+                        item = new Song(media);
+                    }
+                    else if (videoExt.Contains(ext))
+                        item = new Video(media);
+                    else if (pictureExt.Contains(ext))
+                    {
+                        item = new Picture(media);
+                    }
+                    if (item != null)
+                        playlist.Add(item);
+                }
+            }
+            control_.Playlist = playlist;
         }
 
         private void OnQuit()
