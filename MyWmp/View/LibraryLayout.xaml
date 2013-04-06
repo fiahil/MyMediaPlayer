@@ -14,7 +14,7 @@
         <TabControl x:Name="Music" TabStripPlacement="Left" Style="{DynamicResource TabControl}">
             <TabItem Header="Music" Style="{DynamicResource TabItem}">
                 <Grid>
-                    <DataGrid Margin="0,0,85,0" x:Name="MusicDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" RowStyle="{DynamicResource DatagridRow}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryMusics}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False">
+                    <DataGrid Margin="0,0,85,0" x:Name="MusicDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" RowStyle="{DynamicResource DatagridRow}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryMusics}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Musics_OnMouseDoubleClick">
                         <DataGrid.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.ContainerStyle>
@@ -36,14 +36,14 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>-->
 
-                            <DataGridTextColumn x:Name="Track" Header="#" Binding="{Binding Track}" Visibility="Visible" />
-                            <DataGridTextColumn x:Name="Album" Header="Album" Binding="{Binding Album}" Visibility="Visible" />
-                            <DataGridTextColumn x:Name="Artist" Header="Artist" Binding="{Binding Artist}" Visibility="Visible" />
-                            <DataGridTextColumn x:Name="Title" Header="Title" Binding="{Binding Title}" />
-                            <DataGridTextColumn x:Name="Duration" Header="Duration" Binding="{Binding Duration}" Visibility="Visible" />
-                            <DataGridTextColumn x:Name="Genre" Header="Genre" Binding="{Binding Genre}" Visibility="Visible" />
-                            <DataGridTextColumn x:Name="Year" Header="Year" Binding="{Binding Year}" Visibility="Visible" />
-                            <DataGridTextColumn x:Name="Type" Header="Type" Binding="{Binding Extension}" Visibility="Visible" />
+                            <DataGridTextColumn x:Name="Track" Header="#" Binding="{Binding Track, Mode=OneWay}" Visibility="Visible" />
+                            <DataGridTextColumn x:Name="Album" Header="Album" Binding="{Binding Album, Mode=OneWay}" Visibility="Visible" />
+                            <DataGridTextColumn x:Name="Artist" Header="Artist" Binding="{Binding Artist, Mode=OneWay}" Visibility="Visible" />
+                            <DataGridTextColumn x:Name="Title" Header="Title" Binding="{Binding Title, Mode=OneWay}" />
+                            <DataGridTextColumn x:Name="Duration" Header="Duration" Binding="{Binding Duration, Mode=OneWay}" Visibility="Visible" />
+                            <DataGridTextColumn x:Name="Genre" Header="Genre" Binding="{Binding Genre, Mode=OneWay}" Visibility="Visible" />
+                            <DataGridTextColumn x:Name="Year" Header="Year" Binding="{Binding Year, Mode=OneWay}" Visibility="Visible" />
+                            <DataGridTextColumn x:Name="Type" Header="Type" Binding="{Binding Extension, Mode=OneWay}" Visibility="Visible" />
                         </DataGrid.Columns>
                     </DataGrid>
                     
@@ -278,13 +278,13 @@
             <TabItem Header="Video" Style="{DynamicResource TabItem}">
                 <DataGrid ItemsSource="{Binding LibraryVideos}" AutoGenerateColumns="False" MouseDoubleClick="Videos_OnMouseDoubleClick">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
-                        <DataGridTextColumn Header="Length" Binding="{Binding Duration}" />
-                        <DataGridTextColumn Header="Year" Binding="{Binding Track}" />
-                        <DataGridTextColumn Header="Genre" Binding="{Binding Genre}" />
-                        <DataGridTextColumn Header="Type" Binding="{Binding Extension}" />
-                        <DataGridTextColumn Header="Height" Binding="{Binding Height}" />
-                        <DataGridTextColumn Header="Width" Binding="{Binding Width}" />
+                        <DataGridTextColumn Header="Title" Binding="{Binding Title, Mode=OneWay}" />
+                        <DataGridTextColumn Header="Length" Binding="{Binding Duration, Mode=OneWay}" />
+                        <DataGridTextColumn Header="Year" Binding="{Binding Track, Mode=OneWay}" />
+                        <DataGridTextColumn Header="Genre" Binding="{Binding Genre, Mode=OneWay}" />
+                        <DataGridTextColumn Header="Type" Binding="{Binding Extension, Mode=OneWay}" />
+                        <DataGridTextColumn Header="Height" Binding="{Binding Height, Mode=OneWay}" />
+                        <DataGridTextColumn Header="Width" Binding="{Binding Width, Mode=OneWay}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -292,10 +292,10 @@
             <TabItem Header="Picture" Style="{DynamicResource TabItem}">
                 <DataGrid ItemsSource="{Binding LibraryPictures}" SelectionUnit="FullRow" AutoGenerateColumns="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
-                        <DataGridTextColumn Header="Length" Binding="{Binding Duration}" />
-                        <DataGridTextColumn Header="Year" Binding="{Binding Track}" />
-                        <DataGridTextColumn Header="Genre" Binding="{Binding Genre}" />
+                        <DataGridTextColumn Header="Title" Binding="{Binding Title, Mode=OneWay}" />
+                        <DataGridTextColumn Header="Length" Binding="{Binding Duration, Mode=OneWay}" />
+                        <DataGridTextColumn Header="Year" Binding="{Binding Track, Mode=OneWay}" />
+                        <DataGridTextColumn Header="Genre" Binding="{Binding Genre, Mode=OneWay}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
