@@ -16,7 +16,16 @@ namespace MyWmp.Behaviors
                 {
                     AutoReset = true
                 };
-            this.timer_.Elapsed += (sender, args) => Dispatcher.Invoke(() => this.Position = this.AssociatedObject.Position.TotalSeconds);
+            this.timer_.Elapsed += (sender, args) =>
+                {
+                    try
+                    {
+                        Dispatcher.Invoke(() => this.Position = this.AssociatedObject.Position.TotalSeconds);
+                    }
+                    catch (Exception)
+                    {
+                    }
+                };
         }
 
         protected override void OnAttached()
