@@ -14,7 +14,7 @@
         <TabControl x:Name="Music" TabStripPlacement="Left" Style="{DynamicResource TabControl}">
             <TabItem Header="Music" Style="{DynamicResource TabItem}">
                 <Grid>
-                    <DataGrid Margin="0,0,85,0" x:Name="MusicDatagrid" Style="{DynamicResource Datagrid}" ItemsSource="{Binding LibraryMusics}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False">
+                    <DataGrid Margin="0,0,85,0" x:Name="MusicDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" ItemsSource="{Binding LibraryMusics}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False">
                         <DataGrid.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.ContainerStyle>
