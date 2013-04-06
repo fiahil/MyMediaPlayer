@@ -45,8 +45,12 @@ namespace MyWmp.View
 
         private void OnRestoreButton_Click(object sender, RoutedEventArgs e)
         {
-            if (((MainWindowViewModel)this.DataContext).RestoreCommand.CanExecute(null))
-                ((MainWindowViewModel)this.DataContext).RestoreCommand.Execute(null);
+            this.Width = (this.Width == SystemParameters.VirtualScreenWidth) ? (this.MinWidth) : (SystemParameters.VirtualScreenWidth);
+            this.Height = (this.Height == SystemParameters.VirtualScreenHeight - 40) ? (this.MinHeight) : (SystemParameters.VirtualScreenHeight - 40);
+            this.Top = 0;
+            this.Left = 0;
+            //   if (((MainWindowViewModel)this.DataContext).RestoreCommand.CanExecute(null))
+            //    ((MainWindowViewModel)this.DataContext).RestoreCommand.Execute(null);
         }
 
         private void OnCloseButton_Click(object sender, RoutedEventArgs e)
