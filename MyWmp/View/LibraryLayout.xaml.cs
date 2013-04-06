@@ -73,22 +73,22 @@ namespace MyWmp.View
 
         private void ListPlaylist_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ((LibraryViewModel) DataContext).OnPlaylistChanged(ListPlaylist.SelectedIndex);
+            libraryViewModel_.OnPlaylistChanged(ListPlaylist.SelectedIndex);
         }
 
         private void Playlists_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ((LibraryViewModel) DataContext).OnPlayLibraryPlaylist(ListPlaylist.SelectedIndex, ((DataGrid)sender).SelectedIndex);
+            libraryViewModel_.OnPlayLibraryPlaylist(ListPlaylist.SelectedIndex, ((DataGrid)sender).SelectedIndex);
         }
 
         private void Videos_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ((LibraryViewModel) DataContext).OnPlayLibraryVideos(((DataGrid)sender).SelectedIndex);
+            libraryViewModel_.OnPlayLibraryVideos(((DataGrid)sender).SelectedIndex);
         }
 
         private void Musics_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ((LibraryViewModel)DataContext).OnPlayLibraryMusics(((DataGrid)sender).SelectedIndex);
+            libraryViewModel_.OnPlayLibraryMusics(((DataGrid)sender).SelectedIndex);
         }
     }
 }

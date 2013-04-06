@@ -16,7 +16,7 @@ namespace MyWmp.ViewModel
 
         public ListCollectionView LibraryMusics { get; private set; }
         public ListCollectionView LibraryVideos { get; private set; }
-        public ArrayList LibraryPictures { get; private set; }
+        public ListCollectionView LibraryPictures { get; private set; }
         public ObservableCollection<Playlist> Playlists { get; private set; }
         public ListCollectionView LibraryPlaylist { get; private set; }
 
@@ -33,7 +33,7 @@ namespace MyWmp.ViewModel
             library_.Load();
             LibraryMusics = new ListCollectionView(library_.Sounds.ToArray());
             LibraryVideos = new ListCollectionView(library_.Videos.ToArray());
-            LibraryPictures = new ArrayList(library_.Pictures.ToArray());
+            LibraryPictures = new ListCollectionView(library_.Pictures.ToArray());
             Playlists = library_.Playlists;
 
             this.FilterCommand = new ActionCommand(OnFilter);
