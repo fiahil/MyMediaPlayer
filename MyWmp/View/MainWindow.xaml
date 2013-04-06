@@ -6,7 +6,7 @@
 	
         Title="MyWMP"
         Height="480"
-        Width="854"
+        Width="850"
         WindowStartupLocation="CenterScreen"
         Icon="/MyWmp;component/Resources/Icon.png"
         WindowStyle="None"
