@@ -10,26 +10,27 @@
         <viewModel:MenuViewModel />
     </UserControl.DataContext>
 
-    <Menu x:Name="MenuRoot" VerticalAlignment="Top" HorizontalAlignment="Left">
-        <MenuItem Header="_Media">
-            <MenuItem Header="_Open" Click="MenuItem_OnClick" />
-            <MenuItem Header="_Quit" Command="{Binding QuitCommand}" />
+    <Menu x:Name="MenuRoot" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource Menu}">
+        <MenuItem Header="_Media" Style="{DynamicResource MenuItem}">
+            <MenuItem Header="_Open" Click="MenuItem_OnClick" Style="{DynamicResource MenuItem}" />
+            <MenuItem Header="_Quit" Command="{Binding QuitCommand}" Style="{DynamicResource MenuItem}" />
         </MenuItem>
-        <MenuItem Header="_Playback">
-            <MenuItem Header="_Play" Command="{Binding PlayCommand}" />
-            <MenuItem Header="P_ause" Command="{Binding PauseCommand}" />
-            <MenuItem Header="_Stop" Command="{Binding StopCommand}" />
-            <MenuItem Header="_Next" Command="{Binding NextCommand}" />
-            <MenuItem Header="_Prev" Command="{Binding PrevCommand}" />
-            <Separator />
-            <MenuItem Header="Speed _Up" Command="{Binding SpeedUpCommand}" />
-            <MenuItem Header="Speed _Down" Command="{Binding SpeedDownCommand}" />
-            <Separator />
-            <MenuItem Header="Shu_ffle" Command="{Binding ShuffleCommand}" />
-            <MenuItem Header="Repea_t" Command="{Binding RepeatCommand}" />
+        <MenuItem Header="_Playback" Style="{DynamicResource MenuItem}">
+            <MenuItem Header="_Play" Command="{Binding PlayCommand}" Style="{DynamicResource MenuItem}" />
+            <MenuItem Header="P_ause" Command="{Binding PauseCommand}" Style="{DynamicResource MenuItem}" />
+            <MenuItem Header="_Stop" Command="{Binding StopCommand}" Style="{DynamicResource MenuItem}" />
+            <MenuItem Header="_Next" Command="{Binding NextCommand}" Style="{DynamicResource MenuItem}" />
+            <MenuItem Header="_Prev" Command="{Binding PrevCommand}" Style="{DynamicResource MenuItem}" />
+            <Separator Style="{DynamicResource Separator}" />
+            <MenuItem Header="Speed _Up" Command="{Binding SpeedUpCommand}" Style="{DynamicResource MenuItem}" />
+            <MenuItem Header="Speed _Down" Command="{Binding SpeedDownCommand}" Style="{DynamicResource MenuItem}" />
+            <MenuItem Header="_Reset Speed" Command="{Binding SpeedResetCommand}" Style="{DynamicResource MenuItem}" />
+            <Separator Style="{DynamicResource Separator}" />
+            <MenuItem Header="Shu_ffle" Command="{Binding ShuffleCommand}" Style="{DynamicResource MenuItem}" />
+            <MenuItem Header="Repea_t" Command="{Binding RepeatCommand}" Style="{DynamicResource MenuItem}" />
         </MenuItem>
-        <MenuItem Header="_Settings">
-            <MenuItem Header="Theme" />
+        <MenuItem Header="_Settings" Style="{DynamicResource MenuItem}">
+            <MenuItem Header="Theme" Style="{DynamicResource MenuItem}" />
         </MenuItem>
     </Menu>
 </UserControl>

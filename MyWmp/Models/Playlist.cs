@@ -84,6 +84,15 @@ namespace MyWmp.Models
             }
         }
 
+        public void Add(IList list)
+        {
+            medias_.AddRange(list);
+            shuffleList_.AddRange(list);
+            RandomList(shuffleList_);
+            if (medias_.Count == 1)
+                Current = (AMedia) medias_[0];
+        }
+
         public void Remove(AMedia index)
         {
             medias_.Remove(index);

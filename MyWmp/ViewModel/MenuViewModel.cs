@@ -23,6 +23,24 @@ namespace MyWmp.ViewModel
             this.NextCommand = new ActionCommand(OnNext);
             this.ShuffleCommand = new ActionCommand(OnShuffle);
             this.RepeatCommand = new ActionCommand(OnRepeat);
+            this.SpeedUpCommand = new ActionCommand(OnSpeedUp);
+            this.SpeedDownCommand = new ActionCommand(OnSpeedDown);
+            this.SpeedResetCommand = new ActionCommand(OnSpeedReset);
+        }
+
+        private void OnSpeedReset()
+        {
+            this.control_.SpeedReset();
+        }
+
+        private void OnSpeedDown()
+        {
+            this.control_.SpeedDown();
+        }
+
+        private void OnSpeedUp()
+        {
+            this.control_.SpeedUp();
         }
 
         private void OnRepeat()
@@ -87,5 +105,6 @@ namespace MyWmp.ViewModel
         public ICommand RepeatCommand { get; private set; }
         public ICommand SpeedUpCommand { get; private set; }
         public ICommand SpeedDownCommand { get; private set; }
+        public ICommand SpeedResetCommand { get; private set; }
     }
 }

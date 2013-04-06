@@ -16,15 +16,7 @@ namespace MyWmp.Models
             this.IsPlaying = false;
             this.IsShuffling = false;
             this.IsRepeatingAll = false;
-
-            this.Playlist = new Playlist();
-
-            var loader = new Loader {Root = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), FileExtension = new[]{".mp3", ".mp4", ".avi", ".jpg", ".png"}};
-            loader.Load();
-            foreach (var media in loader.MediaPath)
-            {
-                this.Playlist.Add(new Picture(media));
-            }
+            this.Speed = 1;
         }
 
         public void Play()
@@ -103,15 +95,40 @@ namespace MyWmp.Models
                Playlist.RepeatAll = IsRepeatingAll;
         }
 
+        public void SpeedUp()
+        {
+            if (this.Speed < 4)
+                this.Speed += 0.25;
+            if (this.MediaSpeed != null)
+                this.MediaSpeed(this, EventArgs.Empty);
+        }
+
+        public void SpeedDown()
+        {
+            if (this.Speed > 0.25)
+                this.Speed -= 0.25;
+            if (this.MediaSpeed != null)
+                this.MediaSpeed(this, EventArgs.Empty);
+        }
+
+        public void SpeedReset()
+        {
+            this.Speed = 1;
+            if (this.MediaSpeed != null)
+                this.MediaSpeed(this, EventArgs.Empty);
+        }
+
         public event EventHandler MediaPlay;
         public event EventHandler MediaPause;
         public event EventHandler MediaStop;
+        public event EventHandler MediaSpeed;
 
         public Playlist Playlist { get; set; }
+
+        public double Speed { get; private set; }
 
         public bool IsPlaying { get; private set; }
         public bool IsShuffling { get; private set; }
         public bool IsRepeatingAll { get; private set; }
-
     }
 }

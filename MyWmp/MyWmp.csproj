@@ -92,7 +92,9 @@
     <Compile Include="Models\Song.cs" />
     <Compile Include="Models\Loader.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="UIElements\FormatedSlider.cs" />
     <Compile Include="ViewModel\ControlViewModel.cs" />
+    <Compile Include="ViewModel\PlaybackListViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\LibraryViewModel.cs" />
     <Compile Include="ViewModel\MediaViewModel.cs" />
@@ -105,6 +107,9 @@
     </Compile>
     <Compile Include="View\MenuLayout.xaml.cs">
       <DependentUpon>MenuLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PlaybackList.xaml.cs">
+      <DependentUpon>PlaybackList.xaml</DependentUpon>
     </Compile>
     <Page Include="Templates\Default.xaml">
       <SubType>Designer</SubType>
@@ -142,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MenuLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PlaybackList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,7 +217,9 @@
     <Resource Include="Resources\AlbumArt.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
+    <Resource Include="Resources\Close.png" />
+    <Resource Include="Resources\Maximize.png" />
+    <Resource Include="Resources\Minimize.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

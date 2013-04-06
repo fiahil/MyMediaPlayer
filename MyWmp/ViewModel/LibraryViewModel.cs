@@ -20,10 +20,13 @@ namespace MyWmp.ViewModel
         public ListCollectionView LibraryPlaylist { get; private set; }
 
         private readonly Library library_;
+        private readonly Control control_;
 
         public LibraryViewModel()
         {
             AddPlaylistCommand = new ActionCommand(AddPlaylist);
+
+            control_ = Control.Instance;
 
             library_ = Library.Instance;
             library_.Load();
@@ -47,6 +50,39 @@ namespace MyWmp.ViewModel
         {
             LibraryPlaylist = new ListCollectionView(Playlists[selectedIndex].ToArray());
             PropertyChanged(this, new PropertyChangedEventArgs("LibraryPlaylist"));
+        }
+
+        public void OnPlayLibraryPlaylist(int selectedPlaylist, int selectedItem)
+        {
+            var playlist = new Playlist {Name = Playlists[selectedPlaylist].Name};
+            foreach (var media in LibraryPlaylist)
+            {
+                playlist.Add(media as AMedia);
+            }
+            playlist.Current = LibraryPlaylist.GetItemAt(selectedItem) as AMedia;
+            control_.Playlist = playlist;
+            control_.Play();
+        }
+
+        public void OnPlayLibraryVideos(int selectedIndex)
+        {
+            var playlist = new Playlist { Name = "Current" };
+            playlist.Add(LibraryVideos.GetItemAt(selectedIndex) as AMedia);
+            playlist.Current = LibraryVideos.GetItemAt(selectedIndex) as AMedia;
+            control_.Playlist = playlist;
+            control_.Play();
+        }
+
+        public void OnPlayLibraryMusics(int selectedIndex)
+        {
+            var playlist = new Playlist { Name = "Current" };
+            foreach (var media in LibraryMusics)
+            {
+                playlist.Add(media as AMedia);
+            }
+            playlist.Current = LibraryMusics.GetItemAt(selectedIndex) as AMedia;
+            control_.Playlist = playlist;
+            control_.Play();
         }
     }
 }

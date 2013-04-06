@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:view="clr-namespace:MyWmp.View"
         xmlns:viewModel="clr-namespace:MyWmp.ViewModel"
-		MouseLeftButtonDown="OnMouseLeftButtonDown"
+	
         Title="MyWMP"
         Height="480"
         Width="854"
@@ -11,29 +11,50 @@
         Icon="/MyWmp;component/Resources/Icon.png"
         WindowStyle="None"
         WindowState="{Binding WindowStateNotifier}"
-        AllowsTransparency="True" MinWidth="380" MinHeight="90">
+        AllowsTransparency="True"
+        MinWidth="370"
+        MinHeight="94"
+        ResizeMode="CanResizeWithGrip">
     
     <Window.DataContext>
         <viewModel:MainWindowViewModel />
     </Window.DataContext>
     
     <Grid x:Name="MainLayout" Style="{DynamicResource MainRoot}">
-        <TabControl TabStripPlacement="Left">
-            <TabItem Header="Library">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="22" />
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+            <Rectangle MouseLeftButtonDown="OnMouseLeftButtonDown" Fill="{DynamicResource TitleBrush}" Grid.Row="0" Grid.ColumnSpan="4" />
+
+        <Button Content="/Resources/Minimize.png" Style="{DynamicResource Controls}" Grid.Column="3" Click="OnMinimizeButton_Click" />
+        <Button Content="/Resources/Maximize.png" Style="{DynamicResource Controls}" Grid.Column="4" Click="OnRestoreButton_Click" />
+        <Button Content="/Resources/Close.png" Style="{DynamicResource Controls}" Grid.Column="5" Click="OnCloseButton_Click" />
+        <TabControl TabStripPlacement="Left" Grid.Row="1" Grid.ColumnSpan="6" Style="{DynamicResource TabControl}">
+            <TabItem Header="Library" Style="{DynamicResource TabItem}">
                 <Grid>
                     <view:LibraryLayout />
                     <view:ControlLayout/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Playback">
+            <TabItem Header="Playback" Style="{DynamicResource TabItem}">
                 <Grid>
-                    <view:MediaLayout Margin="0,0,0,50"  MouseDoubleClick="OnFullScreenCommand"/>
+                    <view:MediaLayout Margin="0,0,0,52"  MouseDoubleClick="OnFullScreenCommand"/>
                     <view:ControlLayout />
                 </Grid>
             </TabItem>
         </TabControl>
-        <view:MenuLayout Visibility="Hidden"/>
-    </Grid>
+        <view:MenuLayout Grid.Column="1" />
+        </Grid>     
+   
     
     <Window.Resources>
         <ResourceDictionary>

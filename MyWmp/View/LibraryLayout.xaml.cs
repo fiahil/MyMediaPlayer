@@ -20,9 +20,19 @@ namespace MyWmp.View
             ((LibraryViewModel) DataContext).OnPlaylistChanged(ListPlaylist.SelectedIndex);
         }
 
-        private void Control_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void Playlists_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            throw new System.NotImplementedException();
+            ((LibraryViewModel) DataContext).OnPlayLibraryPlaylist(ListPlaylist.SelectedIndex, ((DataGrid)sender).SelectedIndex);
+        }
+
+        private void Videos_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ((LibraryViewModel) DataContext).OnPlayLibraryVideos(((DataGrid)sender).SelectedIndex);
+        }
+
+        private void Musics_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ((LibraryViewModel)DataContext).OnPlayLibraryMusics(((DataGrid)sender).SelectedIndex);
         }
     }
 }

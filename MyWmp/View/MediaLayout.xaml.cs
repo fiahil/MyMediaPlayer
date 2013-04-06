@@ -21,6 +21,7 @@ namespace MyWmp.View
             this.viewModel_.PlayRequest += (sender, args) => this.Media.Play();
             this.viewModel_.PauseRequest += (sender, args) => this.Media.Pause();
             this.viewModel_.StopRequest += (sender, args) => this.Media.Stop();
+            this.viewModel_.SpeedRequest += (sender, args) => this.Media.SpeedRatio = this.viewModel_.Speed;
         }
 
         private void TimeSlider_OnDragStarted(object sender, DragStartedEventArgs e)
