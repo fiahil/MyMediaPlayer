@@ -49,7 +49,7 @@
         
         <Button x:Name="SwitchButton" Content="/Resources/Minimize.png" Height="50" Width="50" Style="{DynamicResource Controls}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0" Click="SwitchButton_OnClick" />
 
-        <view:PlaybackList Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" HorizontalAlignment="Right" Width="200"/>
+        <!--<view:PlaybackList Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" HorizontalAlignment="Right" Width="200"/>-->
         <view:MenuLayout Grid.Column="1" Grid.Row="0" />
     </Grid>
 

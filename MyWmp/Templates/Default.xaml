@@ -142,5 +142,37 @@
             </Grid>
         </Border>
     </ControlTemplate>
+    
+    <ControlTemplate x:Key="ScrollBarTemplate" TargetType="{x:Type ScrollBar}">
+        <Track Name="PART_Track" IsDirectionReversed="true" Width="{TemplateBinding Width}" MinWidth="{TemplateBinding MinWidth}">
+            <Track.DecreaseRepeatButton>
+                <RepeatButton Width="{TemplateBinding Width}" MinWidth="{TemplateBinding MinWidth}" Command="ScrollBar.PageUpCommand" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <RepeatButton.Template>
+                        <ControlTemplate>
+                            <Border Background="Transparent" />
+                        </ControlTemplate>
+                    </RepeatButton.Template>
+                </RepeatButton>
+            </Track.DecreaseRepeatButton>
+            <Track.Thumb>
+                <Thumb Width="{TemplateBinding Width}" MinWidth="{TemplateBinding MinWidth}" Background="{TemplateBinding Foreground}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <Thumb.Template>
+                        <ControlTemplate>
+                            <Rectangle Fill="{TemplateBinding Background}" MinWidth="{TemplateBinding MinWidth}" Width="{TemplateBinding Width}" />
+                        </ControlTemplate>
+                    </Thumb.Template>
+                </Thumb>
+            </Track.Thumb>
+            <Track.IncreaseRepeatButton>
+                <RepeatButton Width="{TemplateBinding Width}" MinWidth="{TemplateBinding MinWidth}" Command="ScrollBar.PageDownCommand" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <RepeatButton.Template>
+                        <ControlTemplate>
+                            <Border Background="Transparent" />
+                        </ControlTemplate>
+                    </RepeatButton.Template>
+                </RepeatButton>
+            </Track.IncreaseRepeatButton>
+        </Track>
+    </ControlTemplate>
 
 </ResourceDictionary>
