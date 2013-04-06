@@ -123,7 +123,15 @@ namespace MyWmp.Models
         public event EventHandler MediaStop;
         public event EventHandler MediaSpeed;
 
-        public Playlist Playlist { get; set; }
+        public event EventHandler PlaybackListRefresh;
+
+        private Playlist playlist_;
+        public Playlist Playlist {
+            get { return playlist_; }
+            set { playlist_ = value;
+                if (this.PlaybackListRefresh != null) this.PlaybackListRefresh(this, EventArgs.Empty);
+            }
+        }
 
         public double Speed { get; private set; }
 

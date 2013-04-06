@@ -27,8 +27,8 @@ namespace MyWmp.View
                 f.ShowDialog();
                 if (f.FileNames.Any())
                 {
-                    if (((MenuViewModel) this.DataContext).OpenCommand.CanExecute(f))
-                        ((MenuViewModel) this.DataContext).OpenCommand.Execute(f);
+                    if (((MenuViewModel) this.DataContext).OpenCommand.CanExecute(f.FileNames))
+                        ((MenuViewModel) this.DataContext).OpenCommand.Execute(f.FileNames);
                 }
         }
     }
