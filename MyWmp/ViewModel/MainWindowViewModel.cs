@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows.Input;
 using System.Windows;
 using Microsoft.Expression.Interactivity.Core;
@@ -34,10 +35,10 @@ namespace MyWmp.ViewModel
 
         private void OnRestoreCommand()
         {
-            this.WidthNotifier = (this.WidthNotifier == SystemParameters.VirtualScreenWidth) ? (850) : (SystemParameters.VirtualScreenWidth);
-            this.HeightNotifier = (this.HeightNotifier == SystemParameters.VirtualScreenHeight - 40) ? (450) : (SystemParameters.VirtualScreenHeight - 40);
-            this.TopNotifier = (this.TopNotifier == 0) ? ((SystemParameters.VirtualScreenHeight - 480) / 2) : (0);
-            this.LeftNotifier = (this.LeftNotifier == 0) ? ((SystemParameters.VirtualScreenWidth - 850) / 2) : (0);
+            this.WidthNotifier = (Math.Abs(this.WidthNotifier - SystemParameters.VirtualScreenWidth) < 0.01) ? (850) : (SystemParameters.VirtualScreenWidth);
+            this.HeightNotifier = (Math.Abs(this.HeightNotifier - (SystemParameters.VirtualScreenHeight - 40)) < 0.01) ? (450) : (SystemParameters.VirtualScreenHeight - 40);
+            this.TopNotifier = (Math.Abs(this.TopNotifier - 0) < 0.01) ? ((SystemParameters.VirtualScreenHeight - 480) / 2) : (0);
+            this.LeftNotifier = (Math.Abs(this.LeftNotifier - 0) < 0.01) ? ((SystemParameters.VirtualScreenWidth - 850) / 2) : (0);
             this.PropertyChanged(this, new PropertyChangedEventArgs("WidthNotifier"));
             this.PropertyChanged(this, new PropertyChangedEventArgs("HeightNotifier"));
             this.PropertyChanged(this, new PropertyChangedEventArgs("TopNotifier"));
@@ -45,11 +46,11 @@ namespace MyWmp.ViewModel
         }
 
 
-        public double WidthNotifier { get; set; }
-        public double HeightNotifier { get; set; }
-        public double TopNotifier { get; set; }
-        public double LeftNotifier { get; set; }
-        public WindowState WindowStateNotifier { get; set; }
+        public double WidthNotifier { get; private set; }
+        public double HeightNotifier { get; private set; }
+        public double TopNotifier { get; private set; }
+        public double LeftNotifier { get; private set; }
+        public WindowState WindowStateNotifier { get; private set; }
 
         public ICommand FullScreenCommand { get; private set; }
         public ICommand MinimizeCommand { get; private set; }
