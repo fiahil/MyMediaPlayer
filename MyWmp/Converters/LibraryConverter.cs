@@ -10,6 +10,7 @@ namespace MyWmp.Converters
         public bool Group { get; set; }
         public string Value { get; set; }
         public string Sender { get; set; }
+        public string Library { get; set; }
     }
 
     class LibraryConverter : IMultiValueConverter
@@ -21,7 +22,8 @@ namespace MyWmp.Converters
                     Filter = (bool) values[0],
                     Group = (bool) values[1],
                     Value = (string) values[2],
-                    Sender = (string) values[3]
+                    Sender = (string) values[3],
+                    Library = (string) values[4]
                 };
         }
 

@@ -26,7 +26,7 @@
                         </DataGrid.GroupStyle>
 
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn Header="Album">
+                            <DataGridTemplateColumn Header="Cover">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
@@ -36,19 +36,47 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            <DataGridTextColumn Header="#" Binding="{Binding Track}" Visibility="Visible" />
-                            <DataGridTextColumn Header="Album" Binding="{Binding Album}" Visibility="Visible" />
+                            <DataGridTextColumn x:Name="Track" Header="#" Binding="{Binding Track}" Visibility="Visible" />
+                            <DataGridTextColumn x:Name="Album" Header="Album" Binding="{Binding Album}" Visibility="Visible" />
                             <DataGridTextColumn x:Name="Artist" Header="Artist" Binding="{Binding Artist}" Visibility="Visible" />
-                            <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
-                            <DataGridTextColumn Header="Length" Binding="{Binding Duration}" Visibility="Visible" />
-                            <DataGridTextColumn Header="Genre" Binding="{Binding Genre}" Visibility="Visible" />
-                            <DataGridTextColumn Header="Year" Binding="{Binding Year}" Visibility="Visible" />
-                            <DataGridTextColumn Header="Type" Binding="{Binding Extension}" Visibility="Visible" />
+                            <DataGridTextColumn x:Name="Title" Header="Title" Binding="{Binding Title}" />
+                            <DataGridTextColumn x:Name="Duration" Header="Duration" Binding="{Binding Duration}" Visibility="Visible" />
+                            <DataGridTextColumn x:Name="Genre" Header="Genre" Binding="{Binding Genre}" Visibility="Visible" />
+                            <DataGridTextColumn x:Name="Year" Header="Year" Binding="{Binding Year}" Visibility="Visible" />
+                            <DataGridTextColumn x:Name="Type" Header="Type" Binding="{Binding Extension}" Visibility="Visible" />
                         </DataGrid.Columns>
                     </DataGrid>
                     
                     <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="80">
-                        <GroupBox x:Name="ArtistGroupBox" Header="Artist">
+                        <GroupBox x:Name="TrackGroupBox" Header="Track" Tag="Music">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox x:Name="TrackFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="TrackFilter" />
+                                            <Binding Path="IsChecked" ElementName="TrackGroup" />
+                                            <Binding Path="Text" ElementName="TrackValue" />
+                                            <Binding Path="Header" ElementName="TrackGroupBox" />
+                                            <Binding Path="Tag" ElementName="TrackGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox x:Name="TrackGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="TrackFilter" />
+                                            <Binding Path="IsChecked" ElementName="TrackGroup" />
+                                            <Binding Path="Text" ElementName="TrackValue" />
+                                            <Binding Path="Header" ElementName="TrackGroupBox" />
+                                            <Binding Path="Tag" ElementName="TrackGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox x:Name="TrackValue" Tag="Track" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox x:Name="ArtistGroupBox" Header="Artist" Tag="Music">
                             <StackPanel Orientation="Vertical">
                                 <CheckBox x:Name="ArtistFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
@@ -57,6 +85,7 @@
                                             <Binding Path="IsChecked" ElementName="ArtistGroup" />
                                             <Binding Path="Text" ElementName="ArtistValue" />
                                             <Binding Path="Header" ElementName="ArtistGroupBox" />
+                                            <Binding Path="Tag" ElementName="ArtistGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
@@ -67,10 +96,179 @@
                                             <Binding Path="IsChecked" ElementName="ArtistGroup" />
                                             <Binding Path="Text" ElementName="ArtistValue" />
                                             <Binding Path="Header" ElementName="ArtistGroupBox" />
+                                            <Binding Path="Tag" ElementName="ArtistGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox x:Name="ArtistValue" TextChanged="ArtistValue_OnTextChanged" />
+                                <TextBox x:Name="ArtistValue" Tag="Artist" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox x:Name="AlbumGroupBox" Header="Album" Tag="Music">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox x:Name="AlbumFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="AlbumFilter" />
+                                            <Binding Path="IsChecked" ElementName="AlbumGroup" />
+                                            <Binding Path="Text" ElementName="AlbumValue" />
+                                            <Binding Path="Header" ElementName="AlbumGroupBox" />
+                                            <Binding Path="Tag" ElementName="AlbumGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox x:Name="AlbumGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="AlbumFilter" />
+                                            <Binding Path="IsChecked" ElementName="AlbumGroup" />
+                                            <Binding Path="Text" ElementName="AlbumValue" />
+                                            <Binding Path="Header" ElementName="AlbumGroupBox" />
+                                            <Binding Path="Tag" ElementName="AlbumGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox x:Name="AlbumValue" Tag="Album" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox x:Name="TitleGroupBox" Header="Title" Tag="Music">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox x:Name="TitleFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="TitleFilter" />
+                                            <Binding Path="IsChecked" ElementName="TitleGroup" />
+                                            <Binding Path="Text" ElementName="TitleValue" />
+                                            <Binding Path="Header" ElementName="TitleGroupBox" />
+                                            <Binding Path="Tag" ElementName="TitleGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox x:Name="TitleGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="TitleFilter" />
+                                            <Binding Path="IsChecked" ElementName="TitleGroup" />
+                                            <Binding Path="Text" ElementName="TitleValue" />
+                                            <Binding Path="Header" ElementName="TitleGroupBox" />
+                                            <Binding Path="Tag" ElementName="TitleGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox x:Name="TitleValue" Tag="Title" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox x:Name="DurationGroupBox" Header="Duration" Tag="Music">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox x:Name="DurationFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="DurationFilter" />
+                                            <Binding Path="IsChecked" ElementName="DurationGroup" />
+                                            <Binding Path="Text" ElementName="DurationValue" />
+                                            <Binding Path="Header" ElementName="DurationGroupBox" />
+                                            <Binding Path="Tag" ElementName="DurationGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox x:Name="DurationGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="DurationFilter" />
+                                            <Binding Path="IsChecked" ElementName="DurationGroup" />
+                                            <Binding Path="Text" ElementName="DurationValue" />
+                                            <Binding Path="Header" ElementName="DurationGroupBox" />
+                                            <Binding Path="Tag" ElementName="DurationGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox x:Name="DurationValue" Tag="Duration" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox x:Name="GenreGroupBox" Header="Genre" Tag="Music">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox x:Name="GenreFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="GenreFilter" />
+                                            <Binding Path="IsChecked" ElementName="GenreGroup" />
+                                            <Binding Path="Text" ElementName="GenreValue" />
+                                            <Binding Path="Header" ElementName="GenreGroupBox" />
+                                            <Binding Path="Tag" ElementName="GenreGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox x:Name="GenreGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="GenreFilter" />
+                                            <Binding Path="IsChecked" ElementName="GenreGroup" />
+                                            <Binding Path="Text" ElementName="GenreValue" />
+                                            <Binding Path="Header" ElementName="GenreGroupBox" />
+                                            <Binding Path="Tag" ElementName="GenreGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox x:Name="GenreValue" Tag="Genre" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox x:Name="YearGroupBox" Header="Year" Tag="Music">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox x:Name="YearFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="YearFilter" />
+                                            <Binding Path="IsChecked" ElementName="YearGroup" />
+                                            <Binding Path="Text" ElementName="YearValue" />
+                                            <Binding Path="Header" ElementName="YearGroupBox" />
+                                            <Binding Path="Tag" ElementName="YearGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox x:Name="YearGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="YearFilter" />
+                                            <Binding Path="IsChecked" ElementName="YearGroup" />
+                                            <Binding Path="Text" ElementName="YearValue" />
+                                            <Binding Path="Header" ElementName="YearGroupBox" />
+                                            <Binding Path="Tag" ElementName="YearGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox x:Name="YearValue" Tag="Year" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox x:Name="ExtensionGroupBox" Header="Extension" Tag="Music">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox x:Name="ExtensionFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="ExtensionFilter" />
+                                            <Binding Path="IsChecked" ElementName="ExtensionGroup" />
+                                            <Binding Path="Text" ElementName="ExtensionValue" />
+                                            <Binding Path="Header" ElementName="ExtensionGroupBox" />
+                                            <Binding Path="Tag" ElementName="ExtensionGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox x:Name="ExtensionGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="ExtensionFilter" />
+                                            <Binding Path="IsChecked" ElementName="ExtensionGroup" />
+                                            <Binding Path="Text" ElementName="ExtensionValue" />
+                                            <Binding Path="Header" ElementName="ExtensionGroupBox" />
+                                            <Binding Path="Tag" ElementName="ExtensionGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox x:Name="ExtensionValue" Tag="Extension" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
