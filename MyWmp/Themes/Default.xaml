@@ -77,4 +77,74 @@
         <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
         <Setter Property="Template" Value="{DynamicResource TabItemTemplate}" />
     </Style>
+    
+    <Style x:Key="Datagrid" TargetType="DataGrid">
+        <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+        <Setter Property="RowBackground" Value="{DynamicResource BgBrush}" />
+        <Setter Property="AlternatingRowBackground" Value="{DynamicResource DarkBgBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource FgBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource BgBrush}" />
+        <Setter Property="HorizontalScrollBarVisibility" Value="Hidden" />
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource BgBrush}" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Hidden" />
+        <Setter Property="GridLinesVisibility" Value="None" />
+    </Style>
+    
+    <Style x:Key="DatagridColumnHeader" TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="{DynamicResource FgBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
+    </Style>
+    
+    <Style x:Key="DatagridRowHeader" TargetType="DataGridRowHeader">
+        <Setter Property="Template" Value="{x:Null}" />
+    </Style>
+    
+    <Style x:Key="DatagridRow" TargetType="DataGridRow">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Height" Value="20" />
+    </Style>
+    
+    <Style x:Key="DatagridCell" TargetType="DataGridCell">
+        <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Height" Value="20" />
+        
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{DynamicResource FgBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="Groupbox" TargetType="GroupBox">
+        <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource FgBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template" Value="{DynamicResource GroupboxTemplate}" />
+    </Style>
+    
+    <Style x:Key="Checkbox" TargetType="CheckBox">
+        <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
+    </Style>
+    
+    <Style x:Key="Textbox" TargetType="TextBox">
+        <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource FgBrush}" />
+        <Setter Property="BorderThickness" Value="3" />
+        <Setter Property="Margin" Value="0,3,0,0" />
+        
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource TextFgBrush}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource TextFgBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>

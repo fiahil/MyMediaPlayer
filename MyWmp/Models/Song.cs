@@ -17,9 +17,9 @@ namespace MyWmp.Models
         public String Artist { private set; get; }
         public String Album { private set; get; }
         public String Genre { private set; get; }
-        public uint Year { private set; get; }
-        public uint Track { private set; get; }
-        public TimeSpan Duration { private set; get; }
+        public String Year { private set; get; }
+        public String Track { private set; get; }
+        public String Duration { private set; get; }
         public String Extension { private set; get; }
         public BitmapImage AlbumArt { private set; get; }
 
@@ -36,7 +36,7 @@ namespace MyWmp.Models
         {
             try
             {
-                var file = File.Create(Src);
+                var file = File.Create(Source);
                 Title = file.Tag.Title;
                 if (file.Tag.AlbumArtists.Length != 0)
                     Artist = file.Tag.AlbumArtists[0];
@@ -44,11 +44,11 @@ namespace MyWmp.Models
                     Artist = file.Tag.Artists[0];
                 Album = file.Tag.Album;
                 Genre = String.Join(";", file.Tag.Genres);
-                Year = file.Tag.Year;
-                Track = file.Tag.Track;
+                Year = file.Tag.Year.ToString();
+                Track = file.Tag.Track.ToString();
                 if (file.Properties.MediaTypes != MediaTypes.None)
-                    Duration = file.Properties.Duration;
-                var extension = Path.GetExtension(Src);
+                    Duration = file.Properties.Duration.ToString(@"mm\:ss");
+                var extension = Path.GetExtension(Source);
                 if (extension != null) Extension = extension.Remove(0, 1).ToLower();
                 if (file.Tag.Pictures.Length >= 1)
                 {

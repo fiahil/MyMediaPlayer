@@ -80,6 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\LibraryConverter.cs" />
     <Compile Include="Behaviors\MediaTimeSlider.cs" />
     <Compile Include="Models\AMedia.cs" />
     <Compile Include="Models\Settings.cs" />
