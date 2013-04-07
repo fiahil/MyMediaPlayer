@@ -7,7 +7,7 @@
     xmlns:behaviors="clr-namespace:MyWmp.Behaviors" xmlns:uiElements="clr-namespace:MyWmp.UIElements"
     mc:Ignorable="d"
     x:Class="MyWmp.View.MediaLayout">
-    
+
     <Grid>
         <Label x:Name="MediaScreen" Style="{DynamicResource MediaScreen}" Margin="0,0,0,12" />
         <MediaElement x:Name="Media" LoadedBehavior="Manual" Margin="0,0,0,12">

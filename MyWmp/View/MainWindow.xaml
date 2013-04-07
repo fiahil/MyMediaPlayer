@@ -35,6 +35,8 @@
         </Grid.RowDefinitions>
 
         <Rectangle MouseLeftButtonDown="OnMouseLeftButtonDown" Fill="{DynamicResource TitleBrush}" Grid.Row="0" Grid.ColumnSpan="4" />
+        <Label Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" Name="LayoutWinTitle" Content="MyWMP" Margin="0" FontSize="8"/>
+
         <Image Grid.Column="0" Grid.Row="0" Source="/Resources/Icon.png" Stretch="Fill" />
 
         <Button Content="/Resources/Minimize.png" Style="{DynamicResource Controls}" Grid.Column="3" Click="OnMinimizeButton_Click" />

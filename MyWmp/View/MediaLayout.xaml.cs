@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls.Primitives;
+﻿using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using MyWmp.ViewModel;
 
 namespace MyWmp.View
@@ -18,9 +19,19 @@ namespace MyWmp.View
             this.DataContext = this.viewModel_;
 
             this.viewModel_.OpenRequest += (sender, args) => this.Media.Source = this.viewModel_.Source;
-            this.viewModel_.PlayRequest += (sender, args) => this.Media.Play();
+            this.viewModel_.PlayRequest += (sender, args) =>
+                {
+                    this.Media.Play();
+                    var title = (Label) FindName("WinTitle");
+                    if (title != null) title.Content = this.Media.Source;
+                };
             this.viewModel_.PauseRequest += (sender, args) => this.Media.Pause();
-            this.viewModel_.StopRequest += (sender, args) => this.Media.Stop();
+            this.viewModel_.StopRequest += (sender, args) =>
+                {
+                    this.Media.Stop();
+                    var title = (Label) FindName("WinTitle");
+                    if (title != null) title.Content = "MyWMP";
+                };
             this.viewModel_.SpeedRequest += (sender, args) => this.Media.SpeedRatio = this.viewModel_.Speed;
         }
 
