@@ -10,18 +10,18 @@ namespace MyWmp.Models
 {
     class PlaylistSerializer
     {
-        public void Serialize(Playlist p)
+        public static void Serialize(Playlist p)
         {
             XmlSerializer xs = new XmlSerializer(typeof(Playlist));
             using (StreamWriter wr = new StreamWriter(p.Name + ".xml"))
                 xs.Serialize(wr, p);
         }
 
-        public Playlist DeSerialize(string name)
+        public static Playlist DeSerialize(string name)
         {
             XmlSerializer xs = new XmlSerializer(typeof(Playlist));
             Playlist p;
-            using (StreamReader rd = new StreamReader(name + ".xml"))
+            using (StreamReader rd = new StreamReader(name))
                 return p = xs.Deserialize(rd) as Playlist;
         }
     }

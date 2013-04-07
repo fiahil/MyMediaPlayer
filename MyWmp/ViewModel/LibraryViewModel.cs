@@ -157,6 +157,17 @@ namespace MyWmp.ViewModel
         public ICommand FilterCommand { get; private set; }
         public ICommand GroupCommand { get; private set; }
 
+        public void AddItemIntoPlaylist(int selectedPlaylist, string library, int selectedItem)
+        {
+            if (selectedPlaylist == -1 || selectedItem == -1)
+                return;
+            Playlists[selectedPlaylist].Add(((ListCollectionView)this.GetType().GetProperty(Translate(library)).GetValue(this, null)).GetItemAt(selectedItem) as AMedia);
+            LibraryPlaylist = new ListCollectionView(Playlists[selectedPlaylist].ToArray());
+            if (Playlists[selectedPlaylist].Equals(control_.Playlist))
+                control_.Playlist = Playlists[selectedPlaylist];
+            PropertyChanged(this, new PropertyChangedEventArgs("LibraryPlaylist"));
+        }
+
         public void DeleteItemFromPlaylist(int selectedPlaylist, int selectedItem)
         {
             if (selectedPlaylist == -1 || selectedItem == -1)

@@ -2,6 +2,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using MyWmp.Converters;
 using MyWmp.ViewModel;
 
@@ -97,22 +98,22 @@ namespace MyWmp.View
 
         private void Playlists_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            libraryViewModel_.OnPlayLibraryPlaylist(ListPlaylist.SelectedIndex, ((DataGrid)sender).SelectedIndex);
+            libraryViewModel_.OnPlayLibraryPlaylist(ListPlaylist.SelectedIndex, PlaylistDatagrid.SelectedIndex);
         }
 
         private void Videos_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            libraryViewModel_.OnPlayLibraryVideos(((DataGrid)sender).SelectedIndex);
+            libraryViewModel_.OnPlayLibraryVideos(VideoDatagrid.SelectedIndex);
         }
 
         private void Musics_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            libraryViewModel_.OnPlayLibraryMusics(((DataGrid)sender).SelectedIndex);
+            libraryViewModel_.OnPlayLibraryMusics(MusicDatagrid.SelectedIndex);
         }
 
         private void Pictures_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            libraryViewModel_.OnPlayLibraryPictures(((DataGrid)sender).SelectedIndex);
+            libraryViewModel_.OnPlayLibraryPictures(PictureDatagrid.SelectedIndex);
         }
 
         private void Playlist_Delete_OnClick(object sender, RoutedEventArgs e)
@@ -222,6 +223,71 @@ namespace MyWmp.View
                         datagrid.SelectedIndex = datagrid.Items.Count - 1;
                     break;
             }
+        }
+
+        private void LibraryPicture_OpenInPlayer_OnClick(object sender, RoutedEventArgs e)
+        {
+            libraryViewModel_.OnPlayLibraryPictures(PictureDatagrid.SelectedIndex);
+        }
+
+        private void PictureDatagrid_OnPreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+            var viewModel = (LibraryViewModel)DataContext;
+            var datagrid = (DataGrid)sender;
+            switch (e.Key)
+            {
+                case Key.Enter:
+                    viewModel.OnPlayLibraryPictures(datagrid.SelectedIndex);
+                    break;
+                case Key.Down:
+                    datagrid.SelectedIndex = (datagrid.SelectedIndex + 1) % datagrid.Items.Count;
+                    break;
+                case Key.Up:
+                    --datagrid.SelectedIndex;
+                    if (datagrid.SelectedIndex < 0)
+                        datagrid.SelectedIndex = datagrid.Items.Count - 1;
+                    break;
+            }
+        }
+
+        private void LibraryVideo_Play_OnClick(object sender, RoutedEventArgs e)
+        {
+            libraryViewModel_.OnPlayLibraryVideos(VideoDatagrid.SelectedIndex);
+        }
+
+        private void LibraryMusic_Play_OnClick(object sender, RoutedEventArgs e)
+        {
+            libraryViewModel_.OnPlayLibraryMusics(MusicDatagrid.SelectedIndex);
+        }
+
+        private void MenuItem_OnSubmenuOpened(object sender, RoutedEventArgs e)
+        {
+            var menu = sender as MenuItem;
+            var SelectedItem = ((DataGridRow)((ContextMenu)menu.Parent).PlacementTarget);
+            var datagrid = VisualTreeHelper.GetParent(SelectedItem);
+            while (datagrid != null && datagrid.GetType() != typeof (DataGrid))
+                datagrid = VisualTreeHelper.GetParent(datagrid);
+            foreach (var playlist in libraryViewModel_.Playlists)
+            {
+                var item = new MenuItem {Header = playlist.Name};
+                item.Click += (o, args) =>
+                    {
+                       libraryViewModel_.AddItemIntoPlaylist(libraryViewModel_.Playlists.IndexOf(playlist), ((DataGrid)datagrid).Tag.ToString(), ((DataGrid)datagrid).SelectedIndex);
+                    };
+                menu.Items.Add(item);
+            }
+        }
+
+        private void MenuItem_AddPlaylist_OnClick(object sender, RoutedEventArgs e)
+        {
+            libraryViewModel_.AddPlaylist();
+            var menu = sender as MenuItem;
+            var SelectedItem = ((DataGridRow)((ContextMenu)((MenuItem)menu.Parent).Parent).PlacementTarget);
+            var datagrid = VisualTreeHelper.GetParent(SelectedItem);
+            while (datagrid != null && datagrid.GetType() != typeof(DataGrid))
+                datagrid = VisualTreeHelper.GetParent(datagrid);
+            libraryViewModel_.AddItemIntoPlaylist(libraryViewModel_.Playlists.Count - 1, ((DataGrid)datagrid).Tag.ToString(), ((DataGrid)datagrid).SelectedIndex);
         }
     }
 }
