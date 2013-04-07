@@ -11,6 +11,7 @@
     <SolidColorBrush x:Key="SliderBgUpBrush">#4873A8</SolidColorBrush>
     <SolidColorBrush x:Key="SliderFgBrush">#7CA3CC</SolidColorBrush>
     <SolidColorBrush x:Key="TextFgBrush">#EEF7FF</SolidColorBrush>
+    <SolidColorBrush x:Key="ToggleBrush">#7CA3CC</SolidColorBrush>
 
     <Style x:Key="MainRoot" TargetType="{x:Type Grid}">
         <Setter Property="Background" Value="{DynamicResource BgBrush}" />

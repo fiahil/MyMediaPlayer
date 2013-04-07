@@ -1,6 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Linq;
+using Xceed.Wpf.Toolkit;
 
 namespace MyWmp.View
 {
@@ -28,6 +31,11 @@ namespace MyWmp.View
         private void PopupTheme_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.Thumb.RaiseEvent(e);
+        }
+
+        private void OnSelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
+        {
+            MainWindow.Instance.Resources.MergedDictionaries[0][((ColorPicker)sender).Tag.ToString()] = new SolidColorBrush(e.NewValue);
         }
     }
 }
