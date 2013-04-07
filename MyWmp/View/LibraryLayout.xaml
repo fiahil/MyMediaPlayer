@@ -22,28 +22,23 @@
                                         <Setter Property="Template" Value="{DynamicResource GroupItemTemplate}" />
                                     </Style>
                                 </GroupStyle.ContainerStyle>
+                                <GroupStyle.Panel>
+                                    <ItemsPanelTemplate>
+                                        <DataGridRowsPresenter/>
+                                    </ItemsPanelTemplate>
+                                </GroupStyle.Panel>
                             </GroupStyle>
                         </DataGrid.GroupStyle>
 
-                        <DataGrid.Columns><!--
-                            <DataGridTemplateColumn Header="Cover">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Image Source="{Binding AlbumArt}" Visibility="Visible" />
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>-->
-
-                            <DataGridTextColumn Width="0.07*" Header="#" Binding="{Binding Track}" Visibility="Visible" />
-                            <DataGridTextColumn Width="0.175*" Header="Album" Binding="{Binding Album}" Visibility="Visible" />
-                            <DataGridTextColumn Width="0.175*" Header="Artist" Binding="{Binding Artist}" Visibility="Visible" />
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="0.07*" Header="#" Binding="{Binding Track}" />
+                            <DataGridTextColumn Width="0.175*" Header="Album" Binding="{Binding Album}" />
+                            <DataGridTextColumn Width="0.175*" Header="Artist" Binding="{Binding Artist}" />
                             <DataGridTextColumn Width="0.225*" Header="Title" Binding="{Binding Title}" />
-                            <DataGridTextColumn Width="0.08*" Header="Duration" Binding="{Binding Duration}" Visibility="Visible" />
-                            <DataGridTextColumn Width="0.150*" Header="Genre" Binding="{Binding Genre}" Visibility="Visible" />
-                            <DataGridTextColumn Width="0.08*" Header="Year" Binding="{Binding Year}" Visibility="Visible" />
-                            <DataGridTextColumn Width="0.08*" Header="Type" Binding="{Binding Extension}" Visibility="Visible" />
+                            <DataGridTextColumn Width="0.08*" Header="Duration" Binding="{Binding Duration}" />
+                            <DataGridTextColumn Width="0.150*" Header="Genre" Binding="{Binding Genre}" />
+                            <DataGridTextColumn Width="0.08*" Header="Year" Binding="{Binding Year}" />
+                            <DataGridTextColumn Width="0.08*" Header="Type" Binding="{Binding Extension}" />
                         </DataGrid.Columns>
                     </DataGrid>
                     
@@ -285,6 +280,11 @@
                                         <Setter Property="Template" Value="{DynamicResource GroupItemTemplate}" />
                                     </Style>
                                 </GroupStyle.ContainerStyle>
+                                <GroupStyle.Panel>
+                                    <ItemsPanelTemplate>
+                                        <DataGridRowsPresenter/>
+                                    </ItemsPanelTemplate>
+                                </GroupStyle.Panel>
                             </GroupStyle>
                         </DataGrid.GroupStyle>
 
@@ -501,7 +501,7 @@
             
             <TabItem Header="Picture" Style="{DynamicResource TabItem}">
                 <Grid>
-                    <DataGrid Margin="0,0,85,0" x:Name="PictureDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" RowStyle="{DynamicResource DatagridRow}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryPictures}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False">
+                    <DataGrid Margin="0,0,85,0" x:Name="PictureDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" RowStyle="{DynamicResource DatagridRow}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryPictures}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Pictures_OnMouseDoubleClick">
                         <DataGrid.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.ContainerStyle>
@@ -509,13 +509,18 @@
                                         <Setter Property="Template" Value="{DynamicResource GroupItemTemplate}" />
                                     </Style>
                                 </GroupStyle.ContainerStyle>
+                                <GroupStyle.Panel>
+                                    <ItemsPanelTemplate>
+                                        <DataGridRowsPresenter/>
+                                    </ItemsPanelTemplate>
+                                </GroupStyle.Panel>
                             </GroupStyle>
                         </DataGrid.GroupStyle>
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Title" Width="0.4*" Binding="{Binding Title}" />
-                            <DataGridTextColumn Header="Height" Width="0.15*" Binding="{Binding Height}" />
-                            <DataGridTextColumn Header="Width" Width="0.15*" Binding="{Binding Width}" />
+                            <DataGridTextColumn Header="Height" Width="0.2*" Binding="{Binding Height}" />
+                            <DataGridTextColumn Header="Width" Width="0.2*" Binding="{Binding Width}" />
                             <DataGridTextColumn Header="Year" Width="0.1*" Binding="{Binding Year}" />
                             <DataGridTextColumn Header="Type" Width="0.1*" Binding="{Binding Extension}" />
                         </DataGrid.Columns>
@@ -677,7 +682,7 @@
                                                 <MenuItem Header="Play" Click="Playlist_Play_OnClick"/>
                                                 <MenuItem Header="Rename" Click="Playlist_Rename_OnClick"/>
                                                 <MenuItem Header="Delete" Click="Playlist_Delete_OnClick"/>
-                                                </ContextMenu>
+                                            </ContextMenu>
                                         </Label.ContextMenu>
                                     </Label>
                                     <TextBox Text="{Binding Name}" Visibility="Collapsed" LostFocus="UIElement_OnLostFocus" KeyDown="UIElement_OnKeyDown"/>
@@ -692,12 +697,25 @@
                                 <MenuItem Header="Remove from list" Click="LibraryPlaylist_Remove_OnClick"/>
                             </ContextMenu>
                         </DataGrid.Resources>
+                        <DataGrid.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Template" Value="{DynamicResource GroupItemTemplate}" />
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                                <GroupStyle.Panel>
+                                    <ItemsPanelTemplate>
+                                        <DataGridRowsPresenter/>
+                                    </ItemsPanelTemplate>
+                                </GroupStyle.Panel>
+                            </GroupStyle>
+                        </DataGrid.GroupStyle>
                         <DataGrid.RowStyle>
                             <Style TargetType="{x:Type DataGridRow}" >
                                 <Setter Property="ContextMenu" Value="{StaticResource ContextMenuPlaylist}"/>
                             </Style>
                         </DataGrid.RowStyle>
-                        
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="#" Binding="{Binding Track}" />
                             <DataGridTextColumn Header="Title" Binding="{Binding Title}" />

@@ -69,18 +69,24 @@ namespace MyWmp.ViewModel
             {
                 playlist.Add(media as AMedia);
             }
-            playlist.Current = LibraryPlaylist.GetItemAt(selectedItem) as AMedia;
-            control_.Playlist = playlist;
-            control_.Play();
+            if (selectedItem != -1)
+            {
+                playlist.Current = LibraryPlaylist.GetItemAt(selectedItem) as AMedia;
+                control_.Playlist = playlist;
+                control_.Play();
+            }
         }
 
         public void OnPlayLibraryVideos(int selectedIndex)
         {
             var playlist = new Playlist { Name = "Current Playlist" };
             playlist.Add(LibraryVideos.GetItemAt(selectedIndex) as AMedia);
-            playlist.Current = LibraryVideos.GetItemAt(selectedIndex) as AMedia;
-            control_.Playlist = playlist;
-            control_.Play();
+            if (selectedIndex != -1)
+            {
+                playlist.Current = LibraryVideos.GetItemAt(selectedIndex) as AMedia;
+                control_.Playlist = playlist;
+                control_.Play();
+            }
         }
 
         public void OnPlayLibraryMusics(int selectedIndex)
@@ -93,6 +99,21 @@ namespace MyWmp.ViewModel
             if (selectedIndex != -1)
             {
                 playlist.Current = LibraryMusics.GetItemAt(selectedIndex) as AMedia;
+                control_.Playlist = playlist;
+                control_.Play();
+            }
+        }
+
+        public void OnPlayLibraryPictures(int selectedIndex)
+        {
+            var playlist = new Playlist { Name = "Current Playlist" };
+            foreach (var media in LibraryPictures)
+            {
+                playlist.Add(media as AMedia);
+            }
+            if (selectedIndex != -1)
+            {
+                playlist.Current = LibraryPictures.GetItemAt(selectedIndex) as AMedia;
                 control_.Playlist = playlist;
                 control_.Play();
             }

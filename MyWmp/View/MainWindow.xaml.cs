@@ -1,9 +1,11 @@
 ﻿using System.IO;
 using System.Windows;
 using System.Linq;
+using System.Windows.Controls;
 using System.Windows.Input;
 using MyWmp.Models;
 using MyWmp.ViewModel;
+using Control = MyWmp.Models.Control;
 
 namespace MyWmp.View
 {
@@ -27,8 +29,23 @@ namespace MyWmp.View
 
         private void OnFullScreenCommand(object sender, MouseButtonEventArgs e)
         {
-            if (((MainWindowViewModel)this.DataContext).FullScreenCommand.CanExecute(null))
-                ((MainWindowViewModel)this.DataContext).FullScreenCommand.Execute(null);
+            this.WindowState = this.WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
+            if (Grid.GetColumn(MediaLayout) != 0)
+            {
+                Grid.SetRow(MediaLayout, 0);
+                Grid.SetRowSpan(MediaLayout, 2);
+                Grid.SetColumn(MediaLayout, 0);
+                Grid.SetColumnSpan(MediaLayout, 6);
+                this.MediaLayout.Margin = new Thickness(0, 0, 0, -5);
+            }
+            else
+            {
+                Grid.SetRow(MediaLayout, 1);
+                Grid.SetRowSpan(MediaLayout, 1);
+                Grid.SetColumn(MediaLayout, 1);
+                Grid.SetColumnSpan(MediaLayout, 4);
+                this.MediaLayout.Margin = new Thickness(0, 0, 0, 52);
+            }
 
         }
 
@@ -86,11 +103,6 @@ namespace MyWmp.View
             this.Height = (this.Height == SystemParameters.VirtualScreenHeight - 40) ? (480) : (SystemParameters.VirtualScreenHeight - 40);
             this.Top = (this.Top == 0) ? ((SystemParameters.VirtualScreenHeight - 480) / 2) : (0);
             this.Left = (this.Left == 0) ? ((SystemParameters.VirtualScreenWidth - 850) / 2) : (0);
-            //this.ResizeMode = this.ResizeMode == ResizeMode.NoResize ? ResizeMode.CanResizeWithGrip : ResizeMode.NoResize;
-          /*  ne fonctionne toujours pas :(
-            if (((MainWindowViewModel)this.DataContext).RestoreCommand.CanExecute(null))
-               ((MainWindowViewModel)this.DataContext).RestoreCommand.Execute(null);
-           */
         }
 
         private void OnCloseButton_Click(object sender, RoutedEventArgs e)
@@ -114,6 +126,23 @@ namespace MyWmp.View
                 this.LibraryLayout.Visibility = Visibility.Visible;
                 this.SwitchButton.Content = "/Resources/Retract.png";
             }
+        }
+
+        private void SwitchButton2_OnClick(object sender, RoutedEventArgs e)
+        {
+            if ((string)this.SwitchButton2.Content == "/Resources/Retract.png")
+            {
+                this.PlaybackList.Visibility = Visibility.Visible;
+
+                this.SwitchButton2.Content = "/Resources/Deploy.png";
+            }
+            else
+            {
+                this.PlaybackList.Visibility = Visibility.Collapsed;
+
+                this.SwitchButton2.Content = "/Resources/Retract.png";
+            }
+
         }
     }
 }

@@ -7,11 +7,13 @@ namespace MyWmp.ViewModel
 {
     class ControlViewModel : INotifyPropertyChanged
     {
+        public static ControlViewModel Instance;
         private readonly Control control_;
 
         public ControlViewModel()
         {
             this.control_ = Control.Instance;
+            Instance = this;
 
             this.PlayPauseNotifier = "/Resources/Play.png";
             this.StopNotifier = "/Resources/Stop.png";

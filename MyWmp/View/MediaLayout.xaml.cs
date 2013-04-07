@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls.Primitives;
+﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using MyWmp.ViewModel;
 
 namespace MyWmp.View
@@ -32,6 +34,12 @@ namespace MyWmp.View
         private void TimeSlider_OnDragCompleted(object sender, DragCompletedEventArgs e)
         {
             this.Media.Play();
+        }
+
+        private void Media_OnMediaEnded(object sender, RoutedEventArgs e)
+        {
+            if (ControlViewModel.Instance != null)
+                ControlViewModel.Instance.NextCommand.Execute(null);
         }
     }
 }

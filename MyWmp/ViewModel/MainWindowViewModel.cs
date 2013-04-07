@@ -17,7 +17,6 @@ namespace MyWmp.ViewModel
             this.WindowStateNotifier = WindowState.Normal;
             this.FullScreenCommand = new ActionCommand(OnFullScreenCommand);
             this.MinimizeCommand = new ActionCommand(OnMinimizeCommand);
-            this.RestoreCommand = new ActionCommand(OnRestoreCommand);
         }
 
         private void OnFullScreenCommand()
@@ -31,18 +30,6 @@ namespace MyWmp.ViewModel
         {
             this.WindowStateNotifier = WindowState.Minimized;
             this.PropertyChanged(this, new PropertyChangedEventArgs("WindowStateNotifier"));
-        }
-
-        private void OnRestoreCommand()
-        {
-            this.WidthNotifier = (Math.Abs(this.WidthNotifier - SystemParameters.VirtualScreenWidth) < 0.01) ? (850) : (SystemParameters.VirtualScreenWidth);
-            this.HeightNotifier = (Math.Abs(this.HeightNotifier - (SystemParameters.VirtualScreenHeight - 40)) < 0.01) ? (450) : (SystemParameters.VirtualScreenHeight - 40);
-            this.TopNotifier = (Math.Abs(this.TopNotifier - 0) < 0.01) ? ((SystemParameters.VirtualScreenHeight - 480) / 2) : (0);
-            this.LeftNotifier = (Math.Abs(this.LeftNotifier - 0) < 0.01) ? ((SystemParameters.VirtualScreenWidth - 850) / 2) : (0);
-            this.PropertyChanged(this, new PropertyChangedEventArgs("WidthNotifier"));
-            this.PropertyChanged(this, new PropertyChangedEventArgs("HeightNotifier"));
-            this.PropertyChanged(this, new PropertyChangedEventArgs("TopNotifier"));
-            this.PropertyChanged(this, new PropertyChangedEventArgs("LeftNotifier"));       
         }
 
 
