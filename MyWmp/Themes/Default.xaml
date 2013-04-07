@@ -119,7 +119,14 @@
         <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Height" Value="20" />
-        
+        <Setter Property="ToolTip">
+            <Setter.Value>
+                <Border Background="{DynamicResource BgBrush}">
+                    <Image Source="{Binding AlbumArt}" Width="60" Height="60" />
+                </Border>
+            </Setter.Value>
+        </Setter>
+
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Background" Value="{DynamicResource FgBrush}" />

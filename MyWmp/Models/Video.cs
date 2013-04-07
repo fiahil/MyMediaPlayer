@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.IO;
+using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 using TagLib;
 using File = TagLib.File;
@@ -18,6 +19,7 @@ namespace MyWmp.Models
         public String Height { private set; get; }
         public String Width { private set; get; }
         public String Extension { private set; get; }
+        public BitmapImage AlbumArt { private set; get; }
 
         public Video(string src)
             : base(src, Type.Video)
@@ -40,8 +42,9 @@ namespace MyWmp.Models
                 Height = file.Properties.VideoHeight.ToString();
                 Width = file.Properties.VideoWidth.ToString();
                 Extension = Path.GetExtension(Source).Remove(0, 1).ToLower();
+                AlbumArt = new BitmapImage(new Uri("/Resources/Video.png", UriKind.Relative));
             }
-            catch (UnsupportedFormatException)
+            catch (Exception)
             {
             }
         }

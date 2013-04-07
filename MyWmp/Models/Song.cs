@@ -64,7 +64,7 @@ namespace MyWmp.Models
                 }
                 else
                 {
-                    AlbumArt = new BitmapImage(new Uri("/Resources/AlbumArt.jpg", UriKind.Relative));
+                    AlbumArt = new BitmapImage(new Uri("/Resources/Music.png", UriKind.Relative));
                 }
             }
             catch (Exception)

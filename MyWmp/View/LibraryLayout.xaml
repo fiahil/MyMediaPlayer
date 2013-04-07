@@ -30,17 +30,7 @@
                             </GroupStyle>
                         </DataGrid.GroupStyle>
 
-                        <DataGrid.Columns><!--
-                            <DataGridTemplateColumn Header="Cover">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Image Source="{Binding AlbumArt}" Visibility="Visible" />
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>-->
-
+                        <DataGrid.Columns>
                             <DataGridTextColumn Width="0.07*" Header="#" Binding="{Binding Track}" />
                             <DataGridTextColumn Width="0.175*" Header="Album" Binding="{Binding Album}" />
                             <DataGridTextColumn Width="0.175*" Header="Artist" Binding="{Binding Artist}" />
