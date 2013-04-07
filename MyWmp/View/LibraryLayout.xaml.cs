@@ -110,6 +110,11 @@ namespace MyWmp.View
             libraryViewModel_.OnPlayLibraryMusics(((DataGrid)sender).SelectedIndex);
         }
 
+        private void Pictures_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            libraryViewModel_.OnPlayLibraryPictures(((DataGrid)sender).SelectedIndex);
+        }
+
         private void Playlist_Delete_OnClick(object sender, RoutedEventArgs e)
         {
             ((LibraryViewModel)DataContext).DeletePlaylist(ListPlaylist.SelectedIndex);
