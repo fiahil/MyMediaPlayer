@@ -1,6 +1,8 @@
-﻿using System;
+﻿using System.IO;
 using System.Windows;
+using System.Linq;
 using System.Windows.Input;
+using MyWmp.Models;
 using MyWmp.ViewModel;
 
 namespace MyWmp.View
@@ -10,9 +12,12 @@ namespace MyWmp.View
     /// </summary>
     public sealed partial class MainWindow
     {
+        private readonly Control control_;
+
         public MainWindow()
         {
             InitializeComponent();
+            control_ = Control.Instance;
         }
 
         private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -30,11 +35,43 @@ namespace MyWmp.View
         private void MainWindow_OnDrop(object sender, DragEventArgs e)
         {
             var fileList = (string[])e.Data.GetData(DataFormats.FileDrop, true);
-            foreach (var s in fileList)
+            var soundExt = new string[] { ".mp3" };
+            var videoExt = new string[] { ".mp4" };
+            var pictureExt = new string[] { ".jpg" };
+            var loader = new Loader() { FileExtension = new string[] { ".mp3", ".mp4", ".jpg" } };
+            var playlist = control_.Playlist ?? new Playlist() { Name = "Current Playlist" };
+            var first = false;
+            foreach (var file in fileList)
             {
-                // En attente du open.
-                Console.Write(s);
+                loader.Root = file;
+                loader.Load();
+                foreach (var media in loader.MediaPath)
+                {
+                    AMedia item = null;
+                    var ext = new FileInfo(media).Extension.ToLower();
+                    if (soundExt.Contains(ext))
+                    {
+                        item = new Song(media);
+                    }
+                    else if (videoExt.Contains(ext))
+                        item = new Video(media);
+                    else if (pictureExt.Contains(ext))
+                    {
+                        item = new Picture(media);
+                    }
+                    if (item != null)
+                    {
+                        playlist.Add(item);
+                        if (!first)
+                        {
+                            playlist.Current = item;
+                            first = true;
+                        }
+                    }
+                }
             }
+            control_.Playlist = playlist;
+            control_.Play();
         }
 
         private void OnMinimizeButton_Click(object sender, RoutedEventArgs e)

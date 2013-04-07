@@ -14,7 +14,7 @@
         <TabControl x:Name="Music" TabStripPlacement="Left" Style="{DynamicResource TabControl}">
             <TabItem Header="Music" Style="{DynamicResource TabItem}">
                 <Grid>
-                    <DataGrid Margin="0,0,85,0" x:Name="MusicDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" RowStyle="{DynamicResource DatagridRow}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryMusics}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Musics_OnMouseDoubleClick">
+                    <DataGrid Margin="0,0,85,0" x:Name="MusicDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" RowStyle="{DynamicResource DatagridRow}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryMusics}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Musics_OnMouseDoubleClick" PreviewKeyDown="MusicDatagrid_OnPreviewKeyDown">
                         <DataGrid.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.ContainerStyle>
@@ -275,7 +275,7 @@
             </TabItem>
 
             <TabItem Header="Video" Style="{DynamicResource TabItem}">
-                <DataGrid ItemsSource="{Binding LibraryVideos}" AutoGenerateColumns="False" MouseDoubleClick="Videos_OnMouseDoubleClick">
+                <DataGrid ItemsSource="{Binding LibraryVideos}" AutoGenerateColumns="False" MouseDoubleClick="Videos_OnMouseDoubleClick" PreviewKeyDown="DataGridVideos_OnPreviewKeyDown">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Title" Binding="{Binding Title, Mode=OneWay}" />
                         <DataGridTextColumn Header="Length" Binding="{Binding Duration, Mode=OneWay}" />
@@ -298,17 +298,40 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-            <TabItem Header="Playlists">
+            <TabItem Header="Playlists" Style="{DynamicResource TabItem}">
                 <Grid>
                     <Button VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Width="100" Content="Add Playlist" Command="{Binding AddPlaylistCommand}"/>
                     <ListView x:Name="ListPlaylist" HorizontalAlignment="Left" Margin="0,25,0,0" Height="auto" Width="100" ItemsSource="{Binding Playlists}" SelectionChanged="ListPlaylist_OnSelectionChanged">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Label Content="{Binding Name}"></Label>
+                                <Grid>
+                                    <Label Content="{Binding Name}">
+                                        <Label.ContextMenu>
+                                            <ContextMenu>
+                                                <MenuItem Header="Play" Click="Playlist_Play_OnClick"/>
+                                                <MenuItem Header="Rename" Click="Playlist_Rename_OnClick"/>
+                                                <MenuItem Header="Delete" Click="Playlist_Delete_OnClick"/>
+                                                </ContextMenu>
+                                        </Label.ContextMenu>
+                                    </Label>
+                                    <TextBox Text="{Binding Name}" Visibility="Collapsed" LostFocus="UIElement_OnLostFocus" KeyDown="UIElement_OnKeyDown"/>
+                                </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <DataGrid Margin="105,0,0,0" ItemsSource="{Binding LibraryPlaylist}" AutoGenerateColumns="False" MouseDoubleClick="Playlists_OnMouseDoubleClick">
+                    <DataGrid x:Name="DataGridPlaylist" Margin="105,0,0,0" ItemsSource="{Binding LibraryPlaylist}" SelectionUnit="FullRow" AutoGenerateColumns="False" MouseDoubleClick="Playlists_OnMouseDoubleClick" PreviewKeyDown="DataGridPlaylist_OnKeyDown">
+                        <DataGrid.Resources>
+                            <ContextMenu x:Key="DataRowContextMenuPlaylist">
+                                <MenuItem Header="Play" Click="LibraryPlaylist_Play_OnClick"/>
+                                <MenuItem Header="Remove from list" Click="LibraryPlaylist_Remove_OnClick"/>
+                            </ContextMenu>
+                        </DataGrid.Resources>
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Setter Property="ContextMenu" Value="{StaticResource DataRowContextMenuPlaylist}"/>
+                            </Style>
+                        </DataGrid.RowStyle>
+                        
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="#" Binding="{Binding Track, Mode=OneWay}"></DataGridTextColumn>
                             <DataGridTextColumn Header="Title" Binding="{Binding Title, Mode=OneWay}"></DataGridTextColumn>

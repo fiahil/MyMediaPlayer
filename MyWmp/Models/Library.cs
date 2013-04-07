@@ -72,5 +72,10 @@ namespace MyWmp.Models
         {
             Playlists.Add(new Playlist());
         }
+
+        public void DeletePlaylist(int selectedIndex)
+        {
+            Playlists.RemoveAt(selectedIndex);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -40,6 +41,12 @@ namespace MyWmp.ViewModel
             this.GroupCommand = new ActionCommand(OnGroup);
         }
 
+        public void DeletePlaylist(int selectedIndex)
+        {
+            library_.DeletePlaylist(selectedIndex);
+            PropertyChanged(this, new PropertyChangedEventArgs("Playlists"));
+        }
+
         public void AddPlaylist()
         {
             library_.AddPlaylist();
@@ -50,7 +57,8 @@ namespace MyWmp.ViewModel
 
         public void OnPlaylistChanged(int selectedIndex)
         {
-            LibraryPlaylist = new ListCollectionView(Playlists[selectedIndex].ToArray());
+            if (selectedIndex != -1)
+                LibraryPlaylist = new ListCollectionView(Playlists[selectedIndex].ToArray());
             PropertyChanged(this, new PropertyChangedEventArgs("LibraryPlaylist"));
         }
 
@@ -124,5 +132,15 @@ namespace MyWmp.ViewModel
 
         public ICommand FilterCommand { get; private set; }
         public ICommand GroupCommand { get; private set; }
+
+        public void DeleteItemFromPlaylist(int selectedPlaylist, int selectedItem)
+        {
+            if (selectedPlaylist == -1 || selectedItem == -1)
+                return;
+            Playlists[selectedPlaylist].Remove(Playlists[selectedPlaylist].ToArray()[selectedItem] as AMedia);
+            LibraryPlaylist = new ListCollectionView(Playlists[selectedPlaylist].ToArray());
+            control_.Playlist = Playlists[selectedPlaylist];
+            PropertyChanged(this, new PropertyChangedEventArgs("LibraryPlaylist"));
+        }
     }
 }
