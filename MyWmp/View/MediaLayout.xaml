@@ -10,7 +10,7 @@
 
     <Grid>
         <Label x:Name="MediaScreen" Style="{DynamicResource MediaScreen}" Margin="0,0,0,12" />
-        <MediaElement x:Name="Media" LoadedBehavior="Manual" Margin="0,0,0,12">
+        <MediaElement x:Name="Media" LoadedBehavior="Manual" Margin="0,0,0,12" MediaEnded="Media_OnMediaEnded">
             <i:Interaction.Behaviors>
                 <behaviors:MediaTimeSlider x:Name="MediaBehavior" />
             </i:Interaction.Behaviors>
