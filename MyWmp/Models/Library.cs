@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace MyWmp.Models
 {
@@ -65,19 +66,46 @@ namespace MyWmp.Models
             loader.Load();
             foreach (var playlist in loader.MediaPath)
             {
-                Playlists.Add(PlaylistSerializer.DeSerialize(playlist));
+                var newInstance = PlaylistSerializer.DeSerialize(playlist);
+                newInstance.LoadFromPath();
+                Playlists.Add(newInstance);
             }
             IsLoaded = true;
         }
 
         public void AddPlaylist()
         {
-            Playlists.Add(new Playlist());
+            var tmp = new Playlist();
+            tmp.Path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MyPlaylists\\" + tmp.Name + ".xml";
+            PlaylistSerializer.Serialize(tmp);
+            Playlists.Add(tmp);
+        }
+
+        public void AddItemIntoPlaylist(int selectedPlaylist, AMedia media)
+        {
+            Playlists[selectedPlaylist].Add(media);
+            PlaylistSerializer.Serialize(Playlists[selectedPlaylist]);
+        }
+
+        public void DeleteItemFromPlaylist(int selectedPlaylist, int selectedIndex)
+        {
+            Playlists[selectedPlaylist].Remove(Playlists[selectedPlaylist].ToArray()[selectedIndex] as AMedia);
+            PlaylistSerializer.Serialize(Playlists[selectedPlaylist]);
         }
 
         public void DeletePlaylist(int selectedIndex)
         {
+            File.Delete(Playlists[selectedIndex].Path);
             Playlists.RemoveAt(selectedIndex);
+        }
+
+        public void SetNameFromPlaylist(int selectedPlaylist, string name)
+        {
+            File.Delete(Playlists[selectedPlaylist].Path);
+            Playlists[selectedPlaylist].Name = name;
+            Playlists[selectedPlaylist].Path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                                               "\\MyPlaylists\\" + Playlists[selectedPlaylist].Name + ".xml";
+            PlaylistSerializer.Serialize(Playlists[selectedPlaylist]);
         }
     }
 }

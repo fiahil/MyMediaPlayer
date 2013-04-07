@@ -10,7 +10,6 @@ namespace MyWmp.Models
 {
     class Video : AMedia
     {
-        [XmlIgnore]
         public static readonly String Unknown = "Unknown";
         public String Title { private set; get; }
         public String Duration { private set; get; }

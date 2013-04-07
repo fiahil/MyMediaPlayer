@@ -11,7 +11,6 @@ namespace MyWmp.Models
 {
     class Song : AMedia
     {
-        [XmlIgnore]
         public static readonly String Unknown = "Unknown";
         public String Title { private set; get; }
         public String Artist { private set; get; }

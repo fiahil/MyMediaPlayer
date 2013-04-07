@@ -13,7 +13,9 @@ namespace MyWmp.Models
         public static void Serialize(Playlist p)
         {
             XmlSerializer xs = new XmlSerializer(typeof(Playlist));
-            using (StreamWriter wr = new StreamWriter(p.Name + ".xml"))
+            if (!Directory.Exists(Path.GetDirectoryName(p.Path)))
+                Directory.CreateDirectory(Path.GetDirectoryName(p.Path));
+            using (StreamWriter wr = new StreamWriter(p.Path))
                 xs.Serialize(wr, p);
         }
 
@@ -30,14 +32,14 @@ namespace MyWmp.Models
     {
         public void Serialize(Settings s)
         {
-            XmlSerializer xs = new XmlSerializer(typeof(Playlist));
+            XmlSerializer xs = new XmlSerializer(typeof(Settings));
             using (StreamWriter wr = new StreamWriter("settings.xml"))
                 xs.Serialize(wr, s);
         }
 
         public Settings DeSerialize()
         {
-            XmlSerializer xs = new XmlSerializer(typeof(Playlist));
+            XmlSerializer xs = new XmlSerializer(typeof(Settings));
             Settings s;
             using (StreamReader rd = new StreamReader("settings.xml"))
                 return s = xs.Deserialize(rd) as Settings;

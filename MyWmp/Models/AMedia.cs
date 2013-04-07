@@ -1,7 +1,10 @@
 ﻿
+using System.Xml.Serialization;
+
 namespace MyWmp.Models
 {
-    abstract class AMedia
+    [XmlInclude(typeof(MediaPath))]
+    public abstract class AMedia
     {
         public enum Type
         {
@@ -10,9 +13,9 @@ namespace MyWmp.Models
             Picture
         }
 
-        public string Source { private set; get; }
-        public Type MediaType { private set; get; }
-        public string Media { private set; get; }
+        public string Source { set; get; }
+        public Type MediaType { set; get; }
+        public string Media { set; get; }
 
         protected AMedia(string src, Type type)
         {

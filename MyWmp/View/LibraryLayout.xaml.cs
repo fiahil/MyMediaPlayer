@@ -141,6 +141,7 @@ namespace MyWmp.View
             if (e.Key == Key.Enter)
             {
                 ((TextBox) sender).Visibility = Visibility.Collapsed;
+                libraryViewModel_.OnSetName(ListPlaylist.SelectedIndex, ((TextBox)sender).Text);
             }
         }
 
@@ -268,6 +269,8 @@ namespace MyWmp.View
             var datagrid = VisualTreeHelper.GetParent(SelectedItem);
             while (datagrid != null && datagrid.GetType() != typeof (DataGrid))
                 datagrid = VisualTreeHelper.GetParent(datagrid);
+            while (menu.Items.Count > 1)
+                menu.Items.RemoveAt(menu.Items.Count - 1);
             foreach (var playlist in libraryViewModel_.Playlists)
             {
                 var item = new MenuItem {Header = playlist.Name};

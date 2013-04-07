@@ -89,6 +89,7 @@
     <Compile Include="Converters\LibraryConverter.cs" />
     <Compile Include="Behaviors\MediaTimeSlider.cs" />
     <Compile Include="Models\AMedia.cs" />
+    <Compile Include="Models\MediaPath.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\Library.cs" />
     <Compile Include="Models\Picture.cs" />
