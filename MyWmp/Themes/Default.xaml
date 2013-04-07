@@ -52,7 +52,14 @@
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
     </Style>
-    
+
+    <Style x:Key="ContextMenu" TargetType="ContextMenu">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
+    </Style>
+
     <Style x:Key="MenuItem" TargetType="MenuItem">
         <Setter Property="Background" Value="{DynamicResource BgBrush}" />
         <Setter Property="BorderThickness" Value="1" />

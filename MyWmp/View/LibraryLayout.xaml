@@ -30,11 +30,11 @@
                             </GroupStyle>
                         </DataGrid.GroupStyle>
                         <DataGrid.Resources>
-                            <ContextMenu x:Key="ContextMenuMusic">
-                                <MenuItem Header="Play" Click="LibraryMusic_Play_OnClick"/>
-                                <MenuItem Header="Add to playlist" SubmenuOpened="MenuItem_OnSubmenuOpened">
-                                    <MenuItem Header="Add in new playlist" Click="MenuItem_AddPlaylist_OnClick"/>
-                                    <Separator/>
+                            <ContextMenu x:Key="ContextMenuMusic" Style="{DynamicResource ContextMenu}">
+                                <MenuItem Header="Play" Click="LibraryMusic_Play_OnClick" Style="{DynamicResource MenuItem}" />
+                                <MenuItem Header="Add to playlist" SubmenuOpened="MenuItem_OnSubmenuOpened" Style="{DynamicResource MenuItem}">
+                                    <MenuItem Header="Add in new playlist" Click="MenuItem_AddPlaylist_OnClick" Style="{DynamicResource MenuItem}"/>
+                                    <Separator Style="{DynamicResource Separator}"/>
                                 </MenuItem>
                             </ContextMenu>
                         </DataGrid.Resources>
@@ -301,11 +301,11 @@
                             </GroupStyle>
                         </DataGrid.GroupStyle>
                         <DataGrid.Resources>
-                            <ContextMenu x:Key="ContextMenuVideo">
-                                <MenuItem Header="Play" Click="LibraryVideo_Play_OnClick"/>
-                                <MenuItem Header="Add to playlist" SubmenuOpened="MenuItem_OnSubmenuOpened">
-                                    <MenuItem Header="Add in new playlist" Click="MenuItem_AddPlaylist_OnClick"/>
-                                    <Separator/>
+                            <ContextMenu x:Key="ContextMenuVideo" Style="{DynamicResource ContextMenu}">
+                                <MenuItem Header="Play" Click="LibraryVideo_Play_OnClick" Style="{DynamicResource MenuItem}"/>
+                                <MenuItem Header="Add to playlist" SubmenuOpened="MenuItem_OnSubmenuOpened" Style="{DynamicResource MenuItem}">
+                                    <MenuItem Header="Add in new playlist" Click="MenuItem_AddPlaylist_OnClick" Style="{DynamicResource MenuItem}"/>
+                                    <Separator Style="{DynamicResource Separator}"/>
                                 </MenuItem>
                             </ContextMenu>
                         </DataGrid.Resources>
@@ -544,11 +544,11 @@
                         </DataGrid.GroupStyle>
 
                         <DataGrid.Resources>
-                            <ContextMenu x:Key="ContextMenuPicture">
-                                <MenuItem Header="Open in player" Click="LibraryPicture_OpenInPlayer_OnClick"/>
-                                <MenuItem Header="Add to playlist" SubmenuOpened="MenuItem_OnSubmenuOpened">
-                                    <MenuItem Header="Add in new playlist" Click="MenuItem_AddPlaylist_OnClick"/>
-                                    <Separator/>
+                            <ContextMenu x:Key="ContextMenuPicture" Style="{DynamicResource ContextMenu}">
+                                <MenuItem Header="Open in player" Click="LibraryPicture_OpenInPlayer_OnClick" Style="{DynamicResource MenuItem}"/>
+                                <MenuItem Header="Add to playlist" SubmenuOpened="MenuItem_OnSubmenuOpened" Style="{DynamicResource MenuItem}">
+                                    <MenuItem Header="Add in new playlist" Click="MenuItem_AddPlaylist_OnClick" Style="{DynamicResource MenuItem}"/>
+                                    <Separator Style="{DynamicResource Separator}"/>
                                 </MenuItem>
                             </ContextMenu>
                         </DataGrid.Resources>
@@ -716,25 +716,25 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Label Content="{Binding Name}">
+                                    <Label Content="{Binding Name}" Height="20" Padding="0" VerticalContentAlignment="Center">
                                         <Label.ContextMenu>
-                                            <ContextMenu>
-                                                <MenuItem Header="Play" Click="Playlist_Play_OnClick"/>
-                                                <MenuItem Header="Rename" Click="Playlist_Rename_OnClick"/>
-                                                <MenuItem Header="Delete" Click="Playlist_Delete_OnClick"/>
+                                            <ContextMenu Style="{DynamicResource ContextMenu}">
+                                                <MenuItem Style="{DynamicResource MenuItem}" Header="Play" Click="Playlist_Play_OnClick"/>
+                                                <MenuItem Style="{DynamicResource MenuItem}" Header="Rename" Click="Playlist_Rename_OnClick"/>
+                                                <MenuItem Style="{DynamicResource MenuItem}" Header="Delete" Click="Playlist_Delete_OnClick"/>
                                             </ContextMenu>
                                         </Label.ContextMenu>
                                     </Label>
-                                    <TextBox Text="{Binding Name}" Visibility="Collapsed" LostFocus="UIElement_OnLostFocus" KeyDown="UIElement_OnKeyDown"/>
+                                    <TextBox Text="{Binding Name}" Padding="0" VerticalContentAlignment="Center" Height="20" Visibility="Collapsed" LostFocus="UIElement_OnLostFocus" KeyDown="UIElement_OnKeyDown"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
                     <DataGrid Margin="105,0,85,0" ItemsSource="{Binding LibraryPlaylist}" x:Name="PlaylistDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" CellStyle="{DynamicResource DatagridCell}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Playlists_OnMouseDoubleClick" PreviewKeyDown="DataGridPlaylist_OnKeyDown">
                         <DataGrid.Resources>
-                            <ContextMenu x:Key="ContextMenuPlaylist">
-                                <MenuItem Header="Play" Click="LibraryPlaylist_Play_OnClick"/>
-                                <MenuItem Header="Remove from list" Click="LibraryPlaylist_Remove_OnClick"/>
+                            <ContextMenu x:Key="ContextMenuPlaylist" Style="{DynamicResource ContextMenu}">
+                                <MenuItem Style="{DynamicResource MenuItem}" Header="Play" Click="LibraryPlaylist_Play_OnClick"/>
+                                <MenuItem Style="{DynamicResource MenuItem}" Header="Remove from list" Click="LibraryPlaylist_Remove_OnClick"/>
                             </ContextMenu>
                         </DataGrid.Resources>
                         <DataGrid.GroupStyle>

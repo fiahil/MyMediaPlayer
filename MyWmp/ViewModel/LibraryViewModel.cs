@@ -69,7 +69,7 @@ namespace MyWmp.ViewModel
             {
                 playlist.Add(media as AMedia);
             }
-            if (selectedItem != -1)
+            if (selectedItem != -1 && LibraryPlaylist.Count > 0)
             {
                 playlist.Current = LibraryPlaylist.GetItemAt(selectedItem) as AMedia;
                 control_.Playlist = playlist;
@@ -81,7 +81,7 @@ namespace MyWmp.ViewModel
         {
             var playlist = new Playlist { Name = "Current Playlist" };
             playlist.Add(LibraryVideos.GetItemAt(selectedIndex) as AMedia);
-            if (selectedIndex != -1)
+            if (selectedIndex != -1 && LibraryVideos.Count > 0)
             {
                 playlist.Current = LibraryVideos.GetItemAt(selectedIndex) as AMedia;
                 control_.Playlist = playlist;
@@ -96,7 +96,7 @@ namespace MyWmp.ViewModel
             {
                 playlist.Add(media as AMedia);
             }
-            if (selectedIndex != -1)
+            if (selectedIndex != -1 && LibraryMusics.Count > 0)
             {
                 playlist.Current = LibraryMusics.GetItemAt(selectedIndex) as AMedia;
                 control_.Playlist = playlist;
@@ -111,7 +111,7 @@ namespace MyWmp.ViewModel
             {
                 playlist.Add(media as AMedia);
             }
-            if (selectedIndex != -1)
+            if (selectedIndex != -1 && LibraryPictures.Count > 0)
             {
                 playlist.Current = LibraryPictures.GetItemAt(selectedIndex) as AMedia;
                 control_.Playlist = playlist;
