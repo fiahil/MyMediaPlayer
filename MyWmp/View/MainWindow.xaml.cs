@@ -36,6 +36,7 @@ namespace MyWmp.View
                 Grid.SetRowSpan(MediaLayout, 2);
                 Grid.SetColumn(MediaLayout, 0);
                 Grid.SetColumnSpan(MediaLayout, 6);
+                this.MediaLayout.Margin = new Thickness(0, 0, 0, -5);
             }
             else
             {
@@ -43,6 +44,7 @@ namespace MyWmp.View
                 Grid.SetRowSpan(MediaLayout, 1);
                 Grid.SetColumn(MediaLayout, 1);
                 Grid.SetColumnSpan(MediaLayout, 4);
+                this.MediaLayout.Margin = new Thickness(0, 0, 0, 52);
             }
 
         }
