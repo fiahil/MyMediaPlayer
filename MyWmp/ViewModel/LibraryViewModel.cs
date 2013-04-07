@@ -161,7 +161,7 @@ namespace MyWmp.ViewModel
         {
             if (selectedPlaylist == -1 || selectedItem == -1)
                 return;
-            Playlists[selectedPlaylist].Add(((ListCollectionView)this.GetType().GetProperty(Translate(library)).GetValue(this, null)).GetItemAt(selectedItem) as AMedia);
+            library_.AddItemIntoPlaylist(selectedPlaylist, ((ListCollectionView)this.GetType().GetProperty(Translate(library)).GetValue(this, null)).GetItemAt(selectedItem) as AMedia);
             LibraryPlaylist = new ListCollectionView(Playlists[selectedPlaylist].ToArray());
             if (Playlists[selectedPlaylist].Equals(control_.Playlist))
                 control_.Playlist = Playlists[selectedPlaylist];
@@ -172,10 +172,15 @@ namespace MyWmp.ViewModel
         {
             if (selectedPlaylist == -1 || selectedItem == -1)
                 return;
-            Playlists[selectedPlaylist].Remove(Playlists[selectedPlaylist].ToArray()[selectedItem] as AMedia);
+            library_.DeleteItemFromPlaylist(selectedPlaylist, selectedItem);
             LibraryPlaylist = new ListCollectionView(Playlists[selectedPlaylist].ToArray());
             control_.Playlist = Playlists[selectedPlaylist];
             PropertyChanged(this, new PropertyChangedEventArgs("LibraryPlaylist"));
+        }
+
+        public void OnSetName(int selectedPlaylist, string name)
+        {
+            library_.SetNameFromPlaylist(selectedPlaylist, name);
         }
     }
 }

@@ -8,7 +8,6 @@ namespace MyWmp.Models
 {
     class Picture : AMedia
     {
-        [XmlIgnore]
         public static readonly String Unknown = "Unknown";
         public String Title { private set; get; }
         public String Height { private set; get; }

@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace MyWmp.Models
 {
-    class Settings
+    public class Settings
     {
         [XmlIgnore]
         private static Settings instance_;
@@ -13,7 +13,7 @@ namespace MyWmp.Models
             get { return instance_ ?? (instance_ = new Settings()); }
         }
 
-        private Settings()
+        public Settings()
         {
             this.MusicLibPath = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic);
             this.PictureLibPath = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);

@@ -1,21 +1,33 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace MyWmp.Models
 {
     [XmlRoot]
-    class Playlist
+    public class Playlist
     {
         [XmlIgnore]
         private readonly Random random_ = new Random();
-        [XmlArray("Medias")]
         private readonly ArrayList medias_;
         [XmlIgnore]
         private readonly ArrayList shuffleList_;
+        [XmlIgnore]
+        private string name_;
+
+        public List<MediaPath> MediaPaths { set; get; }
 
         [XmlAttribute("Name")]
-        public string Name { set; get; }
+        public string Name
+        {
+            set { name_ = value; }
+            get { return name_; }
+        }
+
+        [XmlAttribute("Path")]
+        public string Path { set; get; }
+
         [XmlIgnore]
         public AMedia Current
         {
@@ -40,7 +52,8 @@ namespace MyWmp.Models
             }
             get { return shuffle_; }
         }
-        [XmlIgnore] public bool RepeatAll;
+        [XmlIgnore]
+        public bool RepeatAll;
         [XmlIgnore]
         private bool shuffle_;
         [XmlIgnore]
@@ -67,16 +80,60 @@ namespace MyWmp.Models
         {
             medias_ = new ArrayList();
             shuffleList_ = new ArrayList();
+            MediaPaths = new List<MediaPath>();
             current_ = null;
             Shuffle = false;
             RepeatAll = false;
             Name = "New Playlist";
         }
 
+        public void LoadFromPath()
+        {
+            medias_.Clear();
+            shuffleList_.Clear();
+            foreach (var mediaPath in MediaPaths)
+            {
+                switch (mediaPath.MediaType)
+                {
+                    case AMedia.Type.Song:
+                        var s = new Song(mediaPath.Source);
+                        medias_.Add(s);
+                        shuffleList_.Add(s);
+                        RandomList(shuffleList_);
+                        if (medias_.Count == 1)
+                        {
+                            Current = s;
+                        }
+                        break;
+                    case AMedia.Type.Video:
+                        var v = new Video(mediaPath.Source);
+                        medias_.Add(v);
+                        shuffleList_.Add(v);
+                        RandomList(shuffleList_);
+                        if (medias_.Count == 1)
+                        {
+                            Current = v;
+                        }
+                        break;
+                    case AMedia.Type.Picture:
+                        var p = new Picture(mediaPath.Source);
+                        medias_.Add(p);
+                        shuffleList_.Add(p);
+                        RandomList(shuffleList_);
+                        if (medias_.Count == 1)
+                        {
+                            Current = p;
+                        }
+                        break;
+                }
+            }
+        }
+
         public void Add(AMedia s)
         {
             medias_.Add(s);
             shuffleList_.Add(s);
+            MediaPaths.Add(new MediaPath(s.Source, s.MediaType));
             RandomList(shuffleList_);
             if (medias_.Count == 1)
             {
@@ -88,13 +145,18 @@ namespace MyWmp.Models
         {
             medias_.AddRange(list);
             shuffleList_.AddRange(list);
+            foreach (AMedia media in list)
+            {
+                MediaPaths.Add(new MediaPath(media.Source, media.MediaType));
+            }
             RandomList(shuffleList_);
             if (medias_.Count == 1)
-                Current = (AMedia) medias_[0];
+                Current = (AMedia)medias_[0];
         }
 
         public void Remove(AMedia index)
         {
+            MediaPaths.RemoveAt(medias_.IndexOf(index));
             medias_.Remove(index);
             shuffleList_.Remove(index);
             if (medias_.Count == 0)
@@ -107,6 +169,7 @@ namespace MyWmp.Models
         {
             medias_.Clear();
             shuffleList_.Clear();
+            MediaPaths.Clear();
             current_ = null;
         }
 
