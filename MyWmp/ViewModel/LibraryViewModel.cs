@@ -82,9 +82,12 @@ namespace MyWmp.ViewModel
             {
                 playlist.Add(media as AMedia);
             }
-            playlist.Current = LibraryMusics.GetItemAt(selectedIndex) as AMedia;
-            control_.Playlist = playlist;
-            control_.Play();
+            if (selectedIndex != -1)
+            {
+                playlist.Current = LibraryMusics.GetItemAt(selectedIndex) as AMedia;
+                control_.Playlist = playlist;
+                control_.Play();
+            }
         }
 
         private string Translate(string library)
