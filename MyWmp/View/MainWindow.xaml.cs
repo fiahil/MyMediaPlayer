@@ -63,19 +63,19 @@ namespace MyWmp.View
 
         private void SwitchButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if ((string) this.SwitchButton.Content == "/Resources/Minimize.png")
+            if ((string) this.SwitchButton.Content == "/Resources/Retract.png")
             {
                 this.MediaLayout.Visibility = Visibility.Visible;
                 this.ControlLayout.Visibility = Visibility.Visible;
                 this.LibraryLayout.Visibility = Visibility.Collapsed;
-                this.SwitchButton.Content = "/Resources/Maximize.png";
+                this.SwitchButton.Content = "/Resources/Deploy.png";
             }
             else
             {
                 this.MediaLayout.Visibility = Visibility.Collapsed;
                 this.ControlLayout.Visibility = Visibility.Collapsed;
                 this.LibraryLayout.Visibility = Visibility.Visible;
-                this.SwitchButton.Content = "/Resources/Minimize.png";
+                this.SwitchButton.Content = "/Resources/Retract.png";
             }
         }
     }

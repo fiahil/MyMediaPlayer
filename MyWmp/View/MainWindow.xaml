@@ -47,7 +47,7 @@
         <view:MediaLayout x:Name="MediaLayout" Margin="0,0,0,52"  MouseDoubleClick="OnFullScreenCommand" Visibility="Collapsed" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" />
         <view:ControlLayout x:Name="ControlLayout" Visibility="Collapsed" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" />
         
-        <Button x:Name="SwitchButton" Content="/Resources/Minimize.png" Height="50" Width="50" Style="{DynamicResource Controls}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0" Click="SwitchButton_OnClick" />
+        <Button x:Name="SwitchButton" Content="/Resources/Retract.png" Height="50" Width="50" Style="{DynamicResource Controls}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0" Click="SwitchButton_OnClick" />
 
         <!--<view:PlaybackList Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="4" HorizontalAlignment="Right" Width="200"/>-->
         <view:MenuLayout Grid.Column="1" Grid.Row="0" />
