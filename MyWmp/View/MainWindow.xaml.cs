@@ -113,17 +113,17 @@ namespace MyWmp.View
 
         private void SwitchButton2_OnClick(object sender, RoutedEventArgs e)
         {
-            if ((string)this.SwitchButton2.Content == "/Resources/Deploy.png")
+            if ((string)this.SwitchButton2.Content == "/Resources/Retract.png")
             {
                 this.PlaybackList.Visibility = Visibility.Visible;
 
-                this.SwitchButton2.Content = "/Resources/Retract.png";
+                this.SwitchButton2.Content = "/Resources/Deploy.png";
             }
             else
             {
                 this.PlaybackList.Visibility = Visibility.Collapsed;
 
-                this.SwitchButton2.Content = "/Resources/Deploy.png";
+                this.SwitchButton2.Content = "/Resources/Retract.png";
             }
 
         }

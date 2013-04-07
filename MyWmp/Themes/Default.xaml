@@ -122,7 +122,7 @@
         <Setter Property="ToolTip">
             <Setter.Value>
                 <Border Background="{DynamicResource BgBrush}">
-                    <Image Source="{Binding AlbumArt}" Width="60" Height="60" />
+                    <Image Source="{Binding AlbumArt}" Width="64" Height="64" />
                 </Border>
             </Setter.Value>
         </Setter>
