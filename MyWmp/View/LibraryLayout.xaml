@@ -36,239 +36,239 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>-->
 
-                            <DataGridTextColumn x:Name="Track" Width="0.07*" Header="#" Binding="{Binding Track}" Visibility="Visible" />
-                            <DataGridTextColumn x:Name="Album" Width="0.175*" Header="Album" Binding="{Binding Album}" Visibility="Visible" />
-                            <DataGridTextColumn x:Name="Artist" Width="0.175*" Header="Artist" Binding="{Binding Artist}" Visibility="Visible" />
-                            <DataGridTextColumn x:Name="Title" Width="0.225*" Header="Title" Binding="{Binding Title}" />
-                            <DataGridTextColumn x:Name="Duration" Width="0.08*" Header="Duration" Binding="{Binding Duration}" Visibility="Visible" />
-                            <DataGridTextColumn x:Name="Genre" Width="0.150*" Header="Genre" Binding="{Binding Genre}" Visibility="Visible" />
-                            <DataGridTextColumn x:Name="Year" Width="0.08*" Header="Year" Binding="{Binding Year}" Visibility="Visible" />
-                            <DataGridTextColumn x:Name="Type" Width="0.08*" Header="Type" Binding="{Binding Extension}" Visibility="Visible" />
+                            <DataGridTextColumn Width="0.07*" Header="#" Binding="{Binding Track}" Visibility="Visible" />
+                            <DataGridTextColumn Width="0.175*" Header="Album" Binding="{Binding Album}" Visibility="Visible" />
+                            <DataGridTextColumn Width="0.175*" Header="Artist" Binding="{Binding Artist}" Visibility="Visible" />
+                            <DataGridTextColumn Width="0.225*" Header="Title" Binding="{Binding Title}" />
+                            <DataGridTextColumn Width="0.08*" Header="Duration" Binding="{Binding Duration}" Visibility="Visible" />
+                            <DataGridTextColumn Width="0.150*" Header="Genre" Binding="{Binding Genre}" Visibility="Visible" />
+                            <DataGridTextColumn Width="0.08*" Header="Year" Binding="{Binding Year}" Visibility="Visible" />
+                            <DataGridTextColumn Width="0.08*" Header="Type" Binding="{Binding Extension}" Visibility="Visible" />
                         </DataGrid.Columns>
                     </DataGrid>
                     
                     <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="80">
-                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="TrackGroupBox" Header="Track" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="MusicTrackGroupBox" Header="Track" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="TrackFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicTrackFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="TrackFilter" />
-                                            <Binding Path="IsChecked" ElementName="TrackGroup" />
-                                            <Binding Path="Text" ElementName="TrackValue" />
-                                            <Binding Path="Header" ElementName="TrackGroupBox" />
-                                            <Binding Path="Tag" ElementName="TrackGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicTrackFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicTrackGroup" />
+                                            <Binding Path="Text" ElementName="MusicTrackValue" />
+                                            <Binding Path="Header" ElementName="MusicTrackGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicTrackGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="TrackGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicTrackGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="TrackFilter" />
-                                            <Binding Path="IsChecked" ElementName="TrackGroup" />
-                                            <Binding Path="Text" ElementName="TrackValue" />
-                                            <Binding Path="Header" ElementName="TrackGroupBox" />
-                                            <Binding Path="Tag" ElementName="TrackGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicTrackFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicTrackGroup" />
+                                            <Binding Path="Text" ElementName="MusicTrackValue" />
+                                            <Binding Path="Header" ElementName="MusicTrackGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicTrackGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox Style="{DynamicResource Textbox}" x:Name="TrackValue" Tag="Track" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="MusicTrackValue" Tag="MTrack" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="ArtistGroupBox" Header="Artist" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="MusicArtistGroupBox" Header="Artist" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="ArtistFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicArtistFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="ArtistFilter" />
-                                            <Binding Path="IsChecked" ElementName="ArtistGroup" />
-                                            <Binding Path="Text" ElementName="ArtistValue" />
-                                            <Binding Path="Header" ElementName="ArtistGroupBox" />
-                                            <Binding Path="Tag" ElementName="ArtistGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicArtistFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicArtistGroup" />
+                                            <Binding Path="Text" ElementName="MusicArtistValue" />
+                                            <Binding Path="Header" ElementName="MusicArtistGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicArtistGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="ArtistGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicArtistGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="ArtistFilter" />
-                                            <Binding Path="IsChecked" ElementName="ArtistGroup" />
-                                            <Binding Path="Text" ElementName="ArtistValue" />
-                                            <Binding Path="Header" ElementName="ArtistGroupBox" />
-                                            <Binding Path="Tag" ElementName="ArtistGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicArtistFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicArtistGroup" />
+                                            <Binding Path="Text" ElementName="MusicArtistValue" />
+                                            <Binding Path="Header" ElementName="MusicArtistGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicArtistGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox Style="{DynamicResource Textbox}" x:Name="ArtistValue" Tag="Artist" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="MusicArtistValue" Tag="MArtist" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="AlbumGroupBox" Header="Album" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="MusicAlbumGroupBox" Header="Album" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="AlbumFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicAlbumFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="AlbumFilter" />
-                                            <Binding Path="IsChecked" ElementName="AlbumGroup" />
-                                            <Binding Path="Text" ElementName="AlbumValue" />
-                                            <Binding Path="Header" ElementName="AlbumGroupBox" />
-                                            <Binding Path="Tag" ElementName="AlbumGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicAlbumFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicAlbumGroup" />
+                                            <Binding Path="Text" ElementName="MusicAlbumValue" />
+                                            <Binding Path="Header" ElementName="MusicAlbumGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicAlbumGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="AlbumGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicAlbumGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="AlbumFilter" />
-                                            <Binding Path="IsChecked" ElementName="AlbumGroup" />
-                                            <Binding Path="Text" ElementName="AlbumValue" />
-                                            <Binding Path="Header" ElementName="AlbumGroupBox" />
-                                            <Binding Path="Tag" ElementName="AlbumGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicAlbumFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicAlbumGroup" />
+                                            <Binding Path="Text" ElementName="MusicAlbumValue" />
+                                            <Binding Path="Header" ElementName="MusicAlbumGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicAlbumGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox Style="{DynamicResource Textbox}" x:Name="AlbumValue" Tag="Album" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="MusicAlbumValue" Tag="MAlbum" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="TitleGroupBox" Header="Title" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="MusicTitleGroupBox" Header="Title" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="TitleFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicTitleFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="TitleFilter" />
-                                            <Binding Path="IsChecked" ElementName="TitleGroup" />
-                                            <Binding Path="Text" ElementName="TitleValue" />
-                                            <Binding Path="Header" ElementName="TitleGroupBox" />
-                                            <Binding Path="Tag" ElementName="TitleGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicTitleFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicTitleGroup" />
+                                            <Binding Path="Text" ElementName="MusicTitleValue" />
+                                            <Binding Path="Header" ElementName="MusicTitleGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicTitleGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="TitleGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicTitleGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="TitleFilter" />
-                                            <Binding Path="IsChecked" ElementName="TitleGroup" />
-                                            <Binding Path="Text" ElementName="TitleValue" />
-                                            <Binding Path="Header" ElementName="TitleGroupBox" />
-                                            <Binding Path="Tag" ElementName="TitleGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicTitleFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicTitleGroup" />
+                                            <Binding Path="Text" ElementName="MusicTitleValue" />
+                                            <Binding Path="Header" ElementName="MusicTitleGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicTitleGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox Style="{DynamicResource Textbox}" x:Name="TitleValue" Tag="Title" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="MusicTitleValue" Tag="MTitle" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="DurationGroupBox" Header="Duration" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="MusicDurationGroupBox" Header="Duration" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="DurationFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicDurationFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="DurationFilter" />
-                                            <Binding Path="IsChecked" ElementName="DurationGroup" />
-                                            <Binding Path="Text" ElementName="DurationValue" />
-                                            <Binding Path="Header" ElementName="DurationGroupBox" />
-                                            <Binding Path="Tag" ElementName="DurationGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicDurationFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicDurationGroup" />
+                                            <Binding Path="Text" ElementName="MusicDurationValue" />
+                                            <Binding Path="Header" ElementName="MusicDurationGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicDurationGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="DurationGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicDurationGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="DurationFilter" />
-                                            <Binding Path="IsChecked" ElementName="DurationGroup" />
-                                            <Binding Path="Text" ElementName="DurationValue" />
-                                            <Binding Path="Header" ElementName="DurationGroupBox" />
-                                            <Binding Path="Tag" ElementName="DurationGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicDurationFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicDurationGroup" />
+                                            <Binding Path="Text" ElementName="MusicDurationValue" />
+                                            <Binding Path="Header" ElementName="MusicDurationGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicDurationGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox Style="{DynamicResource Textbox}" x:Name="DurationValue" Tag="Duration" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="MusicDurationValue" Tag="MDuration" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="GenreGroupBox" Header="Genre" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="MusicGenreGroupBox" Header="Genre" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="GenreFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicGenreFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="GenreFilter" />
-                                            <Binding Path="IsChecked" ElementName="GenreGroup" />
-                                            <Binding Path="Text" ElementName="GenreValue" />
-                                            <Binding Path="Header" ElementName="GenreGroupBox" />
-                                            <Binding Path="Tag" ElementName="GenreGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicGenreFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicGenreGroup" />
+                                            <Binding Path="Text" ElementName="MusicGenreValue" />
+                                            <Binding Path="Header" ElementName="MusicGenreGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicGenreGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="GenreGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicGenreGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="GenreFilter" />
-                                            <Binding Path="IsChecked" ElementName="GenreGroup" />
-                                            <Binding Path="Text" ElementName="GenreValue" />
-                                            <Binding Path="Header" ElementName="GenreGroupBox" />
-                                            <Binding Path="Tag" ElementName="GenreGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicGenreFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicGenreGroup" />
+                                            <Binding Path="Text" ElementName="MusicGenreValue" />
+                                            <Binding Path="Header" ElementName="MusicGenreGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicGenreGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox Style="{DynamicResource Textbox}" x:Name="GenreValue" Tag="Genre" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="MusicGenreValue" Tag="MGenre" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="YearGroupBox" Header="Year" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="MusicYearGroupBox" Header="Year" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="YearFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicYearFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="YearFilter" />
-                                            <Binding Path="IsChecked" ElementName="YearGroup" />
-                                            <Binding Path="Text" ElementName="YearValue" />
-                                            <Binding Path="Header" ElementName="YearGroupBox" />
-                                            <Binding Path="Tag" ElementName="YearGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicYearFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicYearGroup" />
+                                            <Binding Path="Text" ElementName="MusicYearValue" />
+                                            <Binding Path="Header" ElementName="MusicYearGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicYearGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="YearGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicYearGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="YearFilter" />
-                                            <Binding Path="IsChecked" ElementName="YearGroup" />
-                                            <Binding Path="Text" ElementName="YearValue" />
-                                            <Binding Path="Header" ElementName="YearGroupBox" />
-                                            <Binding Path="Tag" ElementName="YearGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicYearFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicYearGroup" />
+                                            <Binding Path="Text" ElementName="MusicYearValue" />
+                                            <Binding Path="Header" ElementName="MusicYearGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicYearGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox Style="{DynamicResource Textbox}" x:Name="YearValue" Tag="Year" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="MusicYearValue" Tag="MYear" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
 
-                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="ExtensionGroupBox" Header="Extension" Tag="Music">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="MusicExtensionGroupBox" Header="Extension" Tag="Music">
                             <StackPanel Orientation="Vertical">
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="ExtensionFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicExtensionFilter" Content="Filter" Command="{Binding FilterCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="ExtensionFilter" />
-                                            <Binding Path="IsChecked" ElementName="ExtensionGroup" />
-                                            <Binding Path="Text" ElementName="ExtensionValue" />
-                                            <Binding Path="Header" ElementName="ExtensionGroupBox" />
-                                            <Binding Path="Tag" ElementName="ExtensionGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicExtensionFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicExtensionGroup" />
+                                            <Binding Path="Text" ElementName="MusicExtensionValue" />
+                                            <Binding Path="Header" ElementName="MusicExtensionGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicExtensionGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="ExtensionGroup" Content="Group" Command="{Binding GroupCommand}">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="MusicExtensionGroup" Content="Group" Command="{Binding GroupCommand}">
                                     <CheckBox.CommandParameter>
                                         <MultiBinding Converter="{StaticResource LibraryConverter}">
-                                            <Binding Path="IsChecked" ElementName="ExtensionFilter" />
-                                            <Binding Path="IsChecked" ElementName="ExtensionGroup" />
-                                            <Binding Path="Text" ElementName="ExtensionValue" />
-                                            <Binding Path="Header" ElementName="ExtensionGroupBox" />
-                                            <Binding Path="Tag" ElementName="ExtensionGroupBox" />
+                                            <Binding Path="IsChecked" ElementName="MusicExtensionFilter" />
+                                            <Binding Path="IsChecked" ElementName="MusicExtensionGroup" />
+                                            <Binding Path="Text" ElementName="MusicExtensionValue" />
+                                            <Binding Path="Header" ElementName="MusicExtensionGroupBox" />
+                                            <Binding Path="Tag" ElementName="MusicExtensionGroupBox" />
                                         </MultiBinding>
                                     </CheckBox.CommandParameter>
                                 </CheckBox>
-                                <TextBox Style="{DynamicResource Textbox}" x:Name="ExtensionValue" Tag="Extension" TextChanged="OnTextChanged" />
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="MusicExtensionValue" Tag="MExtension" TextChanged="OnTextChanged" />
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
@@ -276,30 +276,393 @@
             </TabItem>
 
             <TabItem Header="Video" Style="{DynamicResource TabItem}">
-                <DataGrid Margin="0,0,85,0" x:Name="VideoDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" RowStyle="{DynamicResource DatagridRow}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryVideos}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Videos_OnMouseDoubleClick">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Title" Width="0.5*" Binding="{Binding Title}" />
-                        <DataGridTextColumn Header="Duration" Width="0.2*" Binding="{Binding Duration}" />
-                        <DataGridTextColumn Header="Year" Width="0.1*" Binding="{Binding Track}" />
-                        <DataGridTextColumn Header="Genre" Width="0.125*" Binding="{Binding Genre}" />
-                        <DataGridTextColumn Header="Height" Width="0.125*" Binding="{Binding Height}" />
-                        <DataGridTextColumn Header="Width" Width="0.125*" Binding="{Binding Width}" />
-                        <DataGridTextColumn Header="Type" Width="0.1*" Binding="{Binding Extension}" />
-                    </DataGrid.Columns>
-                </DataGrid>
+                <Grid>
+                    <DataGrid Margin="0,0,85,0" x:Name="VideoDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" RowStyle="{DynamicResource DatagridRow}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryVideos}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Videos_OnMouseDoubleClick">
+                        <DataGrid.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Template" Value="{DynamicResource GroupItemTemplate}" />
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </DataGrid.GroupStyle>
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Title" Width="0.5*" Binding="{Binding Title}" />
+                            <DataGridTextColumn Header="Duration" Width="0.2*" Binding="{Binding Duration}" />
+                            <DataGridTextColumn Header="Year" Width="0.1*" Binding="{Binding Year}" />
+                            <DataGridTextColumn Header="Genre" Width="0.125*" Binding="{Binding Genre}" />
+                            <DataGridTextColumn Header="Height" Width="0.125*" Binding="{Binding Height}" />
+                            <DataGridTextColumn Header="Width" Width="0.125*" Binding="{Binding Width}" />
+                            <DataGridTextColumn Header="Type" Width="0.1*" Binding="{Binding Extension}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="80">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="VideoTitleGroupBox" Header="Title" Tag="Video">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="VideoTitleFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="VideoTitleFilter" />
+                                            <Binding Path="IsChecked" ElementName="VideoTitleGroup" />
+                                            <Binding Path="Text" ElementName="VideoTitleValue" />
+                                            <Binding Path="Header" ElementName="VideoTitleGroupBox" />
+                                            <Binding Path="Tag" ElementName="VideoTitleGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="VideoTitleGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="VideoTitleFilter" />
+                                            <Binding Path="IsChecked" ElementName="VideoTitleGroup" />
+                                            <Binding Path="Text" ElementName="VideoTitleValue" />
+                                            <Binding Path="Header" ElementName="VideoTitleGroupBox" />
+                                            <Binding Path="Tag" ElementName="VideoTitleGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="VideoTitleValue" Tag="VTitle" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="VideoDurationGroupBox" Header="Duration" Tag="Video">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="VideoDurationFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="VideoDurationFilter" />
+                                            <Binding Path="IsChecked" ElementName="VideoDurationGroup" />
+                                            <Binding Path="Text" ElementName="VideoDurationValue" />
+                                            <Binding Path="Header" ElementName="VideoDurationGroupBox" />
+                                            <Binding Path="Tag" ElementName="VideoDurationGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="VideoDurationGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="VideoDurationFilter" />
+                                            <Binding Path="IsChecked" ElementName="VideoDurationGroup" />
+                                            <Binding Path="Text" ElementName="VideoDurationValue" />
+                                            <Binding Path="Header" ElementName="VideoDurationGroupBox" />
+                                            <Binding Path="Tag" ElementName="VideoDurationGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="VideoDurationValue" Tag="VDuration" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="VideoYearGroupBox" Header="Year" Tag="Video">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="VideoYearFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="VideoYearFilter" />
+                                            <Binding Path="IsChecked" ElementName="VideoYearGroup" />
+                                            <Binding Path="Text" ElementName="VideoYearValue" />
+                                            <Binding Path="Header" ElementName="VideoYearGroupBox" />
+                                            <Binding Path="Tag" ElementName="VideoYearGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="VideoYearGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="VideoYearFilter" />
+                                            <Binding Path="IsChecked" ElementName="VideoYearGroup" />
+                                            <Binding Path="Text" ElementName="VideoYearValue" />
+                                            <Binding Path="Header" ElementName="VideoYearGroupBox" />
+                                            <Binding Path="Tag" ElementName="VideoYearGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="VideoYearValue" Tag="VYear" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="VideoGenreGroupBox" Header="Genre" Tag="Video">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="VideoGenreFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="VideoGenreFilter" />
+                                            <Binding Path="IsChecked" ElementName="VideoGenreGroup" />
+                                            <Binding Path="Text" ElementName="VideoGenreValue" />
+                                            <Binding Path="Header" ElementName="VideoGenreGroupBox" />
+                                            <Binding Path="Tag" ElementName="VideoGenreGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="VideoGenreGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="VideoGenreFilter" />
+                                            <Binding Path="IsChecked" ElementName="VideoGenreGroup" />
+                                            <Binding Path="Text" ElementName="VideoGenreValue" />
+                                            <Binding Path="Header" ElementName="VideoGenreGroupBox" />
+                                            <Binding Path="Tag" ElementName="VideoGenreGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="VideoGenreValue" Tag="VGenre" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="VideoHeightGroupBox" Header="Height" Tag="Video">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="VideoHeightFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="VideoHeightFilter" />
+                                            <Binding Path="IsChecked" ElementName="VideoHeightGroup" />
+                                            <Binding Path="Text" ElementName="VideoHeightValue" />
+                                            <Binding Path="Header" ElementName="VideoHeightGroupBox" />
+                                            <Binding Path="Tag" ElementName="VideoHeightGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="VideoHeightGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="VideoHeightFilter" />
+                                            <Binding Path="IsChecked" ElementName="VideoHeightGroup" />
+                                            <Binding Path="Text" ElementName="VideoHeightValue" />
+                                            <Binding Path="Header" ElementName="VideoHeightGroupBox" />
+                                            <Binding Path="Tag" ElementName="VideoHeightGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="VideoHeightValue" Tag="VHeight" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="VideoWidthGroupBox" Header="Width" Tag="Video">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="VideoWidthFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="VideoWidthFilter" />
+                                            <Binding Path="IsChecked" ElementName="VideoWidthGroup" />
+                                            <Binding Path="Text" ElementName="VideoWidthValue" />
+                                            <Binding Path="Header" ElementName="VideoWidthGroupBox" />
+                                            <Binding Path="Tag" ElementName="VideoWidthGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="VideoWidthGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="VideoWidthFilter" />
+                                            <Binding Path="IsChecked" ElementName="VideoWidthGroup" />
+                                            <Binding Path="Text" ElementName="VideoWidthValue" />
+                                            <Binding Path="Header" ElementName="VideoWidthGroupBox" />
+                                            <Binding Path="Tag" ElementName="VideoWidthGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="VideoWidthValue" Tag="VWidth" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="VideoExtensionGroupBox" Header="Extension" Tag="Video">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="VideoExtensionFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="VideoExtensionFilter" />
+                                            <Binding Path="IsChecked" ElementName="VideoExtensionGroup" />
+                                            <Binding Path="Text" ElementName="VideoExtensionValue" />
+                                            <Binding Path="Header" ElementName="VideoExtensionGroupBox" />
+                                            <Binding Path="Tag" ElementName="VideoExtensionGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="VideoExtensionGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="VideoExtensionFilter" />
+                                            <Binding Path="IsChecked" ElementName="VideoExtensionGroup" />
+                                            <Binding Path="Text" ElementName="VideoExtensionValue" />
+                                            <Binding Path="Header" ElementName="VideoExtensionGroupBox" />
+                                            <Binding Path="Tag" ElementName="VideoExtensionGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="VideoExtensionValue" Tag="VExtension" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             
             <TabItem Header="Picture" Style="{DynamicResource TabItem}">
-                <DataGrid Margin="0,0,85,0" x:Name="PictureDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" RowStyle="{DynamicResource DatagridRow}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryPictures}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Title" Width="0.4*" Binding="{Binding Title}" />
-                        <DataGridTextColumn Header="Height" Width="0.15*" Binding="{Binding Height}" />
-                        <DataGridTextColumn Header="Width" Width="0.15*" Binding="{Binding Width}" />
-                        <DataGridTextColumn Header="Year" Width="0.1*" Binding="{Binding Track}" />
-                        <DataGridTextColumn Header="Genre" Width="0.1*" Binding="{Binding Genre}" />
-                        <DataGridTextColumn Header="Type" Width="0.1*" Binding="{Binding Extension}" />
-                    </DataGrid.Columns>
-                </DataGrid>
+                <Grid>
+                    <DataGrid Margin="0,0,85,0" x:Name="PictureDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" RowStyle="{DynamicResource DatagridRow}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryPictures}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False">
+                        <DataGrid.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Template" Value="{DynamicResource GroupItemTemplate}" />
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </DataGrid.GroupStyle>
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Title" Width="0.4*" Binding="{Binding Title}" />
+                            <DataGridTextColumn Header="Height" Width="0.15*" Binding="{Binding Height}" />
+                            <DataGridTextColumn Header="Width" Width="0.15*" Binding="{Binding Width}" />
+                            <DataGridTextColumn Header="Year" Width="0.1*" Binding="{Binding Year}" />
+                            <DataGridTextColumn Header="Type" Width="0.1*" Binding="{Binding Extension}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="80">
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="PictureTitleGroupBox" Header="Title" Tag="Picture">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="PictureTitleFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="PictureTitleFilter" />
+                                            <Binding Path="IsChecked" ElementName="PictureTitleGroup" />
+                                            <Binding Path="Text" ElementName="PictureTitleValue" />
+                                            <Binding Path="Header" ElementName="PictureTitleGroupBox" />
+                                            <Binding Path="Tag" ElementName="PictureTitleGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="PictureTitleGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="PictureTitleFilter" />
+                                            <Binding Path="IsChecked" ElementName="PictureTitleGroup" />
+                                            <Binding Path="Text" ElementName="PictureTitleValue" />
+                                            <Binding Path="Header" ElementName="PictureTitleGroupBox" />
+                                            <Binding Path="Tag" ElementName="PictureTitleGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="PictureTitleValue" Tag="PTitle" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="PictureYearGroupBox" Header="Year" Tag="Picture">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="PictureYearFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="PictureYearFilter" />
+                                            <Binding Path="IsChecked" ElementName="PictureYearGroup" />
+                                            <Binding Path="Text" ElementName="PictureYearValue" />
+                                            <Binding Path="Header" ElementName="PictureYearGroupBox" />
+                                            <Binding Path="Tag" ElementName="PictureYearGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="PictureYearGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="PictureYearFilter" />
+                                            <Binding Path="IsChecked" ElementName="PictureYearGroup" />
+                                            <Binding Path="Text" ElementName="PictureYearValue" />
+                                            <Binding Path="Header" ElementName="PictureYearGroupBox" />
+                                            <Binding Path="Tag" ElementName="PictureYearGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="PictureYearValue" Tag="PYear" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="PictureHeightGroupBox" Header="Height" Tag="Picture">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="PictureHeightFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="PictureHeightFilter" />
+                                            <Binding Path="IsChecked" ElementName="PictureHeightGroup" />
+                                            <Binding Path="Text" ElementName="PictureHeightValue" />
+                                            <Binding Path="Header" ElementName="PictureHeightGroupBox" />
+                                            <Binding Path="Tag" ElementName="PictureHeightGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="PictureHeightGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="PictureHeightFilter" />
+                                            <Binding Path="IsChecked" ElementName="PictureHeightGroup" />
+                                            <Binding Path="Text" ElementName="PictureHeightValue" />
+                                            <Binding Path="Header" ElementName="PictureHeightGroupBox" />
+                                            <Binding Path="Tag" ElementName="PictureHeightGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="PictureHeightValue" Tag="PHeight" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="PictureWidthGroupBox" Header="Width" Tag="Picture">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="PictureWidthFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="PictureWidthFilter" />
+                                            <Binding Path="IsChecked" ElementName="PictureWidthGroup" />
+                                            <Binding Path="Text" ElementName="PictureWidthValue" />
+                                            <Binding Path="Header" ElementName="PictureWidthGroupBox" />
+                                            <Binding Path="Tag" ElementName="PictureWidthGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="PictureWidthGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="PictureWidthFilter" />
+                                            <Binding Path="IsChecked" ElementName="PictureWidthGroup" />
+                                            <Binding Path="Text" ElementName="PictureWidthValue" />
+                                            <Binding Path="Header" ElementName="PictureWidthGroupBox" />
+                                            <Binding Path="Tag" ElementName="PictureWidthGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="PictureWidthValue" Tag="PWidth" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Style="{DynamicResource Groupbox}" x:Name="PictureExtensionGroupBox" Header="Extension" Tag="Picture">
+                            <StackPanel Orientation="Vertical">
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="PictureExtensionFilter" Content="Filter" Command="{Binding FilterCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="PictureExtensionFilter" />
+                                            <Binding Path="IsChecked" ElementName="PictureExtensionGroup" />
+                                            <Binding Path="Text" ElementName="PictureExtensionValue" />
+                                            <Binding Path="Header" ElementName="PictureExtensionGroupBox" />
+                                            <Binding Path="Tag" ElementName="PictureExtensionGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <CheckBox Style="{DynamicResource Checkbox}" x:Name="PictureExtensionGroup" Content="Group" Command="{Binding GroupCommand}">
+                                    <CheckBox.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource LibraryConverter}">
+                                            <Binding Path="IsChecked" ElementName="PictureExtensionFilter" />
+                                            <Binding Path="IsChecked" ElementName="PictureExtensionGroup" />
+                                            <Binding Path="Text" ElementName="PictureExtensionValue" />
+                                            <Binding Path="Header" ElementName="PictureExtensionGroupBox" />
+                                            <Binding Path="Tag" ElementName="PictureExtensionGroupBox" />
+                                        </MultiBinding>
+                                    </CheckBox.CommandParameter>
+                                </CheckBox>
+                                <TextBox Style="{DynamicResource Textbox}" x:Name="PictureExtensionValue" Tag="PExtension" TextChanged="OnTextChanged" />
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Header="Playlists" Style="{DynamicResource TabItem}">
                 <Grid>

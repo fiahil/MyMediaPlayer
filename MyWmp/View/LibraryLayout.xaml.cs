@@ -22,49 +22,67 @@ namespace MyWmp.View
 
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
+            var library = "";
+            switch (((string)((TextBox)sender).Tag)[0])
+            {
+                case 'M':
+                    library = "Music";
+                    break;
+                case 'V':
+                    library = "Video";
+                    break;
+                case 'P':
+                    library = "Picture";
+                    break;
+                case 'L':
+                    library = "Playlist";
+                    break;
+            }
+            var tag = ((string) ((TextBox) sender).Tag).Substring(1);
+
             if (
                 ((CheckBox)
                  this.GetType()
-                     .GetField((string) ((TextBox) sender).Tag + "Filter",
+                     .GetField(library + tag + "Filter",
                                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                      .GetValue(this)).IsChecked.HasValue &&
                 ((CheckBox)
                  this.GetType()
-                     .GetField((string) ((TextBox) sender).Tag + "Group",
+                     .GetField(library + tag + "Group",
                                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                      .GetValue(this)).IsChecked.HasValue &&
                 ((CheckBox)
                  this.GetType()
-                     .GetField((string) ((TextBox) sender).Tag + "Filter",
+                     .GetField(library + tag + "Filter",
                                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                      .GetValue(this)).IsChecked.Value
                 )
             {
                 this.libraryViewModel_.FilterCommand.Execute(new LibraryConverterParam
                     {
-                        Sender = (string) ((TextBox) sender).Tag,
+                        Sender = tag,
                         Filter =
                             ((CheckBox)
                              this.GetType()
-                                 .GetField((string) ((TextBox) sender).Tag + "Filter",
+                                 .GetField(library + tag + "Filter",
                                            BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                                  .GetValue(this)).IsChecked.Value,
                         Group =
                             ((CheckBox)
                              this.GetType()
-                                 .GetField((string) ((TextBox) sender).Tag + "Group",
+                                 .GetField(library + tag + "Group",
                                            BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                                  .GetValue(this)).IsChecked.Value,
                         Value =
                             ((TextBox)
                              this.GetType()
-                                 .GetField((string) ((TextBox) sender).Tag + "Value",
+                                 .GetField(library + tag + "Value",
                                            BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                                  .GetValue(this)).Text,
                         Library = ((string)
                                    ((GroupBox)
                                     this.GetType()
-                                        .GetField((string) ((TextBox) sender).Tag + "GroupBox",
+                                        .GetField(library + tag + "GroupBox",
                                                   BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                                         .GetValue(this)).Tag)
                     });
