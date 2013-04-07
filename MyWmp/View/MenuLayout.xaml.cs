@@ -51,7 +51,14 @@ namespace MyWmp.View
 
         private void MenuItem_OnOpenStream(object sender, RoutedEventArgs e)
         {
+			/*
             this.OpenStreamLayout.Visibility = Visibility.Visible;
+			*/
+		}
+		
+        private void MenuTheme_Onclick(object sender, RoutedEventArgs e)
+        {
+            this.ThemeLayout.Visibility = Visibility.Visible;
         }
     }
 }

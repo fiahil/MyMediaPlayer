@@ -14,12 +14,14 @@ namespace MyWmp.View
     /// </summary>
     public sealed partial class MainWindow
     {
+        public static MainWindow Instance;
         private readonly Control control_;
 
         public MainWindow()
         {
             InitializeComponent();
             control_ = Control.Instance;
+            Instance = this;
         }
 
         private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

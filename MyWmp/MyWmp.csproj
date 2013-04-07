@@ -74,6 +74,12 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.DataGrid">
+      <HintPath>..\lib\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\lib\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App\App.xaml">
@@ -115,6 +121,9 @@
     </Compile>
     <Compile Include="View\PlaybackList.xaml.cs">
       <DependentUpon>PlaybackList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Theme.xaml.cs">
+      <DependentUpon>Theme.xaml</DependentUpon>
     </Compile>
     <Page Include="Templates\Default.xaml">
       <SubType>Designer</SubType>
@@ -160,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PlaybackList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Theme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
