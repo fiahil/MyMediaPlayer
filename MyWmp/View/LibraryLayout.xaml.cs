@@ -269,7 +269,7 @@ namespace MyWmp.View
             var datagrid = VisualTreeHelper.GetParent(SelectedItem);
             while (datagrid != null && datagrid.GetType() != typeof (DataGrid))
                 datagrid = VisualTreeHelper.GetParent(datagrid);
-            while (menu.Items.Count > 1)
+            while (menu.Items.Count > 2)
                 menu.Items.RemoveAt(menu.Items.Count - 1);
             foreach (var playlist in libraryViewModel_.Playlists)
             {

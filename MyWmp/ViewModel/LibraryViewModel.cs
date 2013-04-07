@@ -139,22 +139,34 @@ namespace MyWmp.ViewModel
 
         private void OnFilter(object o)
         {
-            var param = o as LibraryConverterParam;
-            if (param != null && param.Filter)
-                ((ListCollectionView) this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).Filter =
-                    a => ((string) a.GetType().GetProperty(param.Sender).GetValue(a, null)).Contains(param.Value);
-            else if (param != null && param.Filter == false)
-                ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).Filter = null;
+            try
+            {
+                var param = o as LibraryConverterParam;
+                if (param != null && param.Filter)
+                    ((ListCollectionView) this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).Filter =
+                        a => ((string) a.GetType().GetProperty(param.Sender).GetValue(a, null)).Contains(param.Value);
+                else if (param != null && param.Filter == false)
+                    ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).Filter = null;
+            }
+            catch (Exception e)
+            {
+            }
         }
 
         private void OnGroup(object o)
         {
-            var param = o as LibraryConverterParam;
-            if (param != null && param.Group)
-                ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).GroupDescriptions.Add(new PropertyGroupDescription(param.Sender));
-            else if (param != null && param.Group == false)
-                ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).GroupDescriptions.Remove(
-                     ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).GroupDescriptions.First(a => a.ToString() == (new PropertyGroupDescription(param.Sender)).ToString()));
+            try
+            {
+                var param = o as LibraryConverterParam;
+                if (param != null && param.Group)
+                    ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).GroupDescriptions.Add(new PropertyGroupDescription(param.Sender));
+                else if (param != null && param.Group == false)
+                    ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).GroupDescriptions.Remove(
+                        ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).GroupDescriptions.First(a => a.ToString() == (new PropertyGroupDescription(param.Sender)).ToString()));
+            }
+            catch (Exception e)
+            {
+            }
         }
 
         public ICommand FilterCommand { get; private set; }
