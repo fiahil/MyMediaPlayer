@@ -35,6 +35,7 @@ namespace MyWmp.ViewModel
             LibraryMusics = new ListCollectionView(library_.Sounds.ToArray());
             LibraryVideos = new ListCollectionView(library_.Videos.ToArray());
             LibraryPictures = new ListCollectionView(library_.Pictures.ToArray());
+            LibraryPlaylist = new ListCollectionView(library_.Playlists);
             Playlists = library_.Playlists;
 
             this.FilterCommand = new ActionCommand(OnFilter);
@@ -129,6 +130,8 @@ namespace MyWmp.ViewModel
                     return "LibraryVideos";
                 case "Picture":
                     return "LibraryPictures";
+                case "Playlist":
+                    return "LibraryPlaylist";
                 default:
                     return "LibraryMusics";
             }
