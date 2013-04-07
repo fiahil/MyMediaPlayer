@@ -33,7 +33,17 @@ namespace MyWmp.Behaviors
             base.OnAttached();
             this.Maximum = 1;
             this.Position = 0;
-            this.AssociatedObject.MediaOpened += (sender, args) => this.Maximum = this.AssociatedObject.NaturalDuration.TimeSpan.TotalSeconds;
+            this.AssociatedObject.MediaOpened += (sender, args) =>
+                {
+                    try
+                    {
+                        this.Maximum = this.AssociatedObject.NaturalDuration.TimeSpan.TotalSeconds;
+                    }
+                    catch (Exception e)
+                    {
+                        this.Maximum = 5;
+                    }
+                };
             this.timer_.Start();
         }
 

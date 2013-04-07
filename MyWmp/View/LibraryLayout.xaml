@@ -501,7 +501,7 @@
             
             <TabItem Header="Picture" Style="{DynamicResource TabItem}">
                 <Grid>
-                    <DataGrid Margin="0,0,85,0" x:Name="PictureDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" RowStyle="{DynamicResource DatagridRow}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryPictures}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False">
+                    <DataGrid Margin="0,0,85,0" x:Name="PictureDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" RowStyle="{DynamicResource DatagridRow}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryPictures}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Pictures_OnMouseDoubleClick">
                         <DataGrid.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.ContainerStyle>
