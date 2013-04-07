@@ -12,7 +12,7 @@
     </UserControl.DataContext>
 	
     <Grid>
-        <view:Theme x:Name="ThemeLayout" Visibility="Visible" />
+        <view:Theme x:Name="ThemeLayout" />
 
         <Menu x:Name="MenuRoot" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource Menu}">
             <MenuItem Header="_Media" Style="{DynamicResource MenuItem}">

@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 
 namespace MyWmp.View
 {
@@ -15,6 +17,17 @@ namespace MyWmp.View
         private void Theme_OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             this.PopupTheme.IsOpen = this.Visibility == Visibility.Visible;
+        }
+
+        private void Thumb_OnDragDelta(object sender, DragDeltaEventArgs e)
+        {
+            this.PopupTheme.HorizontalOffset += e.HorizontalChange;
+            this.PopupTheme.VerticalOffset += e.VerticalChange;
+        }
+
+        private void PopupTheme_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Thumb.RaiseEvent(e);
         }
     }
 }
