@@ -1,9 +1,11 @@
 ﻿using System.IO;
 using System.Windows;
 using System.Linq;
+using System.Windows.Controls;
 using System.Windows.Input;
 using MyWmp.Models;
 using MyWmp.ViewModel;
+using Control = MyWmp.Models.Control;
 
 namespace MyWmp.View
 {
@@ -27,8 +29,21 @@ namespace MyWmp.View
 
         private void OnFullScreenCommand(object sender, MouseButtonEventArgs e)
         {
-            if (((MainWindowViewModel)this.DataContext).FullScreenCommand.CanExecute(null))
-                ((MainWindowViewModel)this.DataContext).FullScreenCommand.Execute(null);
+            this.WindowState = this.WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
+            if (Grid.GetColumn(MediaLayout) != 0)
+            {
+                Grid.SetRow(MediaLayout, 0);
+                Grid.SetRowSpan(MediaLayout, 2);
+                Grid.SetColumn(MediaLayout, 0);
+                Grid.SetColumnSpan(MediaLayout, 6);
+            }
+            else
+            {
+                Grid.SetRow(MediaLayout, 1);
+                Grid.SetRowSpan(MediaLayout, 1);
+                Grid.SetColumn(MediaLayout, 1);
+                Grid.SetColumnSpan(MediaLayout, 4);
+            }
 
         }
 
