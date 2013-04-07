@@ -13,6 +13,7 @@
     <Menu x:Name="MenuRoot" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource Menu}">
         <MenuItem Header="_Media" Style="{DynamicResource MenuItem}">
             <MenuItem Header="_Open" Click="MenuItem_OnClick" Style="{DynamicResource MenuItem}" />
+            <MenuItem Header="_OpenDir" Click="MenuItem_OnOpenDir" Style="{DynamicResource MenuItem}" />
             <MenuItem Header="_Quit" Command="{Binding QuitCommand}" Style="{DynamicResource MenuItem}" />
         </MenuItem>
         <MenuItem Header="_Playback" Style="{DynamicResource MenuItem}">
