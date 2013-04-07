@@ -685,14 +685,20 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <DataGrid Margin="105,0,85,0" ItemsSource="{Binding LibraryPlaylist}" x:Name="PlaylistDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" RowStyle="{DynamicResource DatagridRow}" CellStyle="{DynamicResource DatagridCell}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Playlists_OnMouseDoubleClick" PreviewKeyDown="DataGridPlaylist_OnKeyDown">
-                            <DataGrid.Resources>
-                                <ContextMenu x:Key="DataRowContextMenuPlaylist">
-                                    <MenuItem Header="Play" Click="LibraryPlaylist_Play_OnClick"/>
-                                    <MenuItem Header="Remove from list" Click="LibraryPlaylist_Remove_OnClick"/>
-                                </ContextMenu>
-                            </DataGrid.Resources>
-                            <DataGrid.Columns>
+                    <DataGrid Margin="105,0,85,0" ItemsSource="{Binding LibraryPlaylist}" x:Name="PlaylistDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" CellStyle="{DynamicResource DatagridCell}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Playlists_OnMouseDoubleClick" PreviewKeyDown="DataGridPlaylist_OnKeyDown">
+                        <DataGrid.Resources>
+                            <ContextMenu x:Key="ContextMenuPlaylist">
+                                <MenuItem Header="Play" Click="LibraryPlaylist_Play_OnClick"/>
+                                <MenuItem Header="Remove from list" Click="LibraryPlaylist_Remove_OnClick"/>
+                            </ContextMenu>
+                        </DataGrid.Resources>
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}" >
+                                <Setter Property="ContextMenu" Value="{StaticResource ContextMenuPlaylist}"/>
+                            </Style>
+                        </DataGrid.RowStyle>
+                        
+                        <DataGrid.Columns>
                             <DataGridTextColumn Header="#" Binding="{Binding Track}" />
                             <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
                             <DataGridTextColumn Header="Length" Binding="{Binding Duration}" />

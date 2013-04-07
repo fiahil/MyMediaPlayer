@@ -60,6 +60,10 @@ namespace MyWmp.Models
             {
                 Pictures.Add(new Picture(media));
             }
+            var tmp = new Playlist();
+            tmp.Add(Sounds.ToArray()[0] as AMedia);
+            tmp.Add(Sounds.ToArray()[1] as AMedia);
+            Playlists.Add(tmp);
             IsLoaded = true;
         }
 
