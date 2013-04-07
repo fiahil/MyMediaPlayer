@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:viewModel="clr-namespace:MyWmp.ViewModel"
+             xmlns:view="clr-namespace:MyWmp.View"
              mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300">
 
@@ -10,10 +11,14 @@
         <viewModel:MenuViewModel />
     </UserControl.DataContext>
 
-    <Menu x:Name="MenuRoot" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource Menu}">
+
+    <Grid>
+        <view:OpenStream Visibility="Collapsed" x:Name="OpenStreamLayout" />
+        <Menu x:Name="MenuRoot" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource Menu}">
         <MenuItem Header="_Media" Style="{DynamicResource MenuItem}">
             <MenuItem Header="_Open" Click="MenuItem_OnClick" Style="{DynamicResource MenuItem}" />
             <MenuItem Header="_OpenDir" Click="MenuItem_OnOpenDir" Style="{DynamicResource MenuItem}" />
+            <MenuItem Header="_OpenStream" Click="MenuItem_OnOpenStream" Style="{DynamicResource MenuItem}" />
             <MenuItem Header="_Quit" Command="{Binding QuitCommand}" Style="{DynamicResource MenuItem}" />
         </MenuItem>
         <MenuItem Header="_Playback" Style="{DynamicResource MenuItem}">
@@ -34,4 +39,6 @@
             <MenuItem Header="Theme" Style="{DynamicResource MenuItem}" />
         </MenuItem>
     </Menu>
+    </Grid>
+
 </UserControl>

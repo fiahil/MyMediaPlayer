@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
@@ -46,6 +47,11 @@ namespace MyWmp.View
                 };
             if (((MenuViewModel)this.DataContext).OpenCommand.CanExecute(file))
                 ((MenuViewModel)this.DataContext).OpenCommand.Execute(file);
+        }
+
+        private void MenuItem_OnOpenStream(object sender, RoutedEventArgs e)
+        {
+            this.OpenStreamLayout.Visibility = Visibility.Visible;
         }
     }
 }

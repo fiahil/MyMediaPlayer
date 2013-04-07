@@ -109,6 +109,9 @@
     <Compile Include="View\MenuLayout.xaml.cs">
       <DependentUpon>MenuLayout.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\OpenStream.xaml.cs">
+      <DependentUpon>OpenStream.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PlaybackList.xaml.cs">
       <DependentUpon>PlaybackList.xaml</DependentUpon>
     </Compile>
@@ -148,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MenuLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OpenStream.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
