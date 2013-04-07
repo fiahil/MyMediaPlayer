@@ -86,11 +86,6 @@ namespace MyWmp.View
             this.Height = (this.Height == SystemParameters.VirtualScreenHeight - 40) ? (480) : (SystemParameters.VirtualScreenHeight - 40);
             this.Top = (this.Top == 0) ? ((SystemParameters.VirtualScreenHeight - 480) / 2) : (0);
             this.Left = (this.Left == 0) ? ((SystemParameters.VirtualScreenWidth - 850) / 2) : (0);
-            //this.ResizeMode = this.ResizeMode == ResizeMode.NoResize ? ResizeMode.CanResizeWithGrip : ResizeMode.NoResize;
-          /*  ne fonctionne toujours pas :(
-            if (((MainWindowViewModel)this.DataContext).RestoreCommand.CanExecute(null))
-               ((MainWindowViewModel)this.DataContext).RestoreCommand.Execute(null);
-           */
         }
 
         private void OnCloseButton_Click(object sender, RoutedEventArgs e)

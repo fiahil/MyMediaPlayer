@@ -40,8 +40,10 @@ namespace MyWmp.View
             if (fbd.ShowDialog() != DialogResult.OK)
                 return;
 
-            var file = new string[2];
-            file[0] = fbd.SelectedPath;
+            var file = new[]
+                {
+                    fbd.SelectedPath                    
+                };
             if (((MenuViewModel)this.DataContext).OpenCommand.CanExecute(file))
                 ((MenuViewModel)this.DataContext).OpenCommand.Execute(file);
         }
