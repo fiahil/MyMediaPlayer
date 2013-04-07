@@ -87,11 +87,20 @@
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource BgBrush}" />
         <Setter Property="HorizontalScrollBarVisibility" Value="Hidden" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource BgBrush}" />
-        <Setter Property="VerticalScrollBarVisibility" Value="Hidden" />
         <Setter Property="GridLinesVisibility" Value="None" />
     </Style>
-    
+
+    <Style TargetType="ScrollBar">
+        <Setter Property="Width" Value="10" />
+        <Setter Property="MinWidth" Value="10" />
+        <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource FgBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template" Value="{DynamicResource ScrollBarTemplate}" />
+    </Style>
+
     <Style x:Key="DatagridColumnHeader" TargetType="DataGridColumnHeader">
         <Setter Property="Background" Value="{DynamicResource FgBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />

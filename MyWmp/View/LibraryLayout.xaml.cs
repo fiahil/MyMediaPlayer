@@ -23,49 +23,67 @@ namespace MyWmp.View
 
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
+            var library = "";
+            switch (((string)((TextBox)sender).Tag)[0])
+            {
+                case 'M':
+                    library = "Music";
+                    break;
+                case 'V':
+                    library = "Video";
+                    break;
+                case 'P':
+                    library = "Picture";
+                    break;
+                case 'L':
+                    library = "Playlist";
+                    break;
+            }
+            var tag = ((string) ((TextBox) sender).Tag).Substring(1);
+
             if (
                 ((CheckBox)
                  this.GetType()
-                     .GetField((string) ((TextBox) sender).Tag + "Filter",
+                     .GetField(library + tag + "Filter",
                                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                      .GetValue(this)).IsChecked.HasValue &&
                 ((CheckBox)
                  this.GetType()
-                     .GetField((string) ((TextBox) sender).Tag + "Group",
+                     .GetField(library + tag + "Group",
                                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                      .GetValue(this)).IsChecked.HasValue &&
                 ((CheckBox)
                  this.GetType()
-                     .GetField((string) ((TextBox) sender).Tag + "Filter",
+                     .GetField(library + tag + "Filter",
                                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                      .GetValue(this)).IsChecked.Value
                 )
             {
                 this.libraryViewModel_.FilterCommand.Execute(new LibraryConverterParam
                     {
-                        Sender = (string) ((TextBox) sender).Tag,
+                        Sender = tag,
                         Filter =
                             ((CheckBox)
                              this.GetType()
-                                 .GetField((string) ((TextBox) sender).Tag + "Filter",
+                                 .GetField(library + tag + "Filter",
                                            BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                                  .GetValue(this)).IsChecked.Value,
                         Group =
                             ((CheckBox)
                              this.GetType()
-                                 .GetField((string) ((TextBox) sender).Tag + "Group",
+                                 .GetField(library + tag + "Group",
                                            BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                                  .GetValue(this)).IsChecked.Value,
                         Value =
                             ((TextBox)
                              this.GetType()
-                                 .GetField((string) ((TextBox) sender).Tag + "Value",
+                                 .GetField(library + tag + "Value",
                                            BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                                  .GetValue(this)).Text,
                         Library = ((string)
                                    ((GroupBox)
                                     this.GetType()
-                                        .GetField((string) ((TextBox) sender).Tag + "GroupBox",
+                                        .GetField(library + tag + "GroupBox",
                                                   BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public)
                                         .GetValue(this)).Tag)
                     });
@@ -74,22 +92,22 @@ namespace MyWmp.View
 
         private void ListPlaylist_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ((LibraryViewModel) DataContext).OnPlaylistChanged(ListPlaylist.SelectedIndex);
+            libraryViewModel_.OnPlaylistChanged(ListPlaylist.SelectedIndex);
         }
 
         private void Playlists_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ((LibraryViewModel) DataContext).OnPlayLibraryPlaylist(ListPlaylist.SelectedIndex, DataGridPlaylist.SelectedIndex);
+            libraryViewModel_.OnPlayLibraryPlaylist(ListPlaylist.SelectedIndex, ((DataGrid)sender).SelectedIndex);
         }
 
         private void Videos_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ((LibraryViewModel) DataContext).OnPlayLibraryVideos(((DataGrid)sender).SelectedIndex);
+            libraryViewModel_.OnPlayLibraryVideos(((DataGrid)sender).SelectedIndex);
         }
 
         private void Musics_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ((LibraryViewModel)DataContext).OnPlayLibraryMusics(((DataGrid)sender).SelectedIndex);
+            libraryViewModel_.OnPlayLibraryMusics(((DataGrid)sender).SelectedIndex);
         }
 
         private void Playlist_Delete_OnClick(object sender, RoutedEventArgs e)
@@ -127,12 +145,12 @@ namespace MyWmp.View
 
         private void LibraryPlaylist_Play_OnClick(object sender, RoutedEventArgs e)
         {
-            ((LibraryViewModel)DataContext).OnPlayLibraryPlaylist(ListPlaylist.SelectedIndex, DataGridPlaylist.SelectedIndex);
+            ((LibraryViewModel)DataContext).OnPlayLibraryPlaylist(ListPlaylist.SelectedIndex, PlaylistDatagrid.SelectedIndex);
         }
 
         private void LibraryPlaylist_Remove_OnClick(object sender, RoutedEventArgs e)
         {
-            ((LibraryViewModel) DataContext).DeleteItemFromPlaylist(ListPlaylist.SelectedIndex, DataGridPlaylist.SelectedIndex);
+            ((LibraryViewModel) DataContext).DeleteItemFromPlaylist(ListPlaylist.SelectedIndex, PlaylistDatagrid.SelectedIndex);
         }
 
         private void DataGridPlaylist_OnKeyDown(object sender, KeyEventArgs e)
@@ -142,18 +160,18 @@ namespace MyWmp.View
             switch (e.Key)
             {
                     case Key.Delete:
-                    viewModel.DeleteItemFromPlaylist(ListPlaylist.SelectedIndex, DataGridPlaylist.SelectedIndex);
+                    viewModel.DeleteItemFromPlaylist(ListPlaylist.SelectedIndex, PlaylistDatagrid.SelectedIndex);
                     break;
                     case Key.Enter:
-                    viewModel.OnPlayLibraryPlaylist(ListPlaylist.SelectedIndex, DataGridPlaylist.SelectedIndex);
+                    viewModel.OnPlayLibraryPlaylist(ListPlaylist.SelectedIndex, PlaylistDatagrid.SelectedIndex);
                     break;
                     case Key.Down:
-                    DataGridPlaylist.SelectedIndex = (DataGridPlaylist.SelectedIndex + 1) % DataGridPlaylist.Items.Count;
+                    PlaylistDatagrid.SelectedIndex = (PlaylistDatagrid.SelectedIndex + 1) % PlaylistDatagrid.Items.Count;
                     break;
                     case Key.Up:
-                    --DataGridPlaylist.SelectedIndex;
-                    if (DataGridPlaylist.SelectedIndex < 0)
-                        DataGridPlaylist.SelectedIndex = DataGridPlaylist.Items.Count - 1;
+                    --PlaylistDatagrid.SelectedIndex;
+                    if (PlaylistDatagrid.SelectedIndex < 0)
+                        PlaylistDatagrid.SelectedIndex = PlaylistDatagrid.Items.Count - 1;
                     break;
             }
 
