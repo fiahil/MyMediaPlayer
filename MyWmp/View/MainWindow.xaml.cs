@@ -110,5 +110,22 @@ namespace MyWmp.View
                 this.SwitchButton.Content = "/Resources/Retract.png";
             }
         }
+
+        private void SwitchButton2_OnClick(object sender, RoutedEventArgs e)
+        {
+            if ((string)this.SwitchButton2.Content == "/Resources/Deploy.png")
+            {
+                this.PlaybackList.Visibility = Visibility.Visible;
+
+                this.SwitchButton2.Content = "/Resources/Retract.png";
+            }
+            else
+            {
+                this.PlaybackList.Visibility = Visibility.Collapsed;
+
+                this.SwitchButton2.Content = "/Resources/Deploy.png";
+            }
+
+        }
     }
 }
