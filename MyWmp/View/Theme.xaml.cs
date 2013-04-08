@@ -37,5 +37,10 @@ namespace MyWmp.View
         {
             MainWindow.Instance.Resources.MergedDictionaries[0][((ColorPicker)sender).Tag.ToString()] = new SolidColorBrush(e.NewValue);
         }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
+        }
     }
 }

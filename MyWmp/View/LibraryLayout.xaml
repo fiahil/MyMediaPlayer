@@ -14,7 +14,7 @@
         <TabControl x:Name="Music" TabStripPlacement="Left" Style="{DynamicResource TabControl}">
             <TabItem Header="Music" Style="{DynamicResource TabItem}">
                 <Grid>
-                    <DataGrid Margin="0,0,85,0" x:Name="MusicDatagrid" Tag="Music" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryMusics}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Musics_OnMouseDoubleClick" PreviewKeyDown="MusicDatagrid_OnPreviewKeyDown">
+                    <DataGrid Margin="0,0,85,0" x:Name="MusicDatagrid" Tag="Music" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryMusics}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="True" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Musics_OnMouseDoubleClick" PreviewKeyDown="MusicDatagrid_OnPreviewKeyDown">
                         <DataGrid.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.ContainerStyle>
@@ -285,7 +285,7 @@
 
             <TabItem Header="Video" Style="{DynamicResource TabItem}">
                 <Grid>
-                        <DataGrid Margin="0,0,85,0" x:Name="VideoDatagrid" Tag="Video" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryVideos}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Videos_OnMouseDoubleClick" PreviewKeyDown="DataGridVideos_OnPreviewKeyDown">
+                        <DataGrid Margin="0,0,85,0" x:Name="VideoDatagrid" Tag="Video" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryVideos}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="True" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Videos_OnMouseDoubleClick" PreviewKeyDown="DataGridVideos_OnPreviewKeyDown">
                         <DataGrid.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.ContainerStyle>
@@ -527,7 +527,7 @@
             
             <TabItem Header="Picture" Style="{DynamicResource TabItem}">
                 <Grid>
-                    <DataGrid Margin="0,0,85,0" x:Name="PictureDatagrid" Tag="Picture" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryPictures}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Pictures_OnMouseDoubleClick" PreviewKeyDown="PictureDatagrid_OnPreviewKeyDown">
+                    <DataGrid Margin="0,0,85,0" x:Name="PictureDatagrid" Tag="Picture" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" CellStyle="{DynamicResource DatagridCell}" ItemsSource="{Binding LibraryPictures}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="True" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Pictures_OnMouseDoubleClick" PreviewKeyDown="PictureDatagrid_OnPreviewKeyDown">
                         <DataGrid.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.ContainerStyle>
@@ -731,7 +731,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
                     
-                    <DataGrid Margin="105,0,85,0" ItemsSource="{Binding LibraryPlaylist}" x:Name="PlaylistDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" CellStyle="{DynamicResource DatagridCell}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Playlists_OnMouseDoubleClick" PreviewKeyDown="DataGridPlaylist_OnKeyDown">
+                    <DataGrid Margin="105,0,85,0" ItemsSource="{Binding LibraryPlaylist}" x:Name="PlaylistDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" CellStyle="{DynamicResource DatagridCell}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="True" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Playlists_OnMouseDoubleClick" PreviewKeyDown="DataGridPlaylist_OnKeyDown">
                         <DataGrid.Resources>
                             <ContextMenu x:Key="ContextMenuPlaylist" Style="{DynamicResource ContextMenu}">
                                 <MenuItem Style="{DynamicResource MenuItem}" Header="Play" Click="LibraryPlaylist_Play_OnClick"/>

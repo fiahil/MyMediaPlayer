@@ -11,7 +11,9 @@
         <Border Background="{DynamicResource BgBrush}" BorderThickness="3" BorderBrush="{DynamicResource FgBrush}" Padding="5">
             <StackPanel Orientation="Vertical">
                 <Thumb x:Name="Thumb" Width="0" Height="0" DragDelta="Thumb_OnDragDelta" />
-               
+
+                <Button Style="{DynamicResource Controls}" Content="/Resources/Close.png" Click="ButtonBase_OnClick" Width="20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" />
+
                 <GroupBox Header="Background" Style="{DynamicResource Groupbox}">
                     <xctk:ColorPicker Tag="BgBrush" SelectedColorChanged="OnSelectedColorChanged" />
                 </GroupBox>
@@ -55,7 +57,6 @@
                 <GroupBox Header="Slider Thumb" Style="{DynamicResource Groupbox}">
                     <xctk:ColorPicker Tag="SliderFgBrush" SelectedColorChanged="OnSelectedColorChanged" />
                 </GroupBox>
-
             </StackPanel>
         </Border>
     </Popup>
