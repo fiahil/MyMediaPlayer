@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Data;
@@ -42,6 +43,8 @@ namespace MyWmp.ViewModel
 
         public void DeletePlaylist(int selectedIndex)
         {
+            if (selectedIndex == -1)
+                return;
             library_.DeletePlaylist(selectedIndex);
             PropertyChanged(this, new PropertyChangedEventArgs("Playlists"));
         }
@@ -80,6 +83,8 @@ namespace MyWmp.ViewModel
 
         public void OnPlayLibraryVideos(int selectedIndex)
         {
+            if (selectedIndex == -1)
+                return;
             var playlist = new Playlist { Name = "Current Playlist" };
             playlist.Add(LibraryVideos.GetItemAt(selectedIndex) as AMedia);
             if (selectedIndex != -1 && LibraryVideos.Count > 0)
@@ -92,6 +97,8 @@ namespace MyWmp.ViewModel
 
         public void OnPlayLibraryMusics(int selectedIndex)
         {
+            if (selectedIndex == -1)
+                return;
             var playlist = new Playlist { Name = "Current Playlist" };
             foreach (var media in LibraryMusics)
             {
@@ -107,6 +114,8 @@ namespace MyWmp.ViewModel
 
         public void OnPlayLibraryPictures(int selectedIndex)
         {
+            if (selectedIndex == -1)
+                return;
             var playlist = new Playlist { Name = "Current Playlist" };
             foreach (var media in LibraryPictures)
             {
