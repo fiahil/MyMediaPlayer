@@ -27,6 +27,8 @@ namespace MyWmp.Models
                     Playlist.Reset();
                 if (Playlist.Current != null)
                 {
+                    if (this.IsPlaying)
+                        this.MediaStop(this, EventArgs.Empty);
                     this.IsPlaying = true;
                     this.MediaPlay(this, EventArgs.Empty);
                 }
