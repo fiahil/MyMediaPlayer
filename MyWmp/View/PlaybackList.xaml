@@ -9,21 +9,18 @@
     <UserControl.DataContext>
         <viewModel:PlaybackListViewModel/>
     </UserControl.DataContext>
-    
-    <StackPanel Orientation="Vertical" Background="White">
-        <TextBlock Text="{Binding Name}"/>
-        <ListView ItemsSource="{Binding Playlist}" MouseDoubleClick="Control_OnMouseDoubleClick">
-            <ListView.View>
-                <GridView>
-                    <GridView.ColumnHeaderContainerStyle>
-                        <Style>
-                            <Setter Property="FrameworkElement.Visibility" Value="Visible"/>
-                        </Style>
-                    </GridView.ColumnHeaderContainerStyle>
-                    <GridViewColumn DisplayMemberBinding="{Binding Title}"></GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Duration}"></GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-    </StackPanel>
+
+    <Border Background="{DynamicResource BgBrush}" BorderThickness="3" BorderBrush="{DynamicResource FgBrush}">
+        <StackPanel Orientation="Vertical" CanHorizontallyScroll="False">
+            <TextBlock Text="{Binding Name}" Style="{DynamicResource Textblock}" Padding="5,1,1,1" />
+            <Separator Style="{DynamicResource Separator}" />
+            <ListView Style="{DynamicResource ListView}" ItemContainerStyle="{DynamicResource ListViewItem}" ItemsSource="{Binding Playlist}" MouseDoubleClick="Control_OnMouseDoubleClick">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Label ToolTip="{Binding Duration}" Style="{DynamicResource ListViewLabel}" Content="{Binding Title}" FontWeight="Bold" Height="20" Padding="0" VerticalContentAlignment="Center" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Border>
 </UserControl>

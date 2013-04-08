@@ -34,8 +34,11 @@ namespace MyWmp.ViewModel
 
         public void OnPlay(int selectedIndex)
         {
-            control_.Playlist.Current = Playlist[selectedIndex];
-            control_.Play();
+            if (selectedIndex != -1)
+            {
+                control_.Playlist.Current = Playlist[selectedIndex];
+                control_.Play();
+            }
         }
     }
 }

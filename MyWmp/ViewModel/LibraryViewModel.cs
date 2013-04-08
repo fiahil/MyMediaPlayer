@@ -187,7 +187,7 @@ namespace MyWmp.ViewModel
                 return;
             library_.AddItemIntoPlaylist(selectedPlaylist, ((ListCollectionView)this.GetType().GetProperty(Translate(library)).GetValue(this, null)).GetItemAt(selectedItem) as AMedia);
             LibraryPlaylist = new ListCollectionView(Playlists[selectedPlaylist].ToArray());
-            if (control_.Playlist.Name.CompareTo(Playlists[selectedPlaylist].Name) == 0)
+            if (control_.Playlist == null ||  control_.Playlist.Name.CompareTo(Playlists[selectedPlaylist].Name) == 0)
                 control_.Playlist = Playlists[selectedPlaylist];
             PropertyChanged(this, new PropertyChangedEventArgs("LibraryPlaylist"));
         }
