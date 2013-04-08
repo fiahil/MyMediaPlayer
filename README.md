@@ -1,4 +1,4 @@
-WMP
-===
+MyMediaPlayer
+=============
 
-WMP
+Your new media player.
