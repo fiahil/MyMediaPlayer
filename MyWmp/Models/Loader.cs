@@ -42,11 +42,17 @@ namespace MyWmp.Models
 
         public void Load()
         {
-            MediaPath.Clear();
-            if (File.Exists(Root) && FileExtension.Contains(new FileInfo(Root).Extension.ToLower())) 
-                MediaPath.Add(Root);
-            else
-                LoadRec(Root);
+            try
+            {
+                MediaPath.Clear();
+                if (File.Exists(Root) && FileExtension.Contains(new FileInfo(Root).Extension.ToLower())) 
+                    MediaPath.Add(Root);
+                else
+                    LoadRec(Root);
+            }
+            catch (Exception e)
+            {
+            }
         }
     }
 }
