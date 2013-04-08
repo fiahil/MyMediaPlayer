@@ -711,12 +711,12 @@
             </TabItem>
             <TabItem Header="Playlists" Style="{DynamicResource TabItem}">
                 <Grid>
-                    <Button VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Width="100" Content="Add Playlist" Command="{Binding AddPlaylistCommand}"/>
-                    <ListView x:Name="ListPlaylist" HorizontalAlignment="Left" Margin="0,25,0,0" Height="auto" Width="100" ItemsSource="{Binding Playlists}" SelectionChanged="ListPlaylist_OnSelectionChanged">
+                    <Button VerticalAlignment="Top" Style="{DynamicResource Button}" HorizontalAlignment="Left" Width="100" Content="Add Playlist" Command="{Binding AddPlaylistCommand}"/>
+                    <ListView Style="{DynamicResource ListView}" ItemContainerStyle="{DynamicResource ListViewItem}" x:Name="ListPlaylist" HorizontalAlignment="Left" Margin="0,25,0,0" Height="auto" Width="100" ItemsSource="{Binding Playlists}" SelectionChanged="ListPlaylist_OnSelectionChanged">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <Label Content="{Binding Name}" Height="20" Padding="0" VerticalContentAlignment="Center">
+                                    <Label Style="{DynamicResource ListViewLabel}" Content="{Binding Name}" Height="20" Padding="0" VerticalContentAlignment="Center">
                                         <Label.ContextMenu>
                                             <ContextMenu Style="{DynamicResource ContextMenu}">
                                                 <MenuItem Style="{DynamicResource MenuItem}" Header="Play" Click="Playlist_Play_OnClick"/>
@@ -725,11 +725,12 @@
                                             </ContextMenu>
                                         </Label.ContextMenu>
                                     </Label>
-                                    <TextBox Text="{Binding Name}" Padding="0" VerticalContentAlignment="Center" Height="20" Visibility="Collapsed" LostFocus="UIElement_OnLostFocus" KeyDown="UIElement_OnKeyDown"/>
+                                    <TextBox Style="{DynamicResource Textbox}" Text="{Binding Name}" Padding="0" VerticalContentAlignment="Center" Height="20" Visibility="Collapsed" LostFocus="UIElement_OnLostFocus" KeyDown="UIElement_OnKeyDown"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                    
                     <DataGrid Margin="105,0,85,0" ItemsSource="{Binding LibraryPlaylist}" x:Name="PlaylistDatagrid" Style="{DynamicResource Datagrid}" ColumnHeaderStyle="{DynamicResource DatagridColumnHeader}" RowHeaderStyle="{DynamicResource DatagridRowHeader}" CellStyle="{DynamicResource DatagridCell}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" MouseDoubleClick="Playlists_OnMouseDoubleClick" PreviewKeyDown="DataGridPlaylist_OnKeyDown">
                         <DataGrid.Resources>
                             <ContextMenu x:Key="ContextMenuPlaylist" Style="{DynamicResource ContextMenu}">

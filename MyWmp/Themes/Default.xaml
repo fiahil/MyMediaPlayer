@@ -31,6 +31,20 @@
         <Setter Property="Template" Value="{DynamicResource ButtonTemplate}" />
     </Style>
     
+    <Style x:Key="Button" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="3" />
+        <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource FgBrush}" />
+        <Setter Property="Template" Value="{DynamicResource ButtonTemplate2}" />
+        
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource PressBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
     <Style x:Key="Slider" TargetType="{x:Type Slider}">
         <Setter Property="Template" Value="{DynamicResource SliderTemplate}" />
     </Style>
@@ -171,5 +185,41 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
+    <Style x:Key="ListViewLabel" TargetType="Label">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="{DynamicResource FgBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
+    </Style>
 
+    <Style x:Key="ListView" TargetType="ListView">
+        <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="{DynamicResource FgBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
+    </Style>
+    
+    <Style x:Key="ListViewItem" TargetType="ListViewItem">
+        <Setter Property="Template" Value="{DynamicResource ListViewItemTemplate}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="{DynamicResource FgBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+        
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource FgBrush}" />
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{DynamicResource FgBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="Textblock" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource TextFgBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BgBrush}" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    
 </ResourceDictionary>

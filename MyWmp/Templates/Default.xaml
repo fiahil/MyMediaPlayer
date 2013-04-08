@@ -21,6 +21,12 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
     
+    <ControlTemplate x:Key="ButtonTemplate2" TargetType="{x:Type Button}">
+        <Border Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Border>
+    </ControlTemplate>
+    
     <ControlTemplate x:Key="MediaScreenTemplate" TargetType="{x:Type Label}">
         <Rectangle Name="Background" Fill="{DynamicResource MediaScreenBgBrush}" />
     </ControlTemplate>
@@ -174,5 +180,11 @@
             </Track.IncreaseRepeatButton>
         </Track>
     </ControlTemplate>
-
+    
+    <ControlTemplate x:Key="ListViewItemTemplate" TargetType="{x:Type ListViewItem}">
+        <Border Background="{TemplateBinding Background}" Padding="5,1,1,1" BorderThickness="0" BorderBrush="{DynamicResource FgBrush}">
+            <ContentPresenter />
+        </Border>
+    </ControlTemplate>
+    
 </ResourceDictionary>
