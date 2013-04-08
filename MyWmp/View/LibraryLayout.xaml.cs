@@ -166,16 +166,16 @@ namespace MyWmp.View
             var viewModel = (LibraryViewModel) DataContext;
             switch (e.Key)
             {
-                    case Key.Delete:
+                case Key.Delete:
                     viewModel.DeleteItemFromPlaylist(ListPlaylist.SelectedIndex, PlaylistDatagrid.SelectedIndex);
                     break;
-                    case Key.Enter:
+                case Key.Enter:
                     viewModel.OnPlayLibraryPlaylist(ListPlaylist.SelectedIndex, PlaylistDatagrid.SelectedIndex);
                     break;
-                    case Key.Down:
+                case Key.Down:
                     PlaylistDatagrid.SelectedIndex = (PlaylistDatagrid.SelectedIndex + 1) % PlaylistDatagrid.Items.Count;
                     break;
-                    case Key.Up:
+                case Key.Up:
                     --PlaylistDatagrid.SelectedIndex;
                     if (PlaylistDatagrid.SelectedIndex < 0)
                         PlaylistDatagrid.SelectedIndex = PlaylistDatagrid.Items.Count - 1;
@@ -269,7 +269,7 @@ namespace MyWmp.View
             var datagrid = VisualTreeHelper.GetParent(SelectedItem);
             while (datagrid != null && datagrid.GetType() != typeof (DataGrid))
                 datagrid = VisualTreeHelper.GetParent(datagrid);
-            while (menu.Items.Count > 1)
+            while (menu.Items.Count > 2)
                 menu.Items.RemoveAt(menu.Items.Count - 1);
             foreach (var playlist in libraryViewModel_.Playlists)
             {
@@ -278,6 +278,7 @@ namespace MyWmp.View
                     {
                        libraryViewModel_.AddItemIntoPlaylist(libraryViewModel_.Playlists.IndexOf(playlist), ((DataGrid)datagrid).Tag.ToString(), ((DataGrid)datagrid).SelectedIndex);
                     };
+                item.SetResourceReference(StyleProperty, "MenuItem");
                 menu.Items.Add(item);
             }
         }

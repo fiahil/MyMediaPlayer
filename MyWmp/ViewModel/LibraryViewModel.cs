@@ -33,6 +33,7 @@ namespace MyWmp.ViewModel
             LibraryMusics = new ListCollectionView(library_.Sounds.ToArray());
             LibraryVideos = new ListCollectionView(library_.Videos.ToArray());
             LibraryPictures = new ListCollectionView(library_.Pictures.ToArray());
+            LibraryPlaylist = new ListCollectionView(library_.Playlists);
             Playlists = library_.Playlists;
 
             this.FilterCommand = new ActionCommand(OnFilter);
@@ -69,7 +70,7 @@ namespace MyWmp.ViewModel
             {
                 playlist.Add(media as AMedia);
             }
-            if (selectedItem != -1)
+            if (selectedItem != -1 && LibraryPlaylist.Count > 0)
             {
                 playlist.Current = LibraryPlaylist.GetItemAt(selectedItem) as AMedia;
                 control_.Playlist = playlist;
@@ -81,7 +82,7 @@ namespace MyWmp.ViewModel
         {
             var playlist = new Playlist { Name = "Current Playlist" };
             playlist.Add(LibraryVideos.GetItemAt(selectedIndex) as AMedia);
-            if (selectedIndex != -1)
+            if (selectedIndex != -1 && LibraryVideos.Count > 0)
             {
                 playlist.Current = LibraryVideos.GetItemAt(selectedIndex) as AMedia;
                 control_.Playlist = playlist;
@@ -96,7 +97,7 @@ namespace MyWmp.ViewModel
             {
                 playlist.Add(media as AMedia);
             }
-            if (selectedIndex != -1)
+            if (selectedIndex != -1 && LibraryMusics.Count > 0)
             {
                 playlist.Current = LibraryMusics.GetItemAt(selectedIndex) as AMedia;
                 control_.Playlist = playlist;
@@ -111,7 +112,7 @@ namespace MyWmp.ViewModel
             {
                 playlist.Add(media as AMedia);
             }
-            if (selectedIndex != -1)
+            if (selectedIndex != -1 && LibraryPictures.Count > 0)
             {
                 playlist.Current = LibraryPictures.GetItemAt(selectedIndex) as AMedia;
                 control_.Playlist = playlist;
@@ -129,6 +130,8 @@ namespace MyWmp.ViewModel
                     return "LibraryVideos";
                 case "Picture":
                     return "LibraryPictures";
+                case "Playlist":
+                    return "LibraryPlaylist";
                 default:
                     return "LibraryMusics";
             }
@@ -136,22 +139,34 @@ namespace MyWmp.ViewModel
 
         private void OnFilter(object o)
         {
-            var param = o as LibraryConverterParam;
-            if (param != null && param.Filter)
-                ((ListCollectionView) this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).Filter =
-                    a => ((string) a.GetType().GetProperty(param.Sender).GetValue(a, null)).Contains(param.Value);
-            else if (param != null && param.Filter == false)
-                ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).Filter = null;
+            try
+            {
+                var param = o as LibraryConverterParam;
+                if (param != null && param.Filter)
+                    ((ListCollectionView) this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).Filter =
+                        a => ((string) a.GetType().GetProperty(param.Sender).GetValue(a, null)).Contains(param.Value);
+                else if (param != null && param.Filter == false)
+                    ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).Filter = null;
+            }
+            catch (Exception e)
+            {
+            }
         }
 
         private void OnGroup(object o)
         {
-            var param = o as LibraryConverterParam;
-            if (param != null && param.Group)
-                ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).GroupDescriptions.Add(new PropertyGroupDescription(param.Sender));
-            else if (param != null && param.Group == false)
-                ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).GroupDescriptions.Remove(
-                     ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).GroupDescriptions.First(a => a.ToString() == (new PropertyGroupDescription(param.Sender)).ToString()));
+            try
+            {
+                var param = o as LibraryConverterParam;
+                if (param != null && param.Group)
+                    ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).GroupDescriptions.Add(new PropertyGroupDescription(param.Sender));
+                else if (param != null && param.Group == false)
+                    ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).GroupDescriptions.Remove(
+                        ((ListCollectionView)this.GetType().GetProperty(Translate(param.Library)).GetValue(this, null)).GroupDescriptions.First(a => a.ToString() == (new PropertyGroupDescription(param.Sender)).ToString()));
+            }
+            catch (Exception e)
+            {
+            }
         }
 
         public ICommand FilterCommand { get; private set; }
