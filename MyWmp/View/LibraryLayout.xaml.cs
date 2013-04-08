@@ -277,6 +277,8 @@ namespace MyWmp.View
                 item.Click += (o, args) =>
                     {
                        libraryViewModel_.AddItemIntoPlaylist(libraryViewModel_.Playlists.IndexOf(playlist), ((DataGrid)datagrid).Tag.ToString(), ((DataGrid)datagrid).SelectedIndex);
+                       Music.SelectedIndex = Music.Items.Count - 1;
+                        ListPlaylist.SelectedIndex = libraryViewModel_.Playlists.IndexOf(playlist);
                     };
                 item.SetResourceReference(StyleProperty, "MenuItem");
                 menu.Items.Add(item);
@@ -292,6 +294,8 @@ namespace MyWmp.View
             while (datagrid != null && datagrid.GetType() != typeof(DataGrid))
                 datagrid = VisualTreeHelper.GetParent(datagrid);
             libraryViewModel_.AddItemIntoPlaylist(libraryViewModel_.Playlists.Count - 1, ((DataGrid)datagrid).Tag.ToString(), ((DataGrid)datagrid).SelectedIndex);
+            Music.SelectedIndex = Music.Items.Count - 1;
+            ListPlaylist.SelectedIndex = ListPlaylist.Items.Count - 1;
         }
     }
 }

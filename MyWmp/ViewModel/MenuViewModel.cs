@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -84,11 +85,12 @@ namespace MyWmp.ViewModel
 
         private void OnOpen(object fileNames)
         {
-            var allExtensions = new ArrayList();
+            var allExtensions = new List<string>();
             allExtensions.AddRange(settings_.MusicExtensions);
             allExtensions.AddRange(settings_.VideoExtensions);
             allExtensions.AddRange(settings_.PictureExtensions);
-            var loader = new Loader { FileExtension = allExtensions.ToArray() as string[] };
+            
+            var loader = new Loader { FileExtension = allExtensions.ToArray() };
             var playlist = control_.Playlist ?? new Playlist {Name = "Current Playlist"};
             var strings = fileNames as string[];
             if (strings != null)

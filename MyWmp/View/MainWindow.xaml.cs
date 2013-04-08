@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Linq;
 using System.Windows.Controls;
@@ -16,11 +17,13 @@ namespace MyWmp.View
     {
         public static MainWindow Instance;
         private readonly Control control_;
+        private readonly Settings settings_;
 
         public MainWindow()
         {
             InitializeComponent();
             control_ = Control.Instance;
+            settings_ = Settings.Instance;
             Instance = this;
         }
 
@@ -54,10 +57,11 @@ namespace MyWmp.View
         private void MainWindow_OnDrop(object sender, DragEventArgs e)
         {
             var fileList = (string[])e.Data.GetData(DataFormats.FileDrop, true);
-            var soundExt = new string[] { ".mp3" };
-            var videoExt = new string[] { ".mp4" };
-            var pictureExt = new string[] { ".jpg" };
-            var loader = new Loader() { FileExtension = new string[] { ".mp3", ".mp4", ".jpg" } };
+            var allExtensions = new List<string>();
+            allExtensions.AddRange(settings_.MusicExtensions);
+            allExtensions.AddRange(settings_.VideoExtensions);
+            allExtensions.AddRange(settings_.PictureExtensions);
+            var loader = new Loader() { FileExtension = allExtensions.ToArray() };
             var playlist = control_.Playlist ?? new Playlist() { Name = "Current Playlist" };
             var first = false;
             foreach (var file in fileList)
@@ -68,13 +72,13 @@ namespace MyWmp.View
                 {
                     AMedia item = null;
                     var ext = new FileInfo(media).Extension.ToLower();
-                    if (soundExt.Contains(ext))
+                    if (settings_.MusicExtensions.Contains(ext))
                     {
                         item = new Song(media);
                     }
-                    else if (videoExt.Contains(ext))
+                    else if (settings_.VideoExtensions.Contains(ext))
                         item = new Video(media);
-                    else if (pictureExt.Contains(ext))
+                    else if (settings_.PictureExtensions.Contains(ext))
                     {
                         item = new Picture(media);
                     }
