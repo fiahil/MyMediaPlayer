@@ -1,8 +1,8 @@
 ﻿
 using System;
+using System.Globalization;
 using System.IO;
 using System.Windows.Media.Imaging;
-using System.Xml.Serialization;
 using TagLib;
 using File = TagLib.File;
 
@@ -31,15 +31,13 @@ namespace MyWmp.Models
             try
             {
                 var file = File.Create(Source);
-                Title = file.Tag.Title;
-                if (Title == null)
-                    Title = Path.GetFileNameWithoutExtension(Source);
-                Year = file.Tag.Year.ToString();
+                Title = file.Tag.Title ?? Path.GetFileNameWithoutExtension(Source);
+                Year = file.Tag.Year.ToString(CultureInfo.InvariantCulture);
                 Genre = String.Join(";", file.Tag.Genres);
                 if (file.Properties.MediaTypes != MediaTypes.None)
                     Duration = file.Properties.Duration.ToString(@"hh\:mm\:ss");
-                Height = file.Properties.VideoHeight.ToString();
-                Width = file.Properties.VideoWidth.ToString();
+                Height = file.Properties.VideoHeight.ToString(CultureInfo.InvariantCulture);
+                Width = file.Properties.VideoWidth.ToString(CultureInfo.InvariantCulture);
                 Extension = Path.GetExtension(Source).Remove(0, 1).ToLower();
                 AlbumArt = new BitmapImage(new Uri("/Resources/Video.png", UriKind.Relative));
             }

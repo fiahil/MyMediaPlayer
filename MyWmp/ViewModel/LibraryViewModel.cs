@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Data;
@@ -64,6 +62,8 @@ namespace MyWmp.ViewModel
 
         public void OnPlayLibraryPlaylist(int selectedPlaylist, int selectedItem)
         {
+            if (selectedPlaylist == -1 || selectedPlaylist == -1)
+                return;
             var playlist = new Playlist {Name = Playlists[selectedPlaylist].Name};
             foreach (var media in LibraryPlaylist)
             {
@@ -163,7 +163,7 @@ namespace MyWmp.ViewModel
                 return;
             library_.AddItemIntoPlaylist(selectedPlaylist, ((ListCollectionView)this.GetType().GetProperty(Translate(library)).GetValue(this, null)).GetItemAt(selectedItem) as AMedia);
             LibraryPlaylist = new ListCollectionView(Playlists[selectedPlaylist].ToArray());
-            if (Playlists[selectedPlaylist].Equals(control_.Playlist))
+            if (control_.Playlist.Name.CompareTo(Playlists[selectedPlaylist].Name) == 0)
                 control_.Playlist = Playlists[selectedPlaylist];
             PropertyChanged(this, new PropertyChangedEventArgs("LibraryPlaylist"));
         }
@@ -174,7 +174,8 @@ namespace MyWmp.ViewModel
                 return;
             library_.DeleteItemFromPlaylist(selectedPlaylist, selectedItem);
             LibraryPlaylist = new ListCollectionView(Playlists[selectedPlaylist].ToArray());
-            control_.Playlist = Playlists[selectedPlaylist];
+            if (control_.Playlist.Name.CompareTo(Playlists[selectedPlaylist].Name) == 0)
+                control_.Playlist = Playlists[selectedPlaylist];
             PropertyChanged(this, new PropertyChangedEventArgs("LibraryPlaylist"));
         }
 

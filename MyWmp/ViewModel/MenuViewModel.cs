@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -10,14 +11,15 @@ namespace MyWmp.ViewModel
     class MenuViewModel
     {
         private readonly Control control_;
+        private readonly Settings settings_;
 
         public MenuViewModel()
         {
             this.control_ = Control.Instance;
+            this.settings_ = Settings.Instance;
 
             this.OpenCommand = new ActionCommand(OnOpen);
             this.QuitCommand = new ActionCommand(OnQuit);
-            this.FailCommand = new ActionCommand(OnFail);
             this.PlayCommand = new ActionCommand(OnPlay);
             this.PauseCommand = new ActionCommand(OnPause);
             this.StopCommand = new ActionCommand(OnStop);
@@ -82,31 +84,36 @@ namespace MyWmp.ViewModel
 
         private void OnOpen(object fileNames)
         {
-            var soundExt = new string[] {".mp3"};
-            var videoExt = new string[] { ".mp4" };
-            var pictureExt = new string[] { ".jpg" };
-            var loader = new Loader() { FileExtension = new string[] { ".mp3", ".mp4", ".jpg" } };
-            var playlist = control_.Playlist ?? new Playlist() {Name = "Current Playlist"};
-            foreach (var file in fileNames as string[])
+            var allExtensions = new ArrayList();
+            allExtensions.AddRange(settings_.MusicExtensions);
+            allExtensions.AddRange(settings_.VideoExtensions);
+            allExtensions.AddRange(settings_.PictureExtensions);
+            var loader = new Loader { FileExtension = allExtensions.ToArray() as string[] };
+            var playlist = control_.Playlist ?? new Playlist {Name = "Current Playlist"};
+            var strings = fileNames as string[];
+            if (strings != null)
             {
-                loader.Root = file;
-                loader.Load();
-                foreach (var media in loader.MediaPath)
+                foreach (var file in strings)
                 {
-                    AMedia item = null;
-                    var ext = new FileInfo(media).Extension.ToLower();
-                    if (soundExt.Contains(ext))
+                    loader.Root = file;
+                    loader.Load();
+                    foreach (var media in loader.MediaPath)
                     {
-                        item = new Song(media);
+                        AMedia item = null;
+                        var ext = new FileInfo(media).Extension.ToLower();
+                        if (settings_.MusicExtensions.Contains(ext))
+                        {
+                            item = new Song(media);
+                        }
+                        else if (settings_.VideoExtensions.Contains(ext))
+                            item = new Video(media);
+                        else if (settings_.PictureExtensions.Contains(ext))
+                        {
+                            item = new Picture(media);
+                        }
+                        if (item != null)
+                            playlist.Add(item);
                     }
-                    else if (videoExt.Contains(ext))
-                        item = new Video(media);
-                    else if (pictureExt.Contains(ext))
-                    {
-                        item = new Picture(media);
-                    }
-                    if (item != null)
-                        playlist.Add(item);
                 }
             }
             control_.Playlist = playlist;
@@ -117,14 +124,8 @@ namespace MyWmp.ViewModel
             Application.Current.Shutdown();
         }
 
-        private void OnFail(object message)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public ICommand OpenCommand { get; private set; }
         public ICommand QuitCommand { get; private set; }
-        public ICommand FailCommand { get; private set; }
         public ICommand PlayCommand { get; private set; }
         public ICommand PauseCommand { get; private set; }
         public ICommand StopCommand { get; private set; }

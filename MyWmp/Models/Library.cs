@@ -1,9 +1,7 @@
 ﻿
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 
 namespace MyWmp.Models
 {
@@ -22,6 +20,7 @@ namespace MyWmp.Models
         public ObservableCollection<Playlist> Playlists { get; private set; }
 
         public bool IsLoaded { get; private set; }
+        private readonly Settings settings_;
 
         private Library()
         {
@@ -29,6 +28,7 @@ namespace MyWmp.Models
             Videos = new Playlist();
             Pictures = new Playlist();
             Playlists = new ObservableCollection<Playlist>();
+            settings_ = Settings.Instance;
         }
 
         public void Load()
@@ -37,8 +37,8 @@ namespace MyWmp.Models
             Sounds.RemoveAll();
             var loader = new Loader
                 {
-                    Root = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
-                    FileExtension = new[] { ".mp3" }
+                    Root = settings_.MusicLibPath,
+                    FileExtension = settings_.MusicExtensions
                 };
             loader.Load();
             foreach (var media in loader.MediaPath)
@@ -46,27 +46,26 @@ namespace MyWmp.Models
                 Sounds.Add(new Song(media));
             }
             Videos.RemoveAll();
-            loader.Root = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
-            loader.FileExtension = new[] {".mp4"};
+            loader.Root = settings_.VideoLibPath;
+            loader.FileExtension = settings_.VideoExtensions;
             loader.Load();
             foreach (var media in loader.MediaPath)
             {
                 Videos.Add(new Video(media));
             }
             Pictures.RemoveAll();
-            loader.Root = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            loader.FileExtension = new[] {".png"};
+            loader.Root = settings_.PictureLibPath;
+            loader.FileExtension = settings_.PictureExtensions;
             loader.Load();
             foreach (var media in loader.MediaPath)
             {
                 Pictures.Add(new Picture(media));
             }
-            loader.Root = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MyPlaylists";
+            loader.Root = settings_.PlaylistPath;
             loader.FileExtension = new[] {".xml"};
             loader.Load();
-            foreach (var playlist in loader.MediaPath)
+            foreach (var newInstance in loader.MediaPath.Select(PlaylistSerializer.DeSerialize).Where(newInstance => newInstance != null))
             {
-                var newInstance = PlaylistSerializer.DeSerialize(playlist);
                 newInstance.LoadFromPath();
                 Playlists.Add(newInstance);
             }
@@ -76,7 +75,7 @@ namespace MyWmp.Models
         public void AddPlaylist()
         {
             var tmp = new Playlist();
-            tmp.Path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\MyPlaylists\\" + tmp.Name + ".xml";
+            tmp.Path = settings_.PlaylistPath + "\\" + tmp.Name + ".xml";
             PlaylistSerializer.Serialize(tmp);
             Playlists.Add(tmp);
         }
@@ -103,8 +102,7 @@ namespace MyWmp.Models
         {
             File.Delete(Playlists[selectedPlaylist].Path);
             Playlists[selectedPlaylist].Name = name;
-            Playlists[selectedPlaylist].Path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
-                                               "\\MyPlaylists\\" + Playlists[selectedPlaylist].Name + ".xml";
+            Playlists[selectedPlaylist].Path = settings_.PlaylistPath + "\\" + Playlists[selectedPlaylist].Name + ".xml";
             PlaylistSerializer.Serialize(Playlists[selectedPlaylist]);
         }
     }
