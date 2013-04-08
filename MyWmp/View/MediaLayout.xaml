@@ -7,6 +7,26 @@
     xmlns:behaviors="clr-namespace:MyWmp.Behaviors" xmlns:uiElements="clr-namespace:MyWmp.UIElements"
     mc:Ignorable="d"
     x:Class="MyWmp.View.MediaLayout">
+	<UserControl.Resources>
+		<Storyboard x:Key="Disapear">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="label">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="Appear">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="label">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+	<UserControl.Triggers>
+		<EventTrigger RoutedEvent="Mouse.MouseEnter">
+			<BeginStoryboard x:Name="Appear_BeginStoryboard" Storyboard="{StaticResource Appear}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="Mouse.MouseLeave">
+			<BeginStoryboard Storyboard="{StaticResource Disapear}"/>
+		</EventTrigger>
+	</UserControl.Triggers>
 
     <Grid>
         <Label x:Name="MediaScreen" Style="{DynamicResource MediaScreen}" Margin="0,0,0,12" />
@@ -16,7 +36,7 @@
             </i:Interaction.Behaviors>
         </MediaElement>
         
-        <Label Background="{DynamicResource DarkBgBrush}" Padding="20" Margin="25,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Label x:Name="label" Background="{DynamicResource DarkBgBrush}" Padding="20" Margin="25,25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
             <StackPanel Orientation="Vertical">
                 <uiElements:FormatedSlider x:Name="VolumeSlider" Style="{DynamicResource Slider}" Value="{Binding Path=Volume, ElementName=Media}" Minimum="0" Maximum="1" SmallChange="0.01" LargeChange="0.01" TickFrequency="0.01" Delay="0" IsMoveToPointEnabled="True" IsSnapToTickEnabled="True" Orientation="Vertical" AutoToolTipPlacement="TopLeft" AutoToolTipFormat="volume" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center" AutoToolTipPrecision="2" />
                 <Label x:Name="ValueDisplayer" HorizontalContentAlignment="Center" Width="30" Foreground="{DynamicResource TextFgBrush}" HorizontalAlignment="Center" Content="{Binding ElementName=VolumeSlider, Path=FormatedValue}" FontWeight="Bold" />
