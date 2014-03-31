@@ -1,4 +1,4 @@
 MyMediaPlayer
 =============
 
-Your new media player.
+A custom media player made using C# and WPF.
